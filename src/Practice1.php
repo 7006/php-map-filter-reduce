@@ -3,7 +3,7 @@
 namespace Frob\Mfr;
 
 class Practice1 {
-    public static function solution(array $elements) {
+    public static function solution(array $bucket) {
         return [['apple', 'yellow'], ['potato', 'green']];
     }
 
