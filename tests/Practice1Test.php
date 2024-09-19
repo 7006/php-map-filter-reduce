@@ -15,4 +15,13 @@ class Practice1Test extends TestCase {
         $this->assertEquals($appleColor, 'yellow');
         $this->assertNotEquals($potatoColor, 'yellow');
     }
+
+    #[Test]
+    public function it_paint_vegetable_green() {
+        $elements = ['apple', 'potato'];
+        [[$apple, $appleColor], [$potato, $potatoColor]] = Practice1::solution($elements);
+
+        $this->assertNotEquals($appleColor, 'green');
+        $this->assertEquals($potatoColor, 'green');
+    }
 }
