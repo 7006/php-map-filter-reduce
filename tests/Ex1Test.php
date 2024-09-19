@@ -7,7 +7,7 @@ use PHPUnit\Framework\Attributes\Test;
 
 class Ex1Test extends TestCase {
     #[Test]
-    public function it_paint_fruit_yellow() {
+    public function it_colors_fruit_yellow() {
         $bucket = ['apple', 'potato'];
         [[, $appleColor], [, $potatoColor]] = Ex1::solution($bucket);
 
@@ -16,7 +16,7 @@ class Ex1Test extends TestCase {
     }
 
     #[Test]
-    public function it_paint_vegetable_green() {
+    public function it_colors_vegetable_green() {
         $bucket = ['apple', 'potato'];
         [[, $appleColor], [, $potatoColor]] = Ex1::solution($bucket);
 
