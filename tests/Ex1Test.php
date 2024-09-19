@@ -1,16 +1,15 @@
 <?php
 
-namespace Frob\Mfr\Tests;
+namespace Telema;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\Test;
-use Frob\Mfr\Practice1;
 
-class Practice1Test extends TestCase {
+class Ex1Test extends TestCase {
     #[Test]
     public function it_paint_fruit_yellow() {
         $bucket = ['apple', 'potato'];
-        [[, $appleColor], [, $potatoColor]] = Practice1::solution($bucket);
+        [[, $appleColor], [, $potatoColor]] = Ex1::solution($bucket);
 
         $this->assertEquals($appleColor, 'yellow');
         $this->assertNotEquals($potatoColor, 'yellow');
@@ -19,7 +18,7 @@ class Practice1Test extends TestCase {
     #[Test]
     public function it_paint_vegetable_green() {
         $bucket = ['apple', 'potato'];
-        [[, $appleColor], [, $potatoColor]] = Practice1::solution($bucket);
+        [[, $appleColor], [, $potatoColor]] = Ex1::solution($bucket);
 
         $this->assertNotEquals($appleColor, 'green');
         $this->assertEquals($potatoColor, 'green');

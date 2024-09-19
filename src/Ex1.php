@@ -1,8 +1,8 @@
 <?php
 
-namespace Frob\Mfr;
+namespace Telema;
 
-class Practice1 {
+class Ex1 {
     public static function solution(array $bucket) {
         return [['apple', 'yellow'], ['potato', 'green']];
     }
