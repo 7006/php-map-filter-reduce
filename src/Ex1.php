@@ -3,11 +3,11 @@
 namespace Telema;
 
 class Ex1 {
-    public static function solution(array $bucket) {
-        
+    public static function solution(array $foods = []) {
+
     }
 
-    public static function fp_solution() {
+    public static function fp_solution(array $foods = []) {
 
     }
 }
