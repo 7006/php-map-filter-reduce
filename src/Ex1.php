@@ -29,32 +29,25 @@ class Ex1 {
         switch($food) {
         
             case 'apple':
-                $color = 'yellow';
-                return $color;
+                return 'yellow';
 
             case 'carrot':
-                $color = 'green';
-                return $color;
-
+                return 'green';
+                
             case 'beet':
-                $color = 'green';
-                return $color;
+                return 'green';
 
             case 'lemon':
-                $color = 'yellow';
-                return $color;
+                return 'yellow';
 
             case 'pear':
-                $color = 'yellow';
-                return $color;
+                return 'yellow';
 
             case 'potato':
-                $color = 'green';
-                return $color;
+                return 'green';
 
             default: 
-                $color = 'blank';
-                return $color;
+                return 'blank';
         }   
     }
 
