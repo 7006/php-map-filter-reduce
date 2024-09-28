@@ -26,29 +26,20 @@ class Ex1 {
     }
 
     private static function foodColor($food) {
-        switch($food) {
-        
-            case 'apple':
-                return 'yellow';
+        $foodToColor = [
+           'apple' => 'yellow',
+           'carrot' => 'green',
+           'beet' => 'green',
+           'lemon' => 'yellow',
+           'pear' => 'yellow',
+           'potato' => 'green',
+        ];
 
-            case 'carrot':
-                return 'green';
-                
-            case 'beet':
-                return 'green';
-
-            case 'lemon':
-                return 'yellow';
-
-            case 'pear':
-                return 'yellow';
-
-            case 'potato':
-                return 'green';
-
-            default: 
-                return 'blank';
-        }   
+        if (isset($foodToColor[$food])) {
+            return $foodToColor[$food];
+        } else {
+            return 'blank';
+        } 
     }
 
     public static function fp_solution(array $items = []) {
