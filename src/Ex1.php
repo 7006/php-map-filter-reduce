@@ -13,6 +13,7 @@ class Ex1 {
         ['food' => 'potato'],
         ['food' => 'apple'],
         ['food' => 'lemon'],
+        ['food' => 'nuts'],
     ];
 
     public static function solution(array $items = []) {
@@ -25,36 +26,36 @@ class Ex1 {
     }
 
     private static function foodColor($food) {
-
-        $color = 'blank';
-
         switch($food) {
-            
+        
             case 'apple':
                 $color = 'yellow';
-                break;
+                return $color;
 
             case 'carrot':
                 $color = 'green';
-                break;
+                return $color;
 
             case 'beet':
                 $color = 'green';
-                break;
+                return $color;
 
             case 'lemon':
                 $color = 'yellow';
-                break;
+                return $color;
 
             case 'pear':
                 $color = 'yellow';
-                break;
+                return $color;
 
             case 'potato':
                 $color = 'green';
-                break;
-        }
-        return $color;
+                return $color;
+
+            default: 
+                $color = 'blank';
+                return $color;
+        }   
     }
 
     public static function fp_solution(array $items = []) {
