@@ -16,20 +16,17 @@ class Ex3 {
 	}
 
 	private static function mean(array $numbers) {
+		$count = count($numbers);
+		
+		if ($count === 0) {
+			return 0;
+		}
+		
 		$sum = 0;
 		foreach ($numbers as $number) {
 			$sum += $number;
 		}
-	
-		$count = count($numbers);
-
-		if ($count === 0) {
-			$mean = 0;
-		} else {
-			$mean = $sum / $count;	
-		}
-
-		return $mean;
+		return $sum / $count;
 	}
 
 	private static function median(array $numbers) {
