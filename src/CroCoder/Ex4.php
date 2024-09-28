@@ -20,6 +20,13 @@ class Ex4 {
 	}
 
 	public static function fpSolution(string $nameString = '') {
+		$names = explode(' ', $nameString);
 
+		$fn = function($name) {
+			return $name[0];
+		};
+		$initials = array_map($fn, $names);
+
+		return implode('', $initials);
 	}
 }
