@@ -5,22 +5,29 @@ namespace Telema;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\Test;
 
+// https://www.geeksforgeeks.org/phpunit-assertequals-function/
 class Ex1Test extends TestCase {
     #[Test]
     public function it_colors_fruit_yellow() {
-        $bucket = ['apple', 'potato'];
-        [[, $appleColor], [, $potatoColor]] = Ex1::solution($bucket);
+        // Given
+        $foods = ['food' => 'apple'];
 
-        $this->assertEquals($appleColor, 'yellow');
-        $this->assertNotEquals($potatoColor, 'yellow');
+        // When
+        [$apple] = Ex1::solution($foods);
+
+        // Then
+        $this->assertEquals('yellow', $apple['color']);
     }
 
     #[Test]
     public function it_colors_vegetable_green() {
-        $bucket = ['apple', 'potato'];
-        [[, $appleColor], [, $potatoColor]] = Ex1::solution($bucket);
+        // Given
+        $foods = ['food' => 'potato'];
 
-        $this->assertNotEquals($appleColor, 'green');
-        $this->assertEquals($potatoColor, 'green');
+        // When
+        [$potato] = Ex1::solution($foods);
+
+        // Then
+        $this->assertEquals('green', $potato['color']);
     }
 }
