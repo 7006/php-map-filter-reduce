@@ -1,10 +1,10 @@
 <?php
 
-require_once './src/CroCoder/Ex3.php';
+require_once './src/CroCoder/Ex4.php';
 
-use Telema\CroCoder\Ex3;
+use Telema\CroCoder\Ex4;
 
-$items = Ex3::$ITEMS;
-$result = Ex3::solution($items);
-//$result = Ex3::fpSolution($items);
+$items = Ex4::$ITEMS;
+$result = Ex4::solution($items);
+//$result = Ex4::fpSolution($items);
 print_r($result);
