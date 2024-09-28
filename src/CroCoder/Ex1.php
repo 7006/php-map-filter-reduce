@@ -16,6 +16,9 @@ class Ex1 {
 	}
 
 	public static function fpSolution(array $items = []) {
-
+		$callback = function($item) {
+			return $item ** 2;
+		};
+		return array_map($callback, $items);
 	}
 }
