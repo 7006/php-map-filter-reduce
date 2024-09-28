@@ -6,4 +6,5 @@ use Telema\CroCoder\Ex1;
 
 $items = Ex1::$ITEMS;
 $result = Ex1::solution($items);
-var_dump($result);
+print_r($items);
+print_r($result);
