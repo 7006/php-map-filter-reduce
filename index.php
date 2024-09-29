@@ -1,10 +1,10 @@
 <?php
 
-require_once './src/Svekis/Ex7.php';
+require_once './src/Svekis/Ex8.php';
 
-use Telema\Svekis\Ex7;
+use Telema\Svekis\Ex8;
 
-$items = Ex7::$ITEMS;
-// $result = Ex7::solution($items);
-$result = Ex7::fpSolution($items);
+$items = Ex8::$ITEMS;
+// $result = Ex8::solution($items);
+$result = Ex8::fpSolution($items);
 print_r($result);
