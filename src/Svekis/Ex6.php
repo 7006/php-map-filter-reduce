@@ -93,6 +93,16 @@ class Ex6 {
 	}
 
 	public static function fpSolution(array $rectangles = []) {
-		
+		$fn = function ($rectangle) {
+			$rectangleObject = Rectangle::createFromArray($rectangle);
+			return [
+				'area' => $rectangleObject->area(),
+				'perimeter' => $rectangleObject->perimeter(),
+				'long_or_short' => $rectangleObject->longOrShort(),
+				'favorite' => $rectangleObject->favorite()
+			];
+		};
+
+		return array_map($fn, $rectangles);
 	}
 }
