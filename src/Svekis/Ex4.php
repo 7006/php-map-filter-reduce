@@ -22,7 +22,7 @@ class Ex4 {
 	}
 
 	public static function fpSolution2(array $celsius = []) {
-		return array_map([self, 'celsiusToFahrenheit'], $celsius);
+		return array_map([__CLASS__, 'celsiusToFahrenheit'], $celsius);
 	}
 
 	private static function celsiusToFahrenheit($temp) {
