@@ -9,15 +9,23 @@ class Ex4 {
 	public static function solution(array $celsius = []) {
 		$fahrenheits = [];
 		foreach ($celsius as $temp) {
-			$fahrenheits[] = $temp * 9 / 5 + 32;
+			$fahrenheits[] = self::celsiusToFahrenheit($temp);
 		}
 		return $fahrenheits;
 	}
 
 	public static function fpSolution(array $celsius = []) {
 		$fn = function($temp) {
-			return $temp * 9 / 5 + 32;
+			return self::celsiusToFahrenheit($temp);
 		};
 		return array_map($fn, $celsius);
+	}
+
+	public static function fpSolution2(array $celsius = []) {
+		return array_map([self, 'celsiusToFahrenheit'], $celsius);
+	}
+
+	private static function celsiusToFahrenheit($temp) {
+		return $temp * 9 / 5 + 32;
 	}
 }

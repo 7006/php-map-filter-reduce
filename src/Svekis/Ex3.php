@@ -19,7 +19,7 @@ class Ex3 {
 		]
 	];
 
-	public static function solution(array $students = []) {
+	public static function solution(array $students) {
 		$names = [];
 		foreach ($students as $student) {
 			$names[] = $student['name'];
@@ -27,11 +27,19 @@ class Ex3 {
 		return $names;
 	}
 
-	public static function fpSolution(array $students = []) {
+	public static function fpSolution(array $students) {
 		$fn = function($student) {
 			return $student['name'];
 		};
 
+		return array_map($fn, $students);
+	}
+
+	public static function fpSolution2(array $students, $key = 'age') {
+		$fn = function($student) use($key) {
+			return $student[$key];
+		};
+		
 		return array_map($fn, $students);
 	}
 }
