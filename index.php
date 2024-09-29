@@ -1,11 +1,11 @@
 <?php
 
-require_once './src/Svekis/Ex3.php';
+require_once './src/Svekis/Ex4.php';
 
-use Telema\Svekis\Ex3;
+use Telema\Svekis\Ex4;
 
-$items = Ex3::$ITEMS;
-// $result = Ex3::solution($items);
-$result = Ex3::fpSolution($items);
+$items = Ex4::$ITEMS;
+$result = Ex4::solution($items);
+// $result = Ex4::fpSolution($items);
 print_r($items);
 print_r($result);
