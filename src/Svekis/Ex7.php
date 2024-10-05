@@ -2,11 +2,11 @@
 
 namespace Telema\Svekis;
 
+const ITEMS = ['John Doe', 'Alice Smith', 'Bob Johnson', 'Donald Duck III'];
+
 class Ex7 {
 
-	public static $ITEMS = ['John Doe', 'Alice Smith', 'Bob Johnson', 'Donald Duck III'];
-
-	public static function solution(array $names) {
+	public static function solution(array $names = ITEMS) {
 		$initials = [];
 		foreach ($names as $name) {
 			$initials[] = self::initials($name);
@@ -14,7 +14,7 @@ class Ex7 {
 		return $initials;
 	}
 
-	public static function fpSolution(array $names) {
+	public static function fpSolution(array $names = ITEMS) {
 		return array_map([__CLASS__, 'initials2'], $names);
 	}
 

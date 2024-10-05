@@ -1,11 +1,19 @@
 <?php
 
-require_once './src/Svekis/Ex9.php';
+require_once './vendor/autoload.php';
 
-use Telema\Svekis\Ex9;
+$requestUri = $_SERVER['REQUEST_URI'];
 
-$items = Ex9::$ITEMS;
-// $result = Ex9::solution($items);
-// $result = Ex9::fpSolution($items);
-$result = Ex9::alternativeSyntaxSolution($items);
+if (str_starts_with($requestUri, '/crocoder/')) {
+	$url = substr($requestUri, strlen('/crocoder/'));
+	$result = \Telema\CroCoder\Router::go($url);
+}
+
+if (str_starts_with($requestUri, '/svekis/')) {
+	$url = substr($requestUri, strlen('/svekis/'));
+	$result = \Telema\Svekis\Router::go($url);
+}
+
+echo '<pre>';
 print_r($result);
+echo '</pre>';

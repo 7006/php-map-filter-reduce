@@ -2,11 +2,11 @@
 
 namespace Telema\Svekis;
 
+const ITEMS = ['Apple', 'Banana', 'Cherry', 'Ananas'];
+
 class Ex9 {
 
-	public static $ITEMS = ['Apple', 'Banana', 'Cherry', 'Ananas'];
-
-	public static function solution(array $fruits) {
+	public static function solution(array $fruits = ITEMS) {
 		$html = '<ul>' . "\n";
 		foreach ($fruits as $fruit) {
 			$html .= "\t" . '<li>' . $fruit . '</li>' . "\n";
@@ -16,7 +16,7 @@ class Ex9 {
 		return $html;
 	}
 
-	public static function fpSolution(array $fruits) {
+	public static function fpSolution(array $fruits = ITEMS) {
 		$fn = function ($html, $fruit) {
 			return $html . "\t" . '<li>' . $fruit . '</li>' . "\n";
 		};

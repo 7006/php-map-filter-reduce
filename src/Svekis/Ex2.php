@@ -2,11 +2,11 @@
 
 namespace Telema\Svekis;
 
+const ITEMS = ['london', 'manchester', 'liverpool', 'tbilisi'];
+
 class Ex2 {
 
-	public static $ITEMS = ['london', 'manchester', 'liverpool', 'tbilisi'];
-
-	public static function solution(array $cities = []) {
+	public static function solution(array $cities = ITEMS) {
 		$result =[];
 		foreach ($cities as $city) {
 			$result[] = strtoupper($city);
@@ -15,7 +15,7 @@ class Ex2 {
 		return $result;
 	}
 
-	public static function fpSolution(array $cities = []) {
+	public static function fpSolution(array $cities = ITEMS) {
 		$fn = function($city) {
 			return strtoupper($city);
 		};
@@ -23,7 +23,7 @@ class Ex2 {
 		return array_map($fn, $cities);
 	}
 
-	public static function fpSolution2(array $cities = []) {
+	public static function fpSolution2(array $cities = ITEMS) {
 		return array_map('strtoupper', $cities);
 	}
 } 

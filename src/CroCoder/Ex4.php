@@ -2,12 +2,12 @@
 
 namespace Telema\CroCoder;
 
+const ITEMS = 'George Raymond Richard Martin';
+// const ITEMS = '';
+
 class Ex4 {
 	
-	public static $ITEMS = 'George Raymond Richard Martin';
-	// public static $ITEMS = '';
-
-	public static function solution(string $nameString = '') {
+	public static function solution(string $nameString = ITEMS) {
 		$names = explode(' ', $nameString);
 		
 		$initials = [];
@@ -19,7 +19,7 @@ class Ex4 {
 		return implode('', $initials);
 	}
 
-	public static function fpSolution(string $nameString = '') {
+	public static function fpSolution(string $nameString = ITEMS) {
 		$names = explode(' ', $nameString);
 
 		$fn = function($name) {

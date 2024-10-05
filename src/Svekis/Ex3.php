@@ -2,9 +2,7 @@
 
 namespace Telema\Svekis;
 
-class Ex3 {
-
-	public static $ITEMS = [
+const ITEMS = [
 		[
 			'name' => 'Alice',
 			'age' => 25
@@ -19,7 +17,9 @@ class Ex3 {
 		]
 	];
 
-	public static function solution(array $students) {
+class Ex3 {
+
+	public static function solution(array $students = ITEMS) {
 		$names = [];
 		foreach ($students as $student) {
 			$names[] = $student['name'];
@@ -27,7 +27,7 @@ class Ex3 {
 		return $names;
 	}
 
-	public static function fpSolution(array $students) {
+	public static function fpSolution(array $students = ITEMS) {
 		$fn = function($student) {
 			return $student['name'];
 		};
@@ -35,7 +35,7 @@ class Ex3 {
 		return array_map($fn, $students);
 	}
 
-	public static function fpSolution2(array $students, $key = 'age') {
+	public static function fpSolution2(array $students = ITEMS, $key = 'age') {
 		$fn = function($student) use($key) {
 			return $student[$key];
 		};

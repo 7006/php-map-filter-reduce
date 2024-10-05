@@ -2,6 +2,29 @@
 
 namespace Telema\Svekis;
 
+const ITEMS = [
+		[
+			'width' => 15,
+			'height' => 5
+		],
+		[
+			'width' => 4,
+			'height' => 8
+		],
+		[
+			'width' => 10,
+			'height' => 2
+		],
+		[
+			'width' => 2,
+			'height' => 6
+		],
+		[
+			'width' => 1,
+			'height' => 1
+		]
+	];
+
 class Rectangle {
 
 	private $width;
@@ -53,30 +76,7 @@ class Rectangle {
 
 class Ex6 {
 
-	public static $ITEMS = [
-		[
-			'width' => 15,
-			'height' => 5
-		],
-		[
-			'width' => 4,
-			'height' => 8
-		],
-		[
-			'width' => 10,
-			'height' => 2
-		],
-		[
-			'width' => 2,
-			'height' => 6
-		],
-		[
-			'width' => 1,
-			'height' => 1
-		]
-	];
-
-	public static function solution(array $rectangles = []) {
+	public static function solution(array $rectangles = ITEMS) {
 		$infos = [];
 		foreach ($rectangles as $rectangleArray) {
 			$rectangleObject = Rectangle::createFromArray($rectangleArray);
@@ -92,7 +92,7 @@ class Ex6 {
 		return $infos;
 	}
 
-	public static function fpSolution(array $rectangles = []) {
+	public static function fpSolution(array $rectangles = ITEMS) {
 		$fn = function ($rectangle) {
 			$rectangleObject = Rectangle::createFromArray($rectangle);
 			return [

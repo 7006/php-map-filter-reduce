@@ -2,13 +2,13 @@
 
 namespace Telema\CroCoder;
 
-class Ex3 {
+//const ITEMS = [];
+const ITEMS = [12, 46, 32, 64];
+//const ITEMS = [12, 46, 32, 5, 3, 76, 64];
 
-	//public static $ITEMS = [];
-	public static $ITEMS = [12, 46, 32, 64];
-	//public static $ITEMS = [12, 46, 32, 5, 3, 76, 64];
+class Ex3 {
 	
-	public static function solution(array $numbers = []) {
+	public static function solution(array $numbers = ITEMS) {
 		return [
 			'mean' => self::mean($numbers),
 			'median' => self::median($numbers)

@@ -2,11 +2,11 @@
 
 namespace Telema\Svekis;
 
+const ITEMS = ['2023-01-15', '2023-05-20', '2023-09-10'];
+
 class Ex8 {
 
-	public static $ITEMS = ['2023-01-15', '2023-05-20', '2023-09-10'];  //  ['1/15/2023', '5/20/2023', '9/10/2023']
-
-	public static function solution(array $dates) {
+	public static function solution(array $dates = ITEMS) {
 		$newDates = [];
 		foreach ($dates as $date) {
 			$newDates[] = self::formatDate($date);
@@ -15,7 +15,7 @@ class Ex8 {
 		return $newDates;
 	}
 
-	public static function fpSolution(array $dates) {
+	public static function fpSolution(array $dates = ITEMS) {
 		return array_map([__CLASS__, 'formatDate3'], $dates);
 	}		
 
