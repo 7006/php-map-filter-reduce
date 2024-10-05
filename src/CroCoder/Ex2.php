@@ -17,16 +17,9 @@ class Ex2 {
 	}
 
 	public static function fpSolution(array $numbers = ITEMS) {
-		$positiveNumbers = array_filter($numbers, function($number) { 
-			return $number > 0;
-		});
+		$positiveNumbers = array_filter($numbers, fn ($number) => $number > 0);
 
-		$sum = array_reduce($positiveNumbers, function($oldSum, $positiveNumber) {
-			$newSum = $oldSum + $positiveNumber;
-			return $newSum;
-		}, 0);
-		
-		return $sum;
+		return array_reduce($positiveNumbers, fn ($sum, $n) => $sum + $n, 0);
 	}
 
 	public static function fpSolution2(array $numbers = ITEMS) {

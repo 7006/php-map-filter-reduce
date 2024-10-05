@@ -24,6 +24,11 @@ class Ex9 {
 		return array_reduce($fruits, $fn, '<ul>' . "\n") . '</ul>' . "\n";
 	}
 
+	public static function fpSolution2(array $fruits = ITEMS) {
+		$lis = array_reduce($fruits, fn ($html, $f) => "$html<li>$f</li>", '');
+		return "<ul>$lis</ul>";
+	}
+
 	public static function alternativeSyntaxSolution(array $fruits) { ?>
 		<ul>
 			<?php foreach ($fruits as $fruit) : ?>

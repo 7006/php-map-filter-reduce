@@ -17,7 +17,11 @@ class Ex8 {
 
 	public static function fpSolution(array $dates = ITEMS) {
 		return array_map([__CLASS__, 'formatDate3'], $dates);
-	}		
+	}
+
+	public static function fpSolution2(array $dates = ITEMS) {
+		return array_map(self::formatDate3(...), $dates);
+	}
 
 	private static function formatDate(string $date) {
 		[$year, $month, $day] = explode('-', $date, 3);

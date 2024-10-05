@@ -18,6 +18,10 @@ class Ex7 {
 		return array_map([__CLASS__, 'initials2'], $names);
 	}
 
+	public static function fpSolution2(array $names = ITEMS) {
+		return array_map(self::initials2(...), $names);
+	}
+
 	private static function initials(string $name) {
 		$nameArray = explode(' ', $name);
 		$firstName = $nameArray[0];

@@ -22,10 +22,20 @@ class Ex4 {
 	}
 
 	public static function fpSolution2(array $celsius = ITEMS) {
+		return array_map(fn ($temp) => self::celsiusToFahrenheit($temp), $celsius);
+	}
+
+	public static function fpSolution3(array $celsius = ITEMS) {
 		return array_map([__CLASS__, 'celsiusToFahrenheit'], $celsius);
+	}
+
+	public static function fpSolution4(array $celsius = ITEMS) {
+		return array_map(self::celsiusToFahrenheit(...), $celsius);
 	}
 
 	private static function celsiusToFahrenheit($temp) {
 		return $temp * 9 / 5 + 32;
 	}
+
+
 }

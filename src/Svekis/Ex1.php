@@ -15,10 +15,6 @@ class Ex1 {
 	}
 
 	public static function fpSolution(array $numbers = ITEMS) {
-		$fn = function($number) {
-			return $number * 2;
-		};
-		
-		return array_map($fn, $numbers);
+		return array_map(fn ($n) => $n * 2, $numbers);
 	}
 }

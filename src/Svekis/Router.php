@@ -23,7 +23,7 @@ class Router {
 			'fp/6' => Ex6::fpSolution(),
 			'fp/7' => Ex7::fpSolution(),
 			'fp/8' => Ex8::fpSolution(),
-			'fp/9' => Ex9::fpSolution(),
+			'fp/9' => Ex9::fpSolution2(),
 		};
 	}
 }

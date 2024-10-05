@@ -28,11 +28,7 @@ class Ex3 {
 	}
 
 	public static function fpSolution(array $students = ITEMS) {
-		$fn = function($student) {
-			return $student['name'];
-		};
-
-		return array_map($fn, $students);
+		return array_map(fn ($st) => $st['name'], $students);
 	}
 
 	public static function fpSolution2(array $students = ITEMS, $key = 'age') {
@@ -41,5 +37,9 @@ class Ex3 {
 		};
 		
 		return array_map($fn, $students);
+	}
+
+	public static function fpSolution3(array $students = ITEMS, $key = 'age') {
+		return array_map(fn ($student) => $student[$key], $students);
 	}
 }

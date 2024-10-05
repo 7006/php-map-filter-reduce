@@ -16,14 +16,10 @@ class Ex2 {
 	}
 
 	public static function fpSolution(array $cities = ITEMS) {
-		$fn = function($city) {
-			return strtoupper($city);
-		};
-
-		return array_map($fn, $cities);
+		return array_map(strtoupper(...), $cities);
 	}
 
 	public static function fpSolution2(array $cities = ITEMS) {
-		return array_map('strtoupper', $cities);
+		return array_map(strtoupper($city), $cities);
 	}
 } 

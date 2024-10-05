@@ -21,11 +21,8 @@ class Ex4 {
 
 	public static function fpSolution(string $nameString = ITEMS) {
 		$names = explode(' ', $nameString);
-
-		$fn = function($name) {
-			return $name[0];
-		};
-		$initials = array_map($fn, $names);
+		
+		$initials = array_map(fn ($name) => $name[0], $names);
 
 		return implode('', $initials);
 	}
