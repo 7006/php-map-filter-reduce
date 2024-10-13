@@ -1,6 +1,6 @@
 <?php
 
-namespace Telema\CroCoder;
+namespace Telema\Uncle;
 
 class Router {
 
@@ -10,12 +10,10 @@ class Router {
 			'2' => Ex2::solution(),
 			'3' => Ex3::solution(),
 			'4' => Ex4::solution(),
-			'5' => Ex5::solution(),
 			'fp/1' => Ex1::fpSolution(),
 			'fp/2' => Ex2::fpSolution(),
 			'fp/3' => Ex3::fpSolution(),
-			'fp/4' => Ex4::fpSolution(),
-			'fp/5' => Ex4::fpSolution(),
+			'fp/4' => Ex4::fpSolution()
 		};
 	}
 }
