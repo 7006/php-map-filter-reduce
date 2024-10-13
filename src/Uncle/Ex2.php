@@ -16,20 +16,43 @@ const ITEMS = [
 class Ex2 {
 
 	public static function solution(array $items = ITEMS) {
-		$success = [];
-		$error = [];
+		$accum = ['success' => [], 'error' => []];
+
 		foreach ($items as $item) {
 			if ($item['status'] === 'success') {
-				$success[] = $item['id'];
+				$accum['success'][] = $item['id'];
 			}
 			if ($item['status'] === 'error') {
-				$error[] = $item['id'];
+				$accum['error'][] = $item['id'];
 			}
 		}
-		return ['success' => $success, 'error' => $error];
+		return $accum;
 	}
 
 	public static function fpSolution(array $items = ITEMS) {
+		$accumInit = ['success' => [], 'error' => []];
+		
+		$fn = function ($accum, $item) {
+			if ($item['status'] === 'success') {
+				$accum['success'][] = $item['id'];
+			}
+			if ($item['status'] === 'error') {
+				$accum['error'][] = $item['id'];
+			}
+			return $accum;
+		};
 
+		return array_reduce($items, $fn, $accumInit);
+	}
+
+	public static function fpSolution2(array $items = ITEMS) {
+		
+		$success = array_values(array_filter($items, fn ($item) => $item['status'] === 'success'));
+		$error = array_values(array_filter($items, fn ($item) => $item['status'] === 'error'));
+
+		$successId = array_map(fn ($item) => $item['id'], $success);
+		$errorId = array_map(fn ($item) => $item['id'], $error);
+
+		return ['success' => $successId, 'error' => $errorId];
 	}
 }
