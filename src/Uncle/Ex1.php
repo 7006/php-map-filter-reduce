@@ -2,7 +2,7 @@
 
 namespace Telema\Uncle;
 
-const ITEMS [
+const ITEMS = [
         ['food' => 'apple'],
         ['food' => 'carrot'],
         ['food' => 'beet'],
@@ -18,13 +18,31 @@ class Ex1 {
 
 	public static function solution(array $fruits = ITEMS) {
 		$result = [];
-		foreach ($numbers as $number) {
-			$doubledNumbers[] = $number * 2;
+		foreach ($fruits as $fruit) {
+			$fruit['color'] = Ex1::color($fruit);
+			$result[] = $fruit;
 		}
-		return $doubledNumbers;
+		return $result;
 	}
 
-	public static function fpSolution(array $numbers = ITEMS) {
-		return array_map(fn ($n) => $n * 2, $numbers);
+	public static function fpSolution(array $fruits = ITEMS) {
+		$fn = function ($fruit) {
+			$fruit['color'] = Ex1::color($fruit);
+			return $fruit;
+		};
+		return array_map($fn, $fruits);
+	}
+
+	private static function color($fruit) {
+		$color = match ($fruit['food']) {
+			'apple' => 'yellow',
+			'carrot' => 'green',
+			'beet' => 'green',
+			'lemon' => 'yellow',
+			'pear' => 'yellow',
+			'potato' => 'green',
+			default => 'unknown'
+		};
+		return $color;
 	}
 }

@@ -17,3 +17,4 @@ function go($prefix, $class) {
 
 go('/crocoder/', \Telema\CroCoder\Router::class);
 go('/svekis/', \Telema\Svekis\Router::class);
+go('/uncle/', \Telema\Uncle\Router::class);
