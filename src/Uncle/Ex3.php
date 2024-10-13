@@ -14,9 +14,20 @@ const ITEMS = [
 ];
 
 class Ex3 {
+	private static function provider() {
+		return isset($_GET['provider']) ? $_GET['provider'] : null;
+	}
+	
+	private static function date() {
+		return isset($_GET['date']) ? $_GET['date'] : null;
+	}
 
 	public static function solution(array $items = ITEMS) {
+		$provider = self::provider();
+		$date = self::date();
 
+		// вот тут твой код с foreach которьій использует значения перменньіх provider и date
+		// в адресной строке браузера пишешь http://localhost:8080/uncle/3?provider=frob&date=2024-09-03
     }   
 
 	public static function fpSolution(array $items = ITEMS) {
