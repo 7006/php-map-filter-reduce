@@ -13,12 +13,13 @@ const ITEMS = [
     ['id' => 26, 'provider' => 'frob', 'updated_at' => '2024-09-04']
 ];
 
-class Ex2 {
+class Ex3 {
 
 	public static function solution(array $items = ITEMS) {
 
-}
+    }   
 
 	public static function fpSolution(array $items = ITEMS) {
 
+    }
 }
