@@ -1,18 +1,7 @@
 {
-    "require-dev": {
-        "phpunit/phpunit": "^10.5"
-    },
     "autoload": {
         "psr-4": {
             "Telema\\": "src/"
         }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Telema\\": "tests/"
-        }
-    },
-    "scripts": {
-        "t": "phpunit tests"
     }
 }
