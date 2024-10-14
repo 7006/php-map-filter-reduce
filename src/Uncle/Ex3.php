@@ -49,18 +49,49 @@ class Ex3 {
 	public static function solution(array $items = ITEMS) {
 		$provider = self::provider();
 		$date = self::date();
-
 		$result =[];
-		foreach ($items as $item) {
-			
-			if ($item['provider'] === $provider || $item['updated_at'] === $date) {
-				$result[] = $item;
+
+		if(isset($provider) && !isset($date)) {
+			foreach ($items as $item) {
+				if ($item['provider'] === $provider) {
+					$result[] = $item;
+				}
+			}
+		}
+
+		if(!isset($provider) && isset($date)) {
+			foreach ($items as $item) {
+				if ($item['updated_at'] === $date) {
+					$result[] = $item;
+				}
+			}
+		}
+
+		if(isset($provider) && isset($date)) {
+			foreach ($items as $item) {
+				
+				// $arrayData = \DateTimeImmutable::createFromFormat('Y-m-d', $item['updated_at']);
+				// $inputData = \DateTimeImmutable::createFromFormat('Y-m-d', $date);
+				// $interval = $arrayData->diff($inputData);
+				// echo $interval->format("%a") . PHP_EOL;	
+
+				if ($item['provider'] === $provider && $item['updated_at'] >= $date) {
+					$result[] = $item;
+				}
 			}
 		}
 		return $result;
     }   
 
-	public static function fpSolution(array $items = ITEMS) {
+    //2024-10-01
 
+	public static function fpSolution(array $items = ITEMS) {
+		$provider = self::provider();
+		$date = self::date();
+
+		$fn = function ($item) use($provider, $date) {
+			return $item['provider'] === $provider && $item['updated_at'] >= $date;
+		};
+		return array_filter($items, $fn);
     }
 }
