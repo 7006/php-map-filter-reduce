@@ -13,7 +13,8 @@ class Router {
 			'fp/1' => Ex1::fpSolution(),
 			'fp/2' => Ex2::fpSolution(),
 			'fp/3' => Ex3::fpSolution(),
-			'fp/4' => Ex4::fpSolution()
+			'fp/4' => Ex4::fpSolution(),
+			default => Ex3::solution()
 		};
 	}
 }

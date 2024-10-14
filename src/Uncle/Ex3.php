@@ -52,7 +52,8 @@ class Ex3 {
 
 		$result =[];
 		foreach ($items as $item) {
-			if ($item['provider'] === $provider || $item['date'] === $date) {
+			
+			if ($item['provider'] === $provider || $item['updated_at'] === $date) {
 				$result[] = $item;
 			}
 		}
