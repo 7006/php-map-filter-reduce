@@ -67,14 +67,6 @@ class Ex3 {
 			}
 		}
 
-		if(!isset($provider) && isset($date)) {
-			foreach ($items as $item) {
-				if ($item['updated_at'] === $date) {
-					$result[] = $item;
-				}
-			}
-		}
-
 		if(isset($provider) && isset($date)) {
 			foreach ($items as $item) {
 				if ($item['provider'] === $provider && self::dateCompare($item, $date)) {
@@ -85,15 +77,21 @@ class Ex3 {
 		return $result;
     }   
 
-    //2024-10-01
-
-	public static function fpSolution(array $items = ITEMS) {
+    public static function fpSolution(array $items = ITEMS) {
 		$provider = self::provider();
 		$date = self::date();
 
 		$fn = function ($item) use($provider, $date) {
-			return $item['provider'] === $provider && $item['updated_at'] >= $date;
+			
+			if(isset($provider) && !isset($date)) {
+				return $item['provider'] === $provider;
+			}
+
+			if(isset($provider) && isset($date)) {
+				return	$item['provider'] === $provider && self::dateCompare($item, $date);
+			}
 		};
+		
 		return array_filter($items, $fn);
     }
 }
