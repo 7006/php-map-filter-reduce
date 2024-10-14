@@ -13,32 +13,6 @@ const ITEMS = [
     ['id' => 26, 'provider' => 'frob', 'updated_at' => '2024-09-04']
 ];
 
-// provider = 'frob'
-// [
-//     ['id' => 10, 'provider' => 'frob', 'updated_at' => '2024-10-01'],
-//     ['id' => 26, 'provider' => 'frob', 'updated_at' => '2024-09-02'],
-//     ['id' => 26, 'provider' => 'frob', 'updated_at' => '2024-09-04']
-// ]
-
-// provider = 'frob', date = '2024-09-03'
-// [
-//     ['id' => 10, 'provider' => 'frob', 'updated_at' => '2024-10-01'],
-//     ['id' => 26, 'provider' => 'frob', 'updated_at' => '2024-09-04']
-// ]
-
-// provider = 'frob', date = '2024-11-00'
-// [
-// ]
-
-// provider = 'tutu'
-// [
-// ]
-
-
-// вот тут твой код с foreach которьій использует значения перменньіх provider и date
-// в адресной строке браузера пишешь http://localhost:8080/uncle/3?provider=frob&date=2024-09-03
-
-
 class Ex3 {
 	private static function provider() {
 		return isset($_GET['provider']) ? $_GET['provider'] : null;
