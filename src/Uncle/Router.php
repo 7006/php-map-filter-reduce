@@ -8,11 +8,11 @@ class Router {
 		return match ($url) {
 			'1' => Ex1::solution(),
 			'2' => Ex2::solution(),
-			'3?provider=frob&date=2024-09-0' => Ex3::solution(),
+			'3' => Ex3::solution(),
 			'4' => Ex4::solution(),
 			'fp/1' => Ex1::fpSolution(),
 			'fp/2' => Ex2::fpSolution(),
-			'fp/3?provider=frob&date=2024-09-03' => Ex3::fpSolution(),
+			'fp/3' => Ex3::fpSolution(),
 			'fp/4' => Ex4::fpSolution(),
 			default => Ex3::solution()
 		};

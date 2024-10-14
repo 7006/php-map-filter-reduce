@@ -34,6 +34,11 @@ const ITEMS = [
 // [
 // ]
 
+
+// вот тут твой код с foreach которьій использует значения перменньіх provider и date
+// в адресной строке браузера пишешь http://localhost:8080/uncle/3?provider=frob&date=2024-09-03
+
+
 class Ex3 {
 	private static function provider() {
 		return isset($_GET['provider']) ? $_GET['provider'] : null;
@@ -43,8 +48,11 @@ class Ex3 {
 		return isset($_GET['date']) ? $_GET['date'] : null;
 	}
 
-// вот тут твой код с foreach которьій использует значения перменньіх provider и date
-// в адресной строке браузера пишешь http://localhost:8080/uncle/3?provider=frob&date=2024-09-03
+	private static function dateCompare($item, $date) {
+		$arrayData = \DateTimeImmutable::createFromFormat('Y-m-d', $item['updated_at']);
+		$inputData = \DateTimeImmutable::createFromFormat('Y-m-d', $date);
+		return $arrayData >= $inputData;
+	}
 
 	public static function solution(array $items = ITEMS) {
 		$provider = self::provider();
@@ -69,13 +77,7 @@ class Ex3 {
 
 		if(isset($provider) && isset($date)) {
 			foreach ($items as $item) {
-				
-				// $arrayData = \DateTimeImmutable::createFromFormat('Y-m-d', $item['updated_at']);
-				// $inputData = \DateTimeImmutable::createFromFormat('Y-m-d', $date);
-				// $interval = $arrayData->diff($inputData);
-				// echo $interval->format("%a") . PHP_EOL;	
-
-				if ($item['provider'] === $provider && $item['updated_at'] >= $date) {
+				if ($item['provider'] === $provider && self::dateCompare($item, $date)) {
 					$result[] = $item;
 				}
 			}
