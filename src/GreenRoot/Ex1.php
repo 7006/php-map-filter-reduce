@@ -4,16 +4,15 @@
 namespace Telema\Uncle;
 
 class Ex1 {
-
-	public static function solution(array $customers) {
+	private static function customers() {
 		
 	}
 
-	public static function fpSolution(array $customers) {
+	public static function solution() {
 		
 	}
 
-	private static function color($food) {
+	public static function fpSolution() {
 		
 	}
 }
