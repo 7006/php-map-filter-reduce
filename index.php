@@ -3,7 +3,8 @@
 require_once './vendor/autoload.php';
 
 function go($prefix, $class) {
-	$requestUri = $_SERVER['REQUEST_URI'];
+
+	$requestUri = $_SERVER['PATH_INFO'];
 	
 	if (str_starts_with($requestUri, $prefix)) {
 		$url = substr($requestUri, strlen($prefix));
