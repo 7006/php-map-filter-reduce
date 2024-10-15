@@ -30,20 +30,42 @@ class Ex3 {
 
 	private static function checkCondition($item, string $provider, string $date) {
 
-		if (isset($provider) && !isset($date)) {
-			if ($item['provider'] === $provider) {
-				return $item;
-			}
+		// if (isset($provider) && !isset($date)) {
+		// 	if ($item['provider'] === $provider) {
+		// 		return $item;
+		// 	}
+		// }
+		// if (!isset($provider) && isset($date)) {
+		// 	if (self::dateCompare($item, $date)) {
+		// 		return $item;
+		// 	}
+		// }
+		// if (isset($provider) && isset($date)) {
+		// 	if ($item['provider'] === $provider && self::dateCompare($item, $date)) {
+		// 		return $item;
+		// 	}
+		// }
+
+		if (
+			isset($provider) && 
+			!isset($date) && 
+			$item['provider'] === $provider
+		) {
+			return $item;
 		}
-		if (!isset($provider) && isset($date)) {
-			if (self::dateCompare($item, $date)) {
-				return $item;
-			}
+		if (
+			!isset($provider) &&
+			isset($date) && 
+			self::dateCompare($item, $date)
+		) {
+			return $item;
 		}
-		if (isset($provider) && isset($date)) {
-			if ($item['provider'] === $provider && self::dateCompare($item, $date)) {
-				return $item;
-			}
+		if (
+			isset($provider) &&
+			isset($date) && 
+			$item['provider'] === $provider && self::dateCompare($item, $date)
+		) {
+			return $item;
 		}
 	}
 
