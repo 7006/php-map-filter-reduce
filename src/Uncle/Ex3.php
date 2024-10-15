@@ -22,10 +22,29 @@ class Ex3 {
 		return isset($_GET['date']) ? $_GET['date'] : null;
 	}
 
-	private static function dateCompare($item, $date) {
+	private static function dateCompare($item, string $date) {
 		$arrayData = \DateTimeImmutable::createFromFormat('Y-m-d', $item['updated_at']);
 		$inputData = \DateTimeImmutable::createFromFormat('Y-m-d', $date);
 		return $arrayData >= $inputData;
+	}
+
+	private static function checkCondition($item, string $provider, string $date) {
+
+		if (isset($provider) && !isset($date)) {
+			if ($item['provider'] === $provider) {
+				return $item;
+			}
+		}
+		if (!isset($provider) && isset($date)) {
+			if (self::dateCompare($item, $date)) {
+				return $item;
+			}
+		}
+		if (isset($provider) && isset($date)) {
+			if ($item['provider'] === $provider && self::dateCompare($item, $date)) {
+				return $item;
+			}
+		}
 	}
 
 	public static function solution(array $items = ITEMS) {
@@ -33,19 +52,9 @@ class Ex3 {
 		$date = self::date();
 		$result =[];
 
-		if(isset($provider) && !isset($date)) {
-			foreach ($items as $item) {
-				if ($item['provider'] === $provider) {
-					$result[] = $item;
-				}
-			}
-		}
-
-		if(isset($provider) && isset($date)) {
-			foreach ($items as $item) {
-				if ($item['provider'] === $provider && self::dateCompare($item, $date)) {
-					$result[] = $item;
-				}
+		foreach ($items as $item) {
+			if (self::checkCondition($item, $provider, $date) != null) {
+				$result[] = self::checkCondition($item, $provider, $date);	
 			}
 		}
 		return $result;
