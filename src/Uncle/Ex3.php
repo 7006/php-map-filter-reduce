@@ -22,13 +22,13 @@ class Ex3 {
 		return isset($_GET['date']) ? $_GET['date'] : null;
 	}
 
-	private static function isDateNewer($item, $date) { // 2 то вот тут можно назвать переменньІе $dateX $dateY и назвать функцию более общим именем isDateGreatThanEqual
-		$itemDate = \DateTimeImmutable::createFromFormat('Y-m-d', $item['updated_at']);
-		$inputDate = \DateTimeImmutable::createFromFormat('Y-m-d', $date);
-		return $itemDate >= $inputDate;
+	private static function isDateGreatThanEqual($item, $date) {
+		$dateX = \DateTimeImmutable::createFromFormat('Y-m-d', $item['updated_at']);
+		$dateY = \DateTimeImmutable::createFromFormat('Y-m-d', $date);
+		return $dateX >= $dateY;
 	}
 
-	private static function checkData($item, $provider = null, $date = null) { // 3 переименновать в is_matches
+	private static function isMatches($item, $provider = null, $date = null) { 
 		if (
 			isset($provider) && 
 			!isset($date) && 
@@ -40,7 +40,7 @@ class Ex3 {
 		if (
 			!isset($provider) &&
 			isset($date) && 
-			self::isDateNewer($item, $date) // 2 если тут передать $item['updated_at']
+			self::isDateGreatThanEqual($item, $date) // 2 если тут передать $item['updated_at']
 		) {
 			return $item; // 1 если вот тут вернуть true вместо $item
 		}
@@ -48,7 +48,7 @@ class Ex3 {
 		if (
 			isset($provider) &&
 			isset($date) && 
-			$item['provider'] === $provider && self::isDateNewer($item, $date)
+			$item['provider'] === $provider && self::isDateGreatThanEqual($item, $date)
 		) {
 			return $item;
 		}
@@ -62,8 +62,8 @@ class Ex3 {
 		$result =[];
 
 		foreach ($items as $item) {
-			if (self::checkData($item, $provider, $date) != null) { // 1 то вот тут не нужно проверять на != null
-				$result[] = self::checkData($item, $provider, $date);	
+			if (self::isMatches($item, $provider, $date) != null) { // 1 то вот тут не нужно проверять на != null
+				$result[] = self::isMatches($item, $provider, $date);	
 			}
 		}
 		return $result;
@@ -73,6 +73,6 @@ class Ex3 {
 		$provider = self::provider();
 		$date = self::date();
 
-		return array_filter($items, fn ($item) => self::checkData($item, $provider, $date) != null);
+		return array_filter($items, fn ($item) => self::isMatches($item, $provider, $date) != null);
     }
 }
