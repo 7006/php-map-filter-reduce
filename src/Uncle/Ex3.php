@@ -22,10 +22,10 @@ class Ex3 {
 		return isset($_GET['date']) ? $_GET['date'] : null;
 	}
 
-	private static function isDateGreatThanEqual($item, $date) {
-		$dateX = \DateTimeImmutable::createFromFormat('Y-m-d', $item['updated_at']);
-		$dateY = \DateTimeImmutable::createFromFormat('Y-m-d', $date);
-		return $dateX >= $dateY;
+	private static function isDateGreatThanEqual($date1, $date2) {
+		$date1 = \DateTimeImmutable::createFromFormat('Y-m-d', $date1);
+		$date2 = \DateTimeImmutable::createFromFormat('Y-m-d', $date2);
+		return $date1 >= $date2;
 	}
 
 	private static function isMatches($item, $provider = null, $date = null) { 
@@ -40,7 +40,7 @@ class Ex3 {
 		if (
 			!isset($provider) &&
 			isset($date) && 
-			self::isDateGreatThanEqual($item, $date) // 2 если тут передать $item['updated_at']
+			self::isDateGreatThanEqual($item['updated_at'], $date)
 		) {
 			return $item; // 1 если вот тут вернуть true вместо $item
 		}
@@ -48,7 +48,7 @@ class Ex3 {
 		if (
 			isset($provider) &&
 			isset($date) && 
-			$item['provider'] === $provider && self::isDateGreatThanEqual($item, $date)
+			$item['provider'] === $provider && self::isDateGreatThanEqual($item['updated_at'], $date)
 		) {
 			return $item;
 		}
