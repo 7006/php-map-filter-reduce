@@ -22,37 +22,21 @@ class Ex3 {
 		return isset($_GET['date']) ? $_GET['date'] : null;
 	}
 
-	private static function dateCompare($item, string $date) {
-		$arrayData = \DateTimeImmutable::createFromFormat('Y-m-d', $item['updated_at']);
-		$inputData = \DateTimeImmutable::createFromFormat('Y-m-d', $date);
-		return $arrayData >= $inputData;
+	private static function dateCompare($item, $date) {
+		$itemDate = \DateTimeImmutable::createFromFormat('Y-m-d', $item['updated_at']);
+		$inputDate = \DateTimeImmutable::createFromFormat('Y-m-d', $date);
+		return $itemDate >= $inputDate;
 	}
 
-	private static function checkCondition($item, string $provider, string $date) {
-
-		// if (isset($provider) && !isset($date)) {
-		// 	if ($item['provider'] === $provider) {
-		// 		return $item;
-		// 	}
-		// }
-		// if (!isset($provider) && isset($date)) {
-		// 	if (self::dateCompare($item, $date)) {
-		// 		return $item;
-		// 	}
-		// }
-		// if (isset($provider) && isset($date)) {
-		// 	if ($item['provider'] === $provider && self::dateCompare($item, $date)) {
-		// 		return $item;
-		// 	}
-		// }
-
+	private static function checkData($item, $provider = null, $date = null) {
 		if (
 			isset($provider) && 
 			!isset($date) && 
 			$item['provider'] === $provider
-		) {
+		) { 
 			return $item;
-		}
+		} 		
+
 		if (
 			!isset($provider) &&
 			isset($date) && 
@@ -60,6 +44,7 @@ class Ex3 {
 		) {
 			return $item;
 		}
+
 		if (
 			isset($provider) &&
 			isset($date) && 
@@ -75,8 +60,8 @@ class Ex3 {
 		$result =[];
 
 		foreach ($items as $item) {
-			if (self::checkCondition($item, $provider, $date) != null) {
-				$result[] = self::checkCondition($item, $provider, $date);	
+			if (self::checkData($item, $provider, $date) != null) {
+				$result[] = self::checkData($item, $provider, $date);	
 			}
 		}
 		return $result;
@@ -86,17 +71,6 @@ class Ex3 {
 		$provider = self::provider();
 		$date = self::date();
 
-		$fn = function ($item) use($provider, $date) {
-			
-			if(isset($provider) && !isset($date)) {
-				return $item['provider'] === $provider;
-			}
-
-			if(isset($provider) && isset($date)) {
-				return	$item['provider'] === $provider && self::dateCompare($item, $date);
-			}
-		};
-		
-		return array_filter($items, $fn);
+		return array_filter($items, fn ($item) => self::checkData($item, $provider, $date) != null);
     }
 }
