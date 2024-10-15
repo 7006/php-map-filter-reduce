@@ -22,13 +22,13 @@ class Ex3 {
 		return isset($_GET['date']) ? $_GET['date'] : null;
 	}
 
-	private static function isDateNewer($item, $date) {
+	private static function isDateNewer($item, $date) { // 2 то вот тут можно назвать переменньІе $dateX $dateY и назвать функцию более общим именем isDateGreatThanEqual
 		$itemDate = \DateTimeImmutable::createFromFormat('Y-m-d', $item['updated_at']);
 		$inputDate = \DateTimeImmutable::createFromFormat('Y-m-d', $date);
 		return $itemDate >= $inputDate;
 	}
 
-	private static function checkData($item, $provider = null, $date = null) {
+	private static function checkData($item, $provider = null, $date = null) { // 3 переименновать в is_matches
 		if (
 			isset($provider) && 
 			!isset($date) && 
@@ -40,9 +40,9 @@ class Ex3 {
 		if (
 			!isset($provider) &&
 			isset($date) && 
-			self::isDateNewer($item, $date)
+			self::isDateNewer($item, $date) // 2 если тут передать $item['updated_at']
 		) {
-			return $item;
+			return $item; // 1 если вот тут вернуть true вместо $item
 		}
 
 		if (
@@ -52,15 +52,17 @@ class Ex3 {
 		) {
 			return $item;
 		}
+
+		// 1 а тут вернуть false
 	}
 
 	public static function solution(array $items = ITEMS) {
 		$provider = self::provider();
 		$date = self::date();
-		$result =[];-
+		$result =[];
 
 		foreach ($items as $item) {
-			if (self::checkData($item, $provider, $date) != null) {
+			if (self::checkData($item, $provider, $date) != null) { // 1 то вот тут не нужно проверять на != null
 				$result[] = self::checkData($item, $provider, $date);	
 			}
 		}
