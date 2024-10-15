@@ -22,7 +22,7 @@ class Ex3 {
 		return isset($_GET['date']) ? $_GET['date'] : null;
 	}
 
-	private static function dateCompare($item, $date) {
+	private static function isDateNewer($item, $date) {
 		$itemDate = \DateTimeImmutable::createFromFormat('Y-m-d', $item['updated_at']);
 		$inputDate = \DateTimeImmutable::createFromFormat('Y-m-d', $date);
 		return $itemDate >= $inputDate;
@@ -40,7 +40,7 @@ class Ex3 {
 		if (
 			!isset($provider) &&
 			isset($date) && 
-			self::dateCompare($item, $date)
+			self::isDateNewer($item, $date)
 		) {
 			return $item;
 		}
@@ -48,7 +48,7 @@ class Ex3 {
 		if (
 			isset($provider) &&
 			isset($date) && 
-			$item['provider'] === $provider && self::dateCompare($item, $date)
+			$item['provider'] === $provider && self::isDateNewer($item, $date)
 		) {
 			return $item;
 		}
@@ -57,7 +57,7 @@ class Ex3 {
 	public static function solution(array $items = ITEMS) {
 		$provider = self::provider();
 		$date = self::date();
-		$result =[];
+		$result =[];-
 
 		foreach ($items as $item) {
 			if (self::checkData($item, $provider, $date) != null) {
