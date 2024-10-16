@@ -2,7 +2,7 @@
 
 namespace Telema\Uncle;
 
-const ITEMS = [ // давай  назовем єто PROVIDERS
+const PROVIDERS = [
     ['id' => 22, 'provider' => 'yolo'],
     ['id' => 10, 'provider' => 'frob'],
     ['id' => 34, 'provider' => 'yolo'],
@@ -13,7 +13,7 @@ const ITEMS = [ // давай  назовем єто PROVIDERS
     ['id' => 26, 'provider' => 'frob']
 ];
 
-const ITEMS_2 = [ // давай  назовем єто PROVIDER_RATINGS
+const PROVIDER_RATINGS = [
     ['provider' => 'yolo', 'rating' => 0.7],
     ['provider' => 'frob', 'rating' => 0.2],
     ['provider' => 'boom', 'rating' => 0.5]
@@ -25,30 +25,24 @@ class Ex4 {
 		return empty($_GET['rating']) ? null : $_GET['rating'];
 	}
 
-	public static function solution(array $items = ITEMS, array $items2 = ITEMS_2) {
+	public static function solution(array $providers = PROVIDERS, array $providerRatings = PROVIDER_RATINGS) {
 		$result = [];
 
-		// давай назовем
-		// item -> provider
-		// item2 -> providerRating
-		foreach ($items as $item) {
-			foreach ($items2 as $item2) {
-				if ($item2['rating'] >= self::rating() 
-					&& $item['provider'] === $item2['provider'] ) {
-					$result[] = $item;
+		foreach ($providers as $provider) {
+			foreach ($providerRatings as $providerRating) {
+				if ($providerRating['rating'] >= self::rating() 
+					&& $provider['provider'] === $providerRating['provider'] ) {
+					$result[] = $provider;
 				}
 			}
 		}
 
-		// вцелом єто каноничньІй inner join с блоком where
-		// годится
-
 		return $result;
 	}
 
-	public static function fpSolution(array $items = ITEMS, array $items2 = ITEMS_2) {
+	public static function fpSolution(array $providers = PROVIDERS, array $providerRatings = PROVIDER_RATINGS) {
 		$result = [];
-		$ratings = array_filter($items2, fn ($item2) => $item2['rating'] >= self::rating());
+		$ratings = array_filter($providerRatings, fn ($providerRating) => $providerRating['rating'] >= self::rating());
 
 		// попробуй вместо єтого цикла встроенную фукцию in_array 
 		// 
@@ -56,14 +50,23 @@ class Ex4 {
 		//		if ($item['provider'] === $rating['provider'] ) {
 		//
 		//
-		foreach ($items as $item) {
+
+		// foreach ($providers as $provider) {
+		// 	foreach ($ratings as $rating) {
+		// 		if ($provider['provider'] === $rating['provider'] ) {
+		// 			$result[] = $provider;
+		// 		}
+		// 	}
+		
+		foreach ($providers as $provider) {
 			foreach ($ratings as $rating) {
-				if ($item['provider'] === $rating['provider'] ) {
-					$result[] = $item;
+				if (in_array($rating['provider'], $provider)) {
+					$result[] = $provider;
 				}
 			}
 		}
-
+		
 		return $result;
 	}
 }
+ 
