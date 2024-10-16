@@ -64,5 +64,17 @@
       "purchased":[
          "Toys"
       ]
+   },
+   {
+      "id":"006",
+      "f_name":"Richard",
+      "l_name":"Vakulenko",
+      "gender":"M",
+      "married":false,
+      "age":9,
+      "expense":3000,
+      "purchased":[
+         "Toys"
+      ]
    }
 ]
