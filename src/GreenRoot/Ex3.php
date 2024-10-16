@@ -28,10 +28,12 @@ class Ex3 {
 			self::readCustomers(),
 			fn ($customer) => in_array('Book', $customer['purchased'])
 		);
-		$count = count($customersWhoBoughtBook);
+		//$count = count($customersWhoBoughtBook);
+		$count = array_reduce($customersWhoBoughtBook, fn ($count, $age) => ++$count, 0);
 		$ages = array_map(fn ($customer) => $customer['age'], $customersWhoBoughtBook);
-		$sum = array_sum($ages);
+		//$sum = array_sum($ages);
+		$sum = array_reduce($ages, fn ($sum, $age) => $sum +=$age, 0);
+
 		return $sum / $count;
-		//array_reduce($ages, $fn, $sum);
 	}
 }
