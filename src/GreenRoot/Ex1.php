@@ -5,15 +5,13 @@ namespace Telema\GreenRoot;
 class Ex1 {
 	
 	private static function readCustomers() {
-		$customersJson = file_get_contents(__DIR__ . '/customers.json');
-		return json_decode($customersJson, true);
+		return json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
 	}
 
 	public static function solution() {
-		$customers = self::readCustomers();
 		$seniorCitizens = [];
 
-		foreach ($customers as $customer) {
+		foreach (self::readCustomers() as $customer) {
 			if ($customer['age'] > 60) {
 				$seniorCitizens[] = $customer;		
 			}
@@ -22,8 +20,7 @@ class Ex1 {
 		return $seniorCitizens;
 	}
 
-
 	public static function fpSolution() {
-		
+		return array_filter(self::readCustomers(), fn ($customer) => $customer['age'] > 60);
 	}
 }
