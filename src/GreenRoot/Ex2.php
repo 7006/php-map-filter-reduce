@@ -23,7 +23,6 @@ class Ex2 {
 		}
 		
 		return '';
-		
 	}
 
 	private static function fullName($customer) {
