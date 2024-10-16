@@ -10,15 +10,18 @@ class Ex2 {
 
 	private static function title($customer) {
 		
-		if ($customer['gender'] === 'M') {
+		$gender = $customer['gender'];
+		$married = $customer['married'];
+
+		if ($gender === 'M') {
 			return 'Mr.';
 		}
 
-		if ($customer['gender'] === 'F' && $customer['married']) {
+		if ($gender === 'F' && $married) {
 			return 'Mrs.';
 		}
 
-		if ($customer['gender'] === 'F' && !$customer['married']) {
+		if ($gender === 'F' && !$married) {
 			return 'Miss.';
 		}
 		
