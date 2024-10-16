@@ -26,27 +26,16 @@ class Ex4 {
 	}
 
 	public static function solution(array $items = ITEMS, array $items2 = ITEMS_2) {
-		$receivedRating = self::rating();
-		$ratings = [];
 		$result = [];
 
-		foreach ($items2 as $item2) {
-			if ($item2['rating'] >= $receivedRating) {
-				$ratings[] = $item2;
-			}
-		}
-
 		foreach ($items as $item) {
-			foreach ($ratings as $rating) {
-				if ($item['provider'] === $rating['provider']) {
+			foreach ($items2 as $item2) {
+				if ($item2['rating'] >= self::rating() 
+					&& $item['provider'] === $item2['provider'] ) {
 					$result[] = $item;
 				}
 			}
 		}
-		
-		// echo '<pre>';
-		// print_r($result);
-		// echo '</pre>';
 
 		return $result;
 	}
