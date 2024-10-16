@@ -40,7 +40,19 @@ class Ex4 {
 		return $result;
 	}
 
-	public static function fpSolution(array $items = ITEMS, array $ratings = ITEMS_2) {
-		
+	
+	public static function fpSolution(array $items = ITEMS, array $items2 = ITEMS_2) {
+		$result = [];
+		$ratings = array_filter($items2, fn ($item2) => $item2['rating'] >= self::rating());
+
+		foreach ($items as $item) {
+			foreach ($ratings as $rating) {
+				if ($item['provider'] === $rating['provider'] ) {
+					$result[] = $item;
+				}
+			}
+		}
+
+		return $result;
 	}
 }
