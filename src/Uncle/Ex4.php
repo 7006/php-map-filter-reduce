@@ -40,7 +40,6 @@ class Ex4 {
 		return $result;
 	}
 
-	
 	public static function fpSolution(array $items = ITEMS, array $items2 = ITEMS_2) {
 		$result = [];
 		$ratings = array_filter($items2, fn ($item2) => $item2['rating'] >= self::rating());

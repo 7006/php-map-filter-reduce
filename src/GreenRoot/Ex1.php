@@ -1,4 +1,3 @@
-
 <?php
 
 namespace Telema\GreenRoot;
@@ -10,7 +9,7 @@ class Ex1 {
 
 	public static function solution() {
 		$customers = self::readCustomers();
-
+		echo 1;
 		// код которьІй фильтрует - преобразовьІвает ...
 	}
 
