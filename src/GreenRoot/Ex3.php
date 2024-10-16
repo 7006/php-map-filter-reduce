@@ -8,6 +8,8 @@ class Ex3 {
 		return json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
 	}
 
+	
+
 	public static function solution() {
 		$sum = 0;
 		$count = 0;
@@ -22,6 +24,14 @@ class Ex3 {
 	}
 
 	public static function fpSolution() {
-		
+		$customersWhoBoughtBook = array_filter(
+			self::readCustomers(),
+			fn ($customer) => in_array('Book', $customer['purchased'])
+		);
+		$count = count($customersWhoBoughtBook);
+		$ages = array_map(fn ($customer) => $customer['age'], $customersWhoBoughtBook);
+		$sum = array_sum($ages);
+		return $sum / $count;
+		//array_reduce($ages, $fn, $sum);
 	}
 }
