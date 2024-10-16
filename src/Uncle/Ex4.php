@@ -21,8 +21,12 @@ const RATINGS = [
 
 class Ex4 {
 
-	public static function solution(array $items = ITEMS) {
+	private static function rating() {
+		return empty($_GET['rating']) ? null : $_GET['rating'];
+	}
 
+	public static function solution(array $items = ITEMS) {
+		echo self::rating();
 	}
 
 	public static function fpSolution(array $items = ITEMS) {
