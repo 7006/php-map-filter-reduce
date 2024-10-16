@@ -8,9 +8,9 @@ class Ex2 {
 		return json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
 	}
 
-
-	//$names[] = $student['name'];
-
+	private static function addFullName($title) {
+		$customer['full_name'] = $title . $customer['f_name'] . $customer['l_name'];
+	}
 
 	public static function solution() {
 		$customers = self::readCustomers();
@@ -18,18 +18,21 @@ class Ex2 {
 		foreach ($customers as &$customer) {
 			
 			if($customer['gender'] === 'M') {
-				$customer['title'] = 'Mr.';
-				$customer['full_name'] = $customers['title'] . $customer['f_name'] . $customer['l_name'];
+				$title = 'Mr.';
+				$customer['title'] = $title;
+				$customer['full_name'] = self::addFullName($title);
 			}
 
 			if ($customer['gender'] === 'F' && $customer['married'] == true) {
-				$customer['title'] = 'Mrs.';
-				$customer['full_name'] = $customers['title'] . $customer['f_name'] . $customer['l_name'];
+				$title = 'Mrs.';
+				$customer['title'] = $title;
+				$customer['full_name'] = self::addFullName($title);
 			}	
 			
 			if ($customer['gender'] === 'F' && $customer['married'] == false) {
-				$customer['title'] = 'Miss.';
-				$customer['full_name'] = $customers['title'] . $customer['f_name'] . $customer['l_name'];
+				$title = 'Miss.';
+				$customer['title'] = $title;
+				$customer['full_name'] = self::addFullName($title);
 			}
 		}
 		
@@ -42,6 +45,6 @@ class Ex2 {
 	}
 
 	public static function fpSolution() {
-		return array_filter(self::readCustomers(), fn ($customer) => $customer['age'] > 60);
+		
 	}
 }
