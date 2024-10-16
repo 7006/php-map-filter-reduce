@@ -16,6 +16,8 @@ class Ex2 {
 		$customers = self::readCustomers();
 
 		foreach ($customers as &$customer) {
+
+			//match
 			
 			if($customer['gender'] === 'M') {
 				$title = 'Mr.';
