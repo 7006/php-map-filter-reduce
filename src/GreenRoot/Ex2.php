@@ -9,15 +9,21 @@ class Ex2 {
 	}
 
 	private static function title($customer) {
+		
 		if ($customer['gender'] === 'M') {
 			return 'Mr.';
 		}
+
 		if ($customer['gender'] === 'F' && $customer['married']) {
 			return 'Mrs.';
-		}	
+		}
+
 		if ($customer['gender'] === 'F' && !$customer['married']) {
 			return 'Miss.';
 		}
+		
+		return '';
+		
 	}
 
 	private static function fullName($customer) {
