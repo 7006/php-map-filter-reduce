@@ -12,6 +12,12 @@ class Ex3 {
 		return in_array('Book', $customer['purchased']);
 	}
 
+	private static function isZero($count) {
+		if ($count === 0) {
+			echo 'Division by zero';
+		}	
+	}
+
 	public static function solution() {
 		$sum = 0;
 		$count = 0;
@@ -22,11 +28,7 @@ class Ex3 {
 				$count +=1;
 			}
 		}
-		
-		if ($count === 0) {
-			echo 'Division by zero';
-		}	
-
+		self::isZero($count);
 		return intdiv($sum, $count);
 	}
 
