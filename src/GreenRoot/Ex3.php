@@ -30,86 +30,7 @@ class Ex3 {
 	}
 
 	public static function fpSolution() {
-		
-		// новьІй для тебя способ решения
-		// array_reduce и составной аккумулятор
-		// 
-		// 1
-		// аккумулятор будет не числом
-		// а ассоц массивов с двумя ключами age и count
-		// 
-		// 2
-		// начальное значение аккумулятора ['age' => 0, 'count' => 0]
-		//
-		// 3
-		// функция-редуктор принимает 2 аргумента
-		// 1й - аккумулятор - ассоц массив с ключами age и count
-		// 2й - текущий покупатель
-		//
-		// 4
-		// если покупатель купил книжку то увеличиваем значения по ключам age и count
-		// и возвращаем новое значение аккумулятора из функции-редуктора
-		// 
-		// если покупатель не купил книжку то возвращаем аккумулятор как есть
-		//
-		// пример
-		// customer                 | купил Book ? | age | count | accum
-		// ------------------------ | ------------ | ----| ----- | -----
-		// {                             да           32     1      ['age' => 32, 'count' => 1]
-		//    "id":"001",
-		//    "f_name":"Abby",
-		//    "l_name":"Thomas",
-		//    "gender":"M",
-		//    "married":true,
-		//    "age":32,
-		//    "expense":500,
-		//    "purchased":[
-		//       "Shampoo",
-		//       "Toys",
-		//       "Book"
-		//    ]
-		// }
-		//
-		//
-		// {                            нет                          ['age' => 32, 'count' => 1] 
-		//       "id":"002",
-		//       "f_name":"Jerry",
-		//       "l_name":"Tom",
-		//       "gender":"M",
-		//       "married":true,
-		//       "age":64,
-		//       "expense":100,
-		//       "purchased":[
-		//          "Stick",
-		//          "Blade"
-		//       ]
-		//    }
-		//
-		//
-		// {                             да          22        1     ['age' => 54, 'count' => 2] 
-		//       "id":"003",
-		//       "f_name":"Dianna",
-		//       "l_name":"Cherry",
-		//       "gender":"F",
-		//       "married":true,
-		//       "age":22,
-		//       "expense":1500,
-		//       "purchased":[
-		//          "Lipstik",
-		//          "Nail Polish",
-		//          "Bag",
-		//          "Book"
-		//       ]
-		//    }
-		//
-		// код
-		// $fn = function ($accum, $cutomer) {
-		//	
-		// };
-		// array_reduce(self::readCustomers(), $fn, ['age' => 0, 'count' => 0]) 
-
-                // вцелом понятно
-		$customersWhoBoughtBook = array_filter(
+                $customersWhoBoughtBook = array_filter(
 			self::readCustomers(),
 			fn ($customer) => in_array('Book', $customer['purchased'])
 		);
@@ -133,4 +54,77 @@ class Ex3 {
 
 		return $sum / $count;
 	}
+
+	// еще один способ решения
+	// array_reduce и составной аккумулятор
+	// 
+	// 1
+	// аккумулятор будет не числом
+	// а ассоц массивов с двумя ключами age и count
+	// 
+	// 2
+	// начальное значение аккумулятора ['age' => 0, 'count' => 0]
+	//
+	// 3
+	// функция-редуктор принимает 2 аргумента
+	// 1й - аккумулятор - ассоц массив с ключами age и count
+	// 2й - текущий покупатель
+	//
+	// 4
+	// если покупатель купил книжку то увеличиваем значения по ключам age и count
+	// и возвращаем новое значение аккумулятора из функции-редуктора
+	// 
+	// если покупатель не купил книжку то возвращаем аккумулятор как есть
+	//
+	// 5
+	// пример
+	// 
+	// customer                 | купил Book ? | age | count | accum
+	// ------------------------ | ------------ | ----| ----- | -----
+	// {                             да           32     1      ['age' => 32, 'count' => 1]
+	//    "id":"001",
+	//    "f_name":"Abby",
+	//    "l_name":"Thomas",
+	//    "gender":"M",
+	//    "married":true,
+	//    "age":32,
+	//    "expense":500,
+	//    "purchased":[
+	//       "Shampoo",
+	//       "Toys",
+	//       "Book"
+	//    ]
+	// }
+	//
+	//
+	// {                            нет                          ['age' => 32, 'count' => 1] 
+	//       "id":"002",
+	//       "f_name":"Jerry",
+	//       "l_name":"Tom",
+	//       "gender":"M",
+	//       "married":true,
+	//       "age":64,
+	//       "expense":100,
+	//       "purchased":[
+	//          "Stick",
+	//          "Blade"
+	//       ]
+	//    }
+	//
+	//
+	// {                             да          22        1     ['age' => 54, 'count' => 2] 
+	//       "id":"003",
+	//       "f_name":"Dianna",
+	//       "l_name":"Cherry",
+	//       "gender":"F",
+	//       "married":true,
+	//       "age":22,
+	//       "expense":1500,
+	//       "purchased":[
+	//          "Lipstik",
+	//          "Nail Polish",
+	//          "Bag",
+	//          "Book"
+	//       ]
+	//    }
 }
