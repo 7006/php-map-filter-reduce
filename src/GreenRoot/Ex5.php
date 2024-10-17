@@ -19,7 +19,34 @@ class Ex5 {
 		return $youngestCustomers;
 }
 
-	public static function fpSolution() {
+	public static function fpSolution2() {
 		return array_filter(self::readCustomers(), fn ($customer) => $customer['age'] < 10);
+	}
+
+	public static function fpSolution() {
+
+		$customers = self::readCustomers();
+
+		$fn = function ($currentCustomer, $nextCustomer) {
+			if ($currentCustomer['age'] === $nextCustomer['age']) {
+				return 0;
+			}
+			return ($currentCustomer['age'] < $nextCustomer['age']) ? -1 : 1;
+		};
+
+		// function cmp($currentCustomer, $nextCustomer) {
+		// 	if ($currentCustomer['age'] === $nextCustomer['age']) {
+		// 		return 0;
+		// 	}
+		// 	return ($currentCustomer['age'] < $nextCustomer['age']) ? -1 : 1;
+		// }
+
+		uasort($customers, $fn);
+
+		// echo '<pre>';
+		// print_r($customers);
+		// echo '</pre>';
+
+		return $customers;
 	}
 }
