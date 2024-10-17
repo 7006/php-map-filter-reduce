@@ -9,7 +9,7 @@ class Ex5 {
 	}
 
 	private static function sortByAge($customers) {
-		uasort($customers, fn ($cc, $cn) => $cc['age'] <=> $cn['age']);
+		usort($customers, fn ($cc, $cn) => $cc['age'] <=> $cn['age']);
 		return array_values($customers);
 	}
 
