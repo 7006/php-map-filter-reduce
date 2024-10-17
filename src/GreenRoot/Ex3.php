@@ -34,23 +34,37 @@ class Ex3 {
 			self::readCustomers(),
 			fn ($customer) => in_array('Book', $customer['purchased'])
 		);
-		//$count = count($customersWhoBoughtBook);
+
+		// переменная $age на самом деле єто покупатель
+		// функция-редуктор
+		// fn ($count, $customer) => $count + 1
+		// просто добавляем +1 к аккумулятору для каждого покупателя
+		//
+		// или как и бьІло использовать встроенную функцию count() 
 		$count = array_reduce(
 			$customersWhoBoughtBook,
-			fn ($count, $age) => ++$count, 0  // переменная $age на самом деле єто покупатель
+			fn ($count, $age) => ++$count, 0
 		);
 
-		// можно сразу идти array_reduce по списку покупателей  $customersWhoBoughtBoo
-		// в функции-редукторе писать $age + $customer['age']
+		// идем array_reduce по списку покупателей $customersWhoBoughtBook
+		// функция-редуктор
+		// fn ($age, $customer) => $age + $customer['age']
+		// добавляем к аккумулятору возраст каждого покупателя
+		//
+		// или как бьІло
+		// 1 собрать 'age' используя array_map
+		// 2 просуммировать используя array_sum
 		$ages = array_map(
 			fn ($customer) => $customer['age'],
 			$customersWhoBoughtBook
 		);
-		//$sum = array_sum($ages);
 		$sum = array_reduce(
 			$ages,
 			fn ($sum, $age) => $sum +=$age, 0
 		);
+
+		// в функции-редукторе нет смьІсла использовать операторьІ += ++
+		// так как у нас есть старое значение и из функции мьІ возращаем новое
 
 		return $sum / $count;
 	}
