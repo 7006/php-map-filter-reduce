@@ -8,6 +8,9 @@ class Ex5 {
 		return json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
 	}
 
+	// private static function sortByAge() {
+	// }
+
 	public static function solution() {
 		$youngestCustomers = [];
 
@@ -28,14 +31,12 @@ class Ex5 {
 		$customers = self::readCustomers();
 
 		$fn = function ($currentCustomer, $nextCustomer) {
-			if ($currentCustomer['age'] === $nextCustomer['age']) {
-				return 0;
-			}
-			return ($currentCustomer['age'] < $nextCustomer['age']) ? -1 : 1;
+			return $currentCustomer['age'] <=> $nextCustomer['age'];
 		};
 
 		uasort($customers, $fn);
-		
+		$customers = array_values($customers);
+
 		$youngestAndOldest[] = $customers[0];
 		$youngestAndOldest[] = $customers[count($customers) - 1];
 
