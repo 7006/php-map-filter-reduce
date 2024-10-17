@@ -116,8 +116,11 @@ class Ex3 {
 		//$count = count($customersWhoBoughtBook);
 		$count = array_reduce(
 			$customersWhoBoughtBook,
-			fn ($count, $age) => ++$count, 0
+			fn ($count, $age) => ++$count, 0  // переменная $age на самом деле єто покупатель
 		);
+
+		// можно сразу идти array_reduce по списку покупателей  $customersWhoBoughtBoo
+		// в функции-редукторе писать $age + $customer['age']
 		$ages = array_map(
 			fn ($customer) => $customer['age'],
 			$customersWhoBoughtBook
