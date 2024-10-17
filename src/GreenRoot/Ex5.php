@@ -9,15 +9,28 @@ class Ex5 {
 	}
 
 	private static function sortByAge($customers) {
-		usort($customers, fn ($cc, $cn) => $cc['age'] <=> $cn['age']);
+		usort($customers, fn ($cc, $nc) => $cc['age'] <=> $nc['age']);
 		return array_values($customers);
 	}
 
-	private static function getYoungestAndOldestCustomers($customers) {
-		$youngestAndOldestCustomers =[];
-		$youngestAndOldestCustomers[] = $customers[0];
-		$youngestAndOldestCustomers[] = $customers[count($customers) - 1];
+	private static function getLowerAge($sortedCustomers) {
+		return $sortedCustomers[0]['age'];
+	}
 
+	private static function getUpperAge($sortedCustomers) {
+		return $sortedCustomers[count($sortedCustomers) - 1]['age'];
+	}
+
+	private static function getYoungestAndOldestCustomers($sortedCustomers) {
+		$youngestAndOldestCustomers =[];
+		$lowerAge = self::getLowerAge($sortedCustomers);
+		$upperAge = self::getUpperAge($sortedCustomers);
+
+		$youngestAndOldestCustomers[] = array_filter(
+			$sortedCustomers,
+			fn ($customer) => $customer['age'] === $lowerAge || $customer['age'] === $upperAge
+		);
+		
 		return $youngestAndOldestCustomers;
 	}
 
@@ -30,7 +43,7 @@ class Ex5 {
 			}
 		}
 		return $youngestCustomers;
-}
+	}
 
 	public static function fpSolution2() {
 		return array_filter(self::readCustomers(), fn ($customer) => $customer['age'] < 10);
