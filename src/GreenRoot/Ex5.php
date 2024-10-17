@@ -24,7 +24,7 @@ class Ex5 {
 	}
 
 	public static function fpSolution() {
-
+		$youngestAndOldest = [];
 		$customers = self::readCustomers();
 
 		$fn = function ($currentCustomer, $nextCustomer) {
@@ -34,19 +34,11 @@ class Ex5 {
 			return ($currentCustomer['age'] < $nextCustomer['age']) ? -1 : 1;
 		};
 
-		// function cmp($currentCustomer, $nextCustomer) {
-		// 	if ($currentCustomer['age'] === $nextCustomer['age']) {
-		// 		return 0;
-		// 	}
-		// 	return ($currentCustomer['age'] < $nextCustomer['age']) ? -1 : 1;
-		// }
-
 		uasort($customers, $fn);
+		
+		$youngestAndOldest[] = $customers[0];
+		$youngestAndOldest[] = $customers[count($customers) - 1];
 
-		// echo '<pre>';
-		// print_r($customers);
-		// echo '</pre>';
-
-		return $customers;
+		return $youngestAndOldest;
 	}
 }
