@@ -20,6 +20,6 @@ class Ex5 {
 }
 
 	public static function fpSolution() {
-		
+		return array_filter(self::readCustomers(), fn ($customer) => $customer['age'] < 10);
 	}
 }
