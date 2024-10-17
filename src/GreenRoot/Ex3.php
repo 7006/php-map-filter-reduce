@@ -30,7 +30,7 @@ class Ex3 {
 	}
 
 	public static function fpSolution() {
-                $customersWhoBoughtBook = array_filter(
+		$customersWhoBoughtBook = array_filter(
 			self::readCustomers(),
 			fn ($customer) => in_array('Book', $customer['purchased'])
 		);
