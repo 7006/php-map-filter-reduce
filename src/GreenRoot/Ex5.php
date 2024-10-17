@@ -8,8 +8,18 @@ class Ex5 {
 		return json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
 	}
 
-	// private static function sortByAge() {
-	// }
+	private static function sortByAge($customers) {
+		uasort($customers, fn ($cc, $cn) => $cc['age'] <=> $cn['age']);
+		return array_values($customers);
+	}
+
+	private static function getYoungestAndOldestCustomers($customers) {
+		$youngestAndOldestCustomers =[];
+		$youngestAndOldestCustomers[] = $customers[0];
+		$youngestAndOldestCustomers[] = $customers[count($customers) - 1];
+
+		return $youngestAndOldestCustomers;
+	}
 
 	public static function solution() {
 		$youngestCustomers = [];
@@ -27,19 +37,10 @@ class Ex5 {
 	}
 
 	public static function fpSolution() {
-		$youngestAndOldest = [];
 		$customers = self::readCustomers();
-
-		$fn = function ($currentCustomer, $nextCustomer) {
-			return $currentCustomer['age'] <=> $nextCustomer['age'];
-		};
-
-		uasort($customers, $fn);
-		$customers = array_values($customers);
-
-		$youngestAndOldest[] = $customers[0];
-		$youngestAndOldest[] = $customers[count($customers) - 1];
-
-		return $youngestAndOldest;
+		$sortedCustomers = self::sortByAge($customers);
+		$youngestAndOldestCustomers = self::getYoungestAndOldestCustomers($sortedCustomers);
+		
+		return $youngestAndOldestCustomers;
 	}
 }
