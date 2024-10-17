@@ -8,8 +8,6 @@ class Ex3 {
 		return json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
 	}
 
-	
-
 	public static function solution() {
 		$sum = 0;
 		$count = 0;
@@ -17,10 +15,13 @@ class Ex3 {
 		foreach (self::readCustomers() as $customer) {
 			if (in_array('Book', $customer['purchased'])) {
 				$sum += $customer['age'];
-				++$count;		
+				++$count;
+				// можно написать вот так для единоборазия
+				// $sum += $customer['age']
+				// $count += 1
 			}
 		}
-		return $sum / $count;
+		return $sum / $count; // если self::readCustomers() вернет пустой список [] то тут будет деление на ноль
 	}
 
 	public static function fpSolution() {
