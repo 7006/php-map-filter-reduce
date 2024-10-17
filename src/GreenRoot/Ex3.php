@@ -8,26 +8,28 @@ class Ex3 {
 		return json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
 	}
 
+	private static function isCustomerPurchasedBook($customer) {
+		return in_array('Book', $customer['purchased']);
+	}
+
 	public static function solution() {
 		$sum = 0;
 		$count = 0;
 
 		foreach (self::readCustomers() as $customer) {
-			// можно сделать вспомогательную функцию isCustomerPurchasedBook 
-			// передавать $customer
-			// возвращать bool
-			// true -> когда купил книжку
-			// false -> когда нет
-			if (in_array('Book', $customer['purchased'])) {
+			if (self::isCustomerPurchasedBook($customer)) {
 				$sum += $customer['age'];
-				++$count;
-				// можно написать вот так для единоборазия
-				// $sum += $customer['age']
-				// $count += 1
+				$count +=1;
 			}
 		}
-		return $sum / $count; // если self::readCustomers() вернет пустой список [] то тут будет деление на ноль
+		
+		if ($count === 0) {
+			echo 'Division by zero';
+		}	
+
+		return intdiv($sum, $count);
 	}
+
 
 	public static function fpSolution() {
 		$customersWhoBoughtBook = array_filter(
