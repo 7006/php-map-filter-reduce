@@ -31,7 +31,7 @@ class Ex3 {
 
 	public static function fpSolution() {
 		
-		// новьІй для тебя спосоюб решения
+		// новьІй для тебя способ решения
 		// array_reduce и составной аккумулятор
 		// 
 		// 1
