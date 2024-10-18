@@ -35,7 +35,6 @@ class Ex3 {
 		// конец дічі
 	}
 
-
 	public static function fpSolution2() {
 		$customersWhoBoughtBook = array_filter(
 			self::readCustomers(),
@@ -55,23 +54,16 @@ class Ex3 {
 		);
 
 		self::isZero($count);
-		return $sum / $count;
+		return intdiv($sum, $count);
 	}
 
 	public static function fpSolution() {
 		$fn = function ($accum, $customer) {
 			if (self::isCustomerPurchasedBook($customer)) {
-				// можно использовать оператор +=
 				$accum['age'] = $accum['age'] + $customer['age'];
-				$accum['count'] = $accum['count'] + 1;
+				$accum['count'] += 1;
 			}
-			// єтот блок else можно не писать
-			// если покупатель купил книгу код зайдет в блок if и обновит значение аккутулятора
-			// если не купил то код в блок if НЕ зайдет и аккумулятор не поменяется
-			else {
-				return $accum;
-			}
-			return $accum; // но вот тут возращать обязательно так как єто договоренность между тобой и функцией array_reduce
+			return $accum;
 		};
 
 		$accum = array_reduce(

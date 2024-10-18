@@ -76,32 +76,5 @@
       "purchased":[
          "Toys"
       ]
-   },
-   {
-      "id":"007",
-      "f_name":"Jhonny",
-      "l_name":"Boy",
-      "gender":"M",
-      "married":false,
-      "age":7,
-      "expense":200,
-      "purchased":[
-         "Toys",
-         "Book",
-         "Fruits"
-      ]
-   },
-   {
-      "id":"008",
-      "f_name":"Elena",
-      "l_name":"Goncharenko",
-      "gender":"F",
-      "married":true,
-      "age":82,
-      "expense":900,
-      "purchased":[
-         "Book",
-         "Pills"
-      ]
    }
 ]
