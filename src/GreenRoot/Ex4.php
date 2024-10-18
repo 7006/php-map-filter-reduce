@@ -9,13 +9,11 @@ class Ex4 {
 	}
 
 	public static function solution() {
-		
 		foreach (self::readCustomers() as $customer) {
 			if ($customer['age'] < 10) {
 				return 'Yes';
 			}
 		}
-		
 		return 'No';
 	}
 
