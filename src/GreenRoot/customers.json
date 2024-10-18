@@ -76,5 +76,16 @@
       "purchased":[
          "Toys"
       ]
+   },
+   {
+      "id":"007",
+      "f_name":"Jhonny",
+      "l_name":"Boy",
+      "gender":"M",
+      "married":false,
+      "age":19,
+      "expense":300,
+      "purchased":[
+      ]
    }
 ]
