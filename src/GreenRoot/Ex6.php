@@ -9,15 +9,15 @@ class Ex6 {
 	}
 
 	public static function solution() {
-		$customersWitoutPurchase = [];
+		$customersWithoutPurchase = [];
 		
 		foreach (self::readCustomers() as $customer) {
 			if (empty($customer['purchased'])) {
-				$customersWitoutPurchase[] = $customer;
+				$customersWithoutPurchase[] = $customer;
 			}
 		}
 
-		return $customersWitoutPurchase; 
+		return $customersWithoutPurchase; 
 	}
 
 	public static function fpSolution() {
