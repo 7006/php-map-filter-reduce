@@ -9,18 +9,25 @@ class Ex4 {
 	}
 
 	public static function solution() {
+		// 1
+		// можно сразу вьІйти из метода когда нашли 1го покупателя меньше 10 год
+		// тогда єта переменная не нужна
 		$doWeHaveYoungCustomers = 'No';
 
 		foreach (self::readCustomers() as $customer) {
+			// потешно что if c большой буквьІ
+			// но єто лишнее
 			If ($customer['age'] < 10) {
-				$doWeHaveYoungCustomers = 'Yes';
+				$doWeHaveYoungCustomers = 'Yes'; // 2 тут сразу  return 'Yes'
 			}
 		}
 		
-		return $doWeHaveYoungCustomers;	
+		return $doWeHaveYoungCustomers;	// 3 тут return 'No'
 	}
 
 	public static function fpSolution() {
+		// тут грамотно
+		// очевидно что solution проще
 		return array_reduce(
 			self::readCustomers(),
 			fn ($message, $customer) => ($customer['age'] < 10 ? 'Yes' : 'No'),
