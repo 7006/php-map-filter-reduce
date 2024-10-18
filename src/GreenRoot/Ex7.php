@@ -9,10 +9,21 @@ class Ex7 {
 	}
 
 	public static function solution() {
-		
+		$sum = 0;
+
+		foreach (self::readCustomers() as $customer) {
+			if ($customer['married']) {
+				$sum += $customer['expense'];
+			}
+		}
+		return "Total Expense of Married Customers: $sum";
 	}
 
 	public static function fpSolution() {
-		
+
+		return array_reduce(
+			self::readCustomers(),
+			fn ($sum, $customer) => $customer['married'] ? $sum + $customer['expense'] : $sum,
+			0);
 	}
 }
