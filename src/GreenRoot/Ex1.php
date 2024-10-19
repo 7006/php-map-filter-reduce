@@ -21,7 +21,7 @@ class Ex1
     {
         return array_filter(
             Customer::readCustomers(),
-            fn ($customer) => $customer->gtAge(60)
+            fn ($customer) => $customer->gtAge(60)  // заменить на краткое имя $c
         );
     }
 }
