@@ -19,7 +19,7 @@ class Ex2
 
     public static function fpSolution(array $numbers = ITEMS)
     {
-        $positiveNumbers = array_filter($numbers, fn ($number) => $number > 0);
+        $positiveNumbers = array_filter($numbers, fn ($number) => $number > 0); // краткое имя $n
 
         return array_reduce($positiveNumbers, fn ($sum, $n) => $sum + $n, 0);
     }
