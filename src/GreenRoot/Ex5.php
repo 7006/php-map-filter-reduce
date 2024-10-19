@@ -16,11 +16,8 @@ class Ex5
     public static function fpSolution()
     {
         $customers = Customer::readCustomers();
-        $sorted = Customer::sortByAge($customers);
+        [$youngest] = Customer::sortByAge($customers);
 
-        $youngest = $sorted[0];
-        $oldest = $sorted[count($sorted) - 1];
-
-        return [$youngest, $oldest];
+        return $youngest;
     }
 }
