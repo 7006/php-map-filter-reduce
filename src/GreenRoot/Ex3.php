@@ -30,6 +30,7 @@ class Ex3
         return self::avg($totalAge, $count);
     }
 
+    // удалить
     public static function fpSolution1()
     {
         $customersWhoBoughtBook = array_filter(
@@ -48,6 +49,7 @@ class Ex3
         return self::avg($totalAge, $count);
     }
 
+    // удалить
     public static function fpSolution2()
     {
         $fn = function ($accum, $c) {
