@@ -15,6 +15,7 @@ class Ex7
         return $initials;
     }
 
+    // удалить
     public static function fpSolution(array $names = ITEMS)
     {
         return array_map([__CLASS__, 'initials2'], $names);
@@ -25,6 +26,7 @@ class Ex7
         return array_map(self::initials2(...), $names);
     }
 
+    // удалить
     private static function initials(string $name)
     {
         $nameArray = explode(' ', $name);
