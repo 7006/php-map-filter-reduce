@@ -19,6 +19,9 @@ class Ex1
 
     public static function fpSolution()
     {
-        return array_filter(Customer::readCustomers(), fn ($customer) => $customer['age'] > 60);
+        return array_filter(
+            Customer::readCustomers(),
+            fn ($customer) => Customer::gtAge($customer, 60)
+        );
     }
 }
