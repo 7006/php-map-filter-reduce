@@ -26,6 +26,8 @@ class Ex2
 
     public static function fpSolution2(array $numbers = ITEMS)
     {
+        // делать return в блоке if
+        // назвать аккумулятор sum
         $fn =  function ($oldSum, $number) {
             if ($number > 0) {
                 $newSum = $oldSum + $number;
