@@ -34,4 +34,9 @@ class Customer {
     {
         return $customer['title'] . ' ' . $customer['f_name'] . ' ' . $customer['l_name'];
     }
+
+    public static function isCustomerPurchasedBook($customer)
+    {
+        return in_array('Book', $customer['purchased']);
+    }
 }
