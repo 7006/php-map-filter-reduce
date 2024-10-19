@@ -47,6 +47,7 @@ class Ex2
         return array_reduce($items, $fn, $accumInit);
     }
 
+    // удалить
     public static function fpSolution2(array $items = ITEMS)
     {
 
