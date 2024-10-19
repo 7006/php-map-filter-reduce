@@ -21,6 +21,7 @@ class Ex2
         return array_map(strtoupper(...), $cities);
     }
 
+    // удалить
     public static function fpSolution2(array $cities = ITEMS)
     {
         return array_map(strtoupper($city), $cities);
