@@ -2,6 +2,14 @@
 
 namespace Telema\GreenRoot;
 
+
+// перегруппировать методьІ
+// 1 статические
+// 2 конструктор
+// 3 просто гетерьІ - maried, expense
+// 4 работают с age
+// 5 работают с purchased
+// 6 работают с комбинацей полей
 class Customer
 {
     private $customer;
@@ -28,6 +36,7 @@ class Customer
 
     public function title()
     {
+        // заменить на array destruction
         $gender = $this->customer['gender'];
         $married = $this->customer['married'];
 
@@ -48,8 +57,10 @@ class Customer
 
     public function fullName()
     {
-        return $this->customer['title']
-            . ' '
+        // заменить на array destruction
+        return $this->customer['title'] // <-- єто баг так как ключа title в оригинальном ассоц массиве нет 
+            . ' '                       // пусть метод fullName возращает сторку с  f_name и l_name
+                                        // а в коде класса Ex доплюсуешь $c->title() + $c->fullName()
             . $this->customer['f_name']
             . ' '
             . $this->customer['l_name'];
@@ -82,7 +93,10 @@ class Customer
 
     public static function readCustomers()
     {
+        // сделать константу класса в которой лежит путь к файлу
         $customers = json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
+
+        // заменить на array_map
         $customerObjects = [];
 
         foreach ($customers as $customer) {
