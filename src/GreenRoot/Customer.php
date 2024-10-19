@@ -4,16 +4,28 @@ namespace Telema\GreenRoot;
 
 class Customer {
 
-	public static function readCustomers()
-    {
-        return json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
+	private $customer;
+
+	public function  __construct($customer) {
+		$this->customer = $customer;
+	}
+
+	public function toArray() {
+		return $this->customer;
+	}
+
+	public function gtAge($age) {
+    	return $this->customer['age'] > $age;
     }
 
-    public static function title($customer)
-    {
+    public function ltAge($age) {
+    	return $this->customer['age'] < $age;
+    }
 
-        $gender = $customer['gender'];
-        $married = $customer['married'];
+    public function title()
+    {
+        $gender = $this->customer['gender'];
+        $married = $this->customer['married'];
 
         if ($gender === 'M') {
             return 'Mr.';
@@ -30,31 +42,54 @@ class Customer {
         return '';
     }
 
-    public static function fullName($customer)
+    public function fullName()
     {
-        return $customer['title'] . ' ' . $customer['f_name'] . ' ' . $customer['l_name'];
+        return $this->customer['title'] 
+	        . ' ' 
+	        . $this->customer['f_name'] 
+	        . ' ' 
+	        . $this->customer['l_name'];
     }
 
-    public static function isCustomerPurchasedBook($customer)
+    public function isPurchased($product)
     {
-        return in_array('Book', $customer['purchased']);
+        return in_array($product, $this->customer['purchased']);
+    }
+
+    public function hasPurchased() {
+    	return count($this->customer['purchased']) > 0;
+    }
+
+    public function age()
+    {
+    	return $this->customer['age'];
+    }
+
+    public function married()
+    {
+    	return $this->customer['married'];
+    }
+
+    public function expense()
+    {
+    	return $this->customer['expense'];
+    }
+    
+    public static function readCustomers()
+    {
+        $customers =json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
+        $customerObjects = [];
+
+        foreach ($customers as $customer) {
+        	$customerObject = new Customer($customer);
+        	$customerObjects[] = $customerObject;
+        }
+        return $customerObjects;
     }
 
     public static function sortByAge($customers)
     {
-        usort($customers, fn ($cc, $nc) => $cc['age'] <=> $nc['age']);
+        usort($customers, fn ($c1, $c2) => $c1->age() <=> $c2->age());
         return $customers;
-    }
-
-    public static function gtAge($customer, $age) {
-    	return $customer['age'] > $age;
-    }
-
-    public static function ltAge($customer, $age) {
-    	return $customer['age'] < $age;
-    }
-
-    public static function isCustomerPurchased($customer) {
-    	return empty($customer['purchased']);
     }
 }

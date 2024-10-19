@@ -7,7 +7,7 @@ class Ex5
     public static function solution()
     {
         foreach (Customer::readCustomers() as $customer) {
-            if (Customer::ltAge($customer, 10)) {
+            if ($customer->ltAge(10)) {
                 return $customer;
             }
         }

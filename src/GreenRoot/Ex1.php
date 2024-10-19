@@ -9,7 +9,7 @@ class Ex1
         $seniorCitizens = [];
 
         foreach (Customer::readCustomers() as $customer) {
-            if (Customer::gtAge($customer, 60)) {
+            if ($customer->gtAge(60)) {
                 $seniorCitizens[] = $customer;
             }
         }
@@ -21,7 +21,7 @@ class Ex1
     {
         return array_filter(
             Customer::readCustomers(),
-            fn ($customer) => Customer::gtAge($customer, 60)
+            fn ($customer) => $customer->gtAge(60)
         );
     }
 }

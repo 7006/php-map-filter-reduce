@@ -4,14 +4,20 @@ namespace Telema\GreenRoot;
 
 class Ex2
 {
+    public static function addTitleFullname($customer) {
+        return $customer->toArray() +
+            [
+                'title' => $customer->title(),
+                'full_name' => $customer->fullName()
+            ];
+    }
+
     public static function solution()
     {
         $customers = [];
 
         foreach (Customer::readCustomers() as $customer) {
-            $customer['title'] = Customer::title($customer);
-            $customer['full_name'] = Customer::fullName($customer);
-            $customers[] = $customer;
+            $customers[] = self::addTitleFullname($customer);
         }
 
         return $customers;
@@ -19,11 +25,9 @@ class Ex2
 
     public static function fpSolution()
     {
-        $fn	= function ($customer) {
-            $customer['title'] = Customer::title($customer);
-            $customer['full_name'] = Customer::fullName($customer);
-            return $customer;
-        };
-        return array_map($fn, Customer::readCustomers());
+        return array_map(
+            fn ($c) => self::addTitleFullname($c),
+            Customer::readCustomers()
+        );
     }
 }

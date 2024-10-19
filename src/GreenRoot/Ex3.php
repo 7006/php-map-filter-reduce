@@ -4,10 +4,10 @@ namespace Telema\GreenRoot;
 
 class Ex3
 {
-    private static function avgAge($totalAge, $count)
+    private static function avg($x, $y)
     {
         try {
-            return intdiv($totalAge, $count);
+            return intdiv($x, $y);
         } catch (\DivisionByZeroError $e) {
             return 0;
         }
@@ -19,38 +19,38 @@ class Ex3
         $count = 0;
 
         foreach (Customer::readCustomers() as $customer) {
-            if (Customer::isCustomerPurchasedBook($customer)) {
-                $totalAge += $customer['age'];
+            if ($customer->isPurchased('Book')) {
+                $totalAge += $customer->age();
                 $count += 1;
             }
         }
 
-        return self::avgAge($totalAge, $count);
+        return self::avg($totalAge, $count);
     }
 
-    public static function fpSolution2()
+    public static function fpSolution1()
     {
         $customersWhoBoughtBook = array_filter(
             Customer::readCustomers(),
-            Customer::isCustomerPurchasedBook(...)
+            fn ($c) => $c->isPurchased('Book')
         );
 
         $count = count($customersWhoBoughtBook);
 
         $totalAge = array_reduce(
             $customersWhoBoughtBook,
-            fn ($age, $customer) => $age + $customer['age'],
+            fn ($age, $c) => $age + $c->age(),
             0
         );
 
-        return self::avgAge($totalAge, $count);
+        return self::avg($totalAge, $count);
     }
 
-    public static function fpSolution3()
+    public static function fpSolution2()
     {
-        $fn = function ($accum, $customer) {
-            if (Customer::isCustomerPurchasedBook($customer)) {
-                $accum['age'] += $customer['age'];
+        $fn = function ($accum, $c) {
+            if ($c->isPurchased('Book')) {
+                $accum['age'] += $c->age();
                 $accum['count'] += 1;
             }
             return $accum;
@@ -65,16 +65,16 @@ class Ex3
             ]
         );
 
-        return self::avgAge($accum['age'], $accum['count']);
+        return self::avg($accum['age'], $accum['count']);
     }
 
     public static function fpSolution() {
 
-        $fn = function ($accum, $customer) {
+        $fn = function ($accum, $c) {
             [$age, $count] = $accum;
             
-            if (Customer::isCustomerPurchasedBook($customer)) {
-                $age += $customer['age'];
+            if ($c->isPurchased('Book')) {
+                $age += $c->age();
                 $count += 1;
             }
             
@@ -83,6 +83,6 @@ class Ex3
      
         [$age, $count] = array_reduce(Customer::readCustomers(), $fn, [0, 0]);
         
-        return self::avgAge($age, $count);
+        return self::avg($age, $count);
     }   
 }

@@ -7,7 +7,7 @@ class Ex4
     public static function solution()
     {
         foreach (Customer::readCustomers() as $customer) {
-            if (Customer::ltAge($customer, 10)) {
+            if ($customer->ltAge(10)) {
                 return 'Yes';
             }
         }
@@ -18,7 +18,7 @@ class Ex4
     {
         $lt10 = array_reduce(
             Customer::readCustomers(),
-            fn ($accum, $customer) => $accum || Customer::ltAge($customer, 10),
+            fn ($accum, $c) => $accum || $c->ltAge(10),
             false
         );
 
