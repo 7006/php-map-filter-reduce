@@ -39,4 +39,10 @@ class Customer {
     {
         return in_array('Book', $customer['purchased']);
     }
+
+    public static function sortByAge($customers)
+    {
+        usort($customers, fn ($cc, $nc) => $cc['age'] <=> $nc['age']);
+        return $customers;
+    }
 }

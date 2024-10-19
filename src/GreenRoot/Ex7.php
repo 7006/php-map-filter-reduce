@@ -8,7 +8,7 @@ class Ex7
     {
         $expense = 0;
 
-        foreach (Customers::readCustomers() as $customer) {
+        foreach (Customer::readCustomers() as $customer) {
             if ($customer['married']) {
                 $expense += $customer['expense'];
             }
@@ -19,7 +19,7 @@ class Ex7
     public static function fpSolution()
     {
         return array_reduce(
-            Customers::readCustomers(),
+            Customer::readCustomers(),
             fn ($expense, $customer) => $customer['married'] 
                 ? $expense + $customer['expense'] 
                 : $expense,
