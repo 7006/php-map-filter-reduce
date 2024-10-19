@@ -4,16 +4,11 @@ namespace Telema\GreenRoot;
 
 class Ex7
 {
-    private static function readCustomers()
-    {
-        return json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
-    }
-
     public static function solution()
     {
         $expense = 0;
 
-        foreach (self::readCustomers() as $customer) {
+        foreach (Customers::readCustomers() as $customer) {
             if ($customer['married']) {
                 $expense += $customer['expense'];
             }
@@ -24,7 +19,7 @@ class Ex7
     public static function fpSolution()
     {
         return array_reduce(
-            self::readCustomers(),
+            Customers::readCustomers(),
             fn ($expense, $customer) => $customer['married'] 
                 ? $expense + $customer['expense'] 
                 : $expense,

@@ -4,16 +4,11 @@ namespace Telema\GreenRoot;
 
 class Ex6
 {
-    private static function readCustomers()
-    {
-        return json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
-    }
-
     public static function solution()
     {
         $noPurchase = [];
 
-        foreach (self::readCustomers() as $customer) {
+        foreach (Customers::readCustomers() as $customer) {
             if (empty($customer['purchased'])) {
                 $noPurchase[] = $customer;
             }
@@ -24,6 +19,6 @@ class Ex6
 
     public static function fpSolution()
     {
-        return array_filter(self::readCustomers(), fn ($customer) => empty($customer['purchased']));
+        return array_filter(Customers::readCustomers(), fn ($customer) => empty($customer['purchased']));
     }
 }

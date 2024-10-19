@@ -4,11 +4,6 @@ namespace Telema\GreenRoot;
 
 class Ex2
 {
-    private static function readCustomers()
-    {
-        return json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
-    }
-
     private static function title($customer)
     {
 
@@ -39,7 +34,7 @@ class Ex2
     {
         $customers = [];
 
-        foreach (self::readCustomers() as $customer) {
+        foreach (Customer::readCustomers() as $customer) {
             $customer['title'] = self::title($customer);
             $customer['full_name'] = self::fullName($customer);
             $customers[] = $customer;
@@ -55,6 +50,6 @@ class Ex2
             $customer['full_name'] = self::fullName($customer);
             return $customer;
         };
-        return array_map($fn, self::readCustomers());
+        return array_map($fn, Customer::readCustomers());
     }
 }

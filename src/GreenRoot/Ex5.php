@@ -4,11 +4,6 @@ namespace Telema\GreenRoot;
 
 class Ex5
 {
-    private static function readCustomers()
-    {
-        return json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
-    }
-
     private static function sortByAge($customers)
     {
         usort($customers, fn ($cc, $nc) => $cc['age'] <=> $nc['age']);
@@ -17,7 +12,7 @@ class Ex5
 
     public static function solution()
     {
-        foreach (self::readCustomers() as $customer) {
+        foreach (Customers::readCustomers() as $customer) {
             if ($customer['age'] < 10) {
                 return $customer;
             }
@@ -26,7 +21,7 @@ class Ex5
 
     public static function fpSolution()
     {
-        $customers = self::readCustomers();
+        $customers = Customers::readCustomers();
         $sorted = self::sortByAge($customers);
 
         $youngest = $sorted[0];

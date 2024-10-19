@@ -4,11 +4,6 @@ namespace Telema\GreenRoot;
 
 class Ex3
 {
-    private static function readCustomers()
-    {
-        return json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
-    }
-
     private static function isCustomerPurchasedBook($customer)
     {
         return in_array('Book', $customer['purchased']);
@@ -28,7 +23,7 @@ class Ex3
         $totalAge = 0;
         $count = 0;
 
-        foreach (self::readCustomers() as $customer) {
+        foreach (Customer::readCustomers() as $customer) {
             if (self::isCustomerPurchasedBook($customer)) {
                 $totalAge += $customer['age'];
                 $count += 1;
@@ -41,7 +36,7 @@ class Ex3
     public static function fpSolution2()
     {
         $customersWhoBoughtBook = array_filter(
-            self::readCustomers(),
+            Customer::readCustomers(),
             self::isCustomerPurchasedBook(...)
         );
 
@@ -67,7 +62,7 @@ class Ex3
         };
 
         $accum = array_reduce(
-            self::readCustomers(),
+            Customer::readCustomers(),
             $fn,
             [
                 'age' => 0,
@@ -91,7 +86,7 @@ class Ex3
             return [$age, $count];
         };
      
-        [$age, $count] = array_reduce(self::readCustomers(), $fn, [0, 0]);
+        [$age, $count] = array_reduce(Customer::readCustomers(), $fn, [0, 0]);
         
         return self::avgAge($age, $count);
     }   
