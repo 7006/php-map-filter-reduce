@@ -4,6 +4,8 @@ namespace Telema\GreenRoot;
 
 class Ex3
 {
+    // сделать отдельньІй класс Math 
+    // и положить туда єту функцию
     private static function avg($x, $y)
     {
         try {
