@@ -18,7 +18,7 @@ class Ex2
         $customers = [];
 
         foreach (Customer::readCustomers() as $customer) {
-            $customers[] = self::addTitleFullname($customer); // заменить на синтаксис имя_функции(...)
+            $customers[] = self::addTitleFullname($customer);
         }
 
         return $customers;
@@ -27,7 +27,7 @@ class Ex2
     public static function fpSolution()
     {
         return array_map(
-            fn ($c) => self::addTitleFullname($c),
+            fn ($c) => self::addTitleFullname($c), // заменить на синтаксис имя_функции(...)
             Customer::readCustomers()
         );
     }
