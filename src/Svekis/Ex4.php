@@ -15,6 +15,7 @@ class Ex4
         return $fahrenheits;
     }
 
+    // удалить
     public static function fpSolution(array $celsius = ITEMS)
     {
         $fn = function ($temp) {
@@ -23,11 +24,13 @@ class Ex4
         return array_map($fn, $celsius);
     }
 
+    // удалить
     public static function fpSolution2(array $celsius = ITEMS)
     {
         return array_map(fn ($temp) => self::celsiusToFahrenheit($temp), $celsius);
     }
 
+    // удалить
     public static function fpSolution3(array $celsius = ITEMS)
     {
         return array_map([__CLASS__, 'celsiusToFahrenheit'], $celsius);
@@ -42,6 +45,4 @@ class Ex4
     {
         return $temp * 9 / 5 + 32;
     }
-
-
 }
