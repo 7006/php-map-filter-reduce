@@ -25,6 +25,7 @@ class Ex3
         return empty($_GET['date']) ? null : $_GET['date'];
     }
 
+    // в отдельний класс Date::isGte
     private static function isDateGreatThanEqual($date1, $date2)
     {
         $date1 = \DateTimeImmutable::createFromFormat('Y-m-d', $date1);
