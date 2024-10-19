@@ -9,7 +9,7 @@ class Ex1
         $seniorCitizens = [];
 
         foreach (Customer::readCustomers() as $customer) {
-            if ($customer['age'] > 60) {
+            if (Customer::gtAge($customer, 60)) {
                 $seniorCitizens[] = $customer;
             }
         }

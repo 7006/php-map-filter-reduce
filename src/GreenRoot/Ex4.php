@@ -7,7 +7,7 @@ class Ex4
     public static function solution()
     {
         foreach (Customer::readCustomers() as $customer) {
-            if ($customer['age'] < 10) {
+            if (Customer::ltAge($customer, 10)) {
                 return 'Yes';
             }
         }
@@ -16,10 +16,12 @@ class Ex4
 
     public static function fpSolution()
     {
-        return array_reduce(
+        $lt10 = array_reduce(
             Customer::readCustomers(),
-            fn ($message, $customer) => ($customer['age'] < 10 ? 'Yes' : 'No'),
-            'No'
+            fn ($accum, $customer) => $accum || Customer::ltAge($customer, 10),
+            false
         );
+
+        return $lt10 ? 'Yes' : 'No';
     }
 }

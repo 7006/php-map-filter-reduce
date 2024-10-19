@@ -45,4 +45,12 @@ class Customer {
         usort($customers, fn ($cc, $nc) => $cc['age'] <=> $nc['age']);
         return $customers;
     }
+
+    public static function gtAge($customer, $age) {
+    	return $customer['age'] > $age;
+    }
+
+    public static function ltAge($customer, $age) {
+    	return $customer['age'] < $age;
+    }
 }
