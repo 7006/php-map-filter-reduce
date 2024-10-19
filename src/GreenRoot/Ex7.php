@@ -11,22 +11,23 @@ class Ex7
 
     public static function solution()
     {
-        $sum = 0;
+        $expense = 0;
 
         foreach (self::readCustomers() as $customer) {
             if ($customer['married']) {
-                $sum += $customer['expense'];
+                $expense += $customer['expense'];
             }
         }
-        return "Total Expense of Married Customers: $sum";
+        return "Total Expense of Married Customers: $expense";
     }
 
     public static function fpSolution()
     {
-
         return array_reduce(
             self::readCustomers(),
-            fn ($sum, $customer) => $customer['married'] ? $sum + $customer['expense'] : $sum,
+            fn ($expense, $customer) => $customer['married'] 
+                ? $expense + $customer['expense'] 
+                : $expense,
             0
         );
     }

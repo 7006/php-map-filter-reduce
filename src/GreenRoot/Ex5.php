@@ -26,13 +26,12 @@ class Ex5
 
     public static function fpSolution()
     {
-        $youngestAndOldestCustomers = [];
         $customers = self::readCustomers();
-        $sortedCustomers = self::sortByAge($customers);
+        $sorted = self::sortByAge($customers);
 
-        $youngestAndOldestCustomers[] = $sortedCustomers[0];
-        $youngestAndOldestCustomers[] = $sortedCustomers[count($sortedCustomers) - 1];
+        $youngest = $sorted[0];
+        $oldest = $sorted[count($sorted) - 1];
 
-        return $youngestAndOldestCustomers;
+        return [$youngest, $oldest];
     }
 }
