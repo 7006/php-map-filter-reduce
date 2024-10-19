@@ -17,6 +17,7 @@ class Ex2
         return $sum;
     }
 
+    // удалить
     public static function fpSolution(array $numbers = ITEMS)
     {
         $positiveNumbers = array_filter($numbers, fn ($number) => $number > 0); // краткое имя $n
