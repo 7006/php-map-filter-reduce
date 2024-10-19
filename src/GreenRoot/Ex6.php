@@ -9,7 +9,7 @@ class Ex6
         $noPurchase = [];
 
         foreach (Customer::readCustomers() as $customer) {
-            if (empty($customer['purchased'])) {
+            if (Customer::isCustomerPurchased($customer)) {
                 $noPurchase[] = $customer;
             }
         }
@@ -19,6 +19,6 @@ class Ex6
 
     public static function fpSolution()
     {
-        return array_filter(Customer::readCustomers(), fn ($customer) => empty($customer['purchased']));
+        return array_filter(Customer::readCustomers(), Customer::isCustomerPurchased(...));
     }
 }

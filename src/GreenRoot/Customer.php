@@ -53,4 +53,8 @@ class Customer {
     public static function ltAge($customer, $age) {
     	return $customer['age'] < $age;
     }
+
+    public static function isCustomerPurchased($customer) {
+    	return empty($customer['purchased']);
+    }
 }
