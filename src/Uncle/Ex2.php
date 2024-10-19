@@ -13,46 +13,49 @@ const ITEMS = [
     ['status' => 'success', 'id' => 3]
 ];
 
-class Ex2 {
+class Ex2
+{
+    public static function solution(array $items = ITEMS)
+    {
+        $accum = ['success' => [], 'error' => []];
 
-	public static function solution(array $items = ITEMS) {
-		$accum = ['success' => [], 'error' => []];
+        foreach ($items as $item) {
+            if ($item['status'] === 'success') {
+                $accum['success'][] = $item['id'];
+            }
+            if ($item['status'] === 'error') {
+                $accum['error'][] = $item['id'];
+            }
+        }
+        return $accum;
+    }
 
-		foreach ($items as $item) {
-			if ($item['status'] === 'success') {
-				$accum['success'][] = $item['id'];
-			}
-			if ($item['status'] === 'error') {
-				$accum['error'][] = $item['id'];
-			}
-		}
-		return $accum;
-	}
+    public static function fpSolution(array $items = ITEMS)
+    {
+        $accumInit = ['success' => [], 'error' => []];
 
-	public static function fpSolution(array $items = ITEMS) {
-		$accumInit = ['success' => [], 'error' => []];
-		
-		$fn = function ($accum, $item) {
-			if ($item['status'] === 'success') {
-				$accum['success'][] = $item['id'];
-			}
-			if ($item['status'] === 'error') {
-				$accum['error'][] = $item['id'];
-			}
-			return $accum;
-		};
+        $fn = function ($accum, $item) {
+            if ($item['status'] === 'success') {
+                $accum['success'][] = $item['id'];
+            }
+            if ($item['status'] === 'error') {
+                $accum['error'][] = $item['id'];
+            }
+            return $accum;
+        };
 
-		return array_reduce($items, $fn, $accumInit);
-	}
+        return array_reduce($items, $fn, $accumInit);
+    }
 
-	public static function fpSolution2(array $items = ITEMS) {
-		
-		$success = array_values(array_filter($items, fn ($item) => $item['status'] === 'success'));
-		$error = array_values(array_filter($items, fn ($item) => $item['status'] === 'error'));
+    public static function fpSolution2(array $items = ITEMS)
+    {
 
-		$successId = array_map(fn ($item) => $item['id'], $success);
-		$errorId = array_map(fn ($item) => $item['id'], $error);
+        $success = array_values(array_filter($items, fn ($item) => $item['status'] === 'success'));
+        $error = array_values(array_filter($items, fn ($item) => $item['status'] === 'error'));
 
-		return ['success' => $successId, 'error' => $errorId];
-	}
+        $successId = array_map(fn ($item) => $item['id'], $success);
+        $errorId = array_map(fn ($item) => $item['id'], $error);
+
+        return ['success' => $successId, 'error' => $errorId];
+    }
 }

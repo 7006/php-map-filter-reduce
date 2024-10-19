@@ -14,35 +14,38 @@ const ITEMS = [
         ['food' => 'nuts'],
     ];
 
-class Ex1 {
+class Ex1
+{
+    public static function solution(array $fruits = ITEMS)
+    {
+        $result = [];
+        foreach ($fruits as $fruit) {
+            $fruit['color'] = Ex1::color($fruit['food']);
+            $result[] = $fruit;
+        }
+        return $result;
+    }
 
-	public static function solution(array $fruits = ITEMS) {
-		$result = [];
-		foreach ($fruits as $fruit) {
-			$fruit['color'] = Ex1::color($fruit['food']);
-			$result[] = $fruit;
-		}
-		return $result;
-	}
+    public static function fpSolution(array $fruits = ITEMS)
+    {
+        $fn = function ($fruit) {
+            $fruit['color'] = Ex1::color($fruit['food']);
+            return $fruit;
+        };
+        return array_map($fn, $fruits);
+    }
 
-	public static function fpSolution(array $fruits = ITEMS) {
-		$fn = function ($fruit) {
-			$fruit['color'] = Ex1::color($fruit['food']);
-			return $fruit;
-		};
-		return array_map($fn, $fruits);
-	}
-
-	private static function color($food) {
-		$color = match ($food) {
-			'apple' => 'yellow',
-			'carrot' => 'green',
-			'beet' => 'green',
-			'lemon' => 'yellow',
-			'pear' => 'yellow',
-			'potato' => 'green',
-			default => 'unknown'
-		};
-		return $color;
-	}
+    private static function color($food)
+    {
+        $color = match ($food) {
+            'apple' => 'yellow',
+            'carrot' => 'green',
+            'beet' => 'green',
+            'lemon' => 'yellow',
+            'pear' => 'yellow',
+            'potato' => 'green',
+            default => 'unknown'
+        };
+        return $color;
+    }
 }

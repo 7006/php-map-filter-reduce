@@ -4,22 +4,25 @@ namespace Telema\Svekis;
 
 const ITEMS = ['london', 'manchester', 'liverpool', 'tbilisi'];
 
-class Ex2 {
+class Ex2
+{
+    public static function solution(array $cities = ITEMS)
+    {
+        $result = [];
+        foreach ($cities as $city) {
+            $result[] = strtoupper($city);
+        }
 
-	public static function solution(array $cities = ITEMS) {
-		$result =[];
-		foreach ($cities as $city) {
-			$result[] = strtoupper($city);
-		}
+        return $result;
+    }
 
-		return $result;
-	}
+    public static function fpSolution(array $cities = ITEMS)
+    {
+        return array_map(strtoupper(...), $cities);
+    }
 
-	public static function fpSolution(array $cities = ITEMS) {
-		return array_map(strtoupper(...), $cities);
-	}
-
-	public static function fpSolution2(array $cities = ITEMS) {
-		return array_map(strtoupper($city), $cities);
-	}
-} 
+    public static function fpSolution2(array $cities = ITEMS)
+    {
+        return array_map(strtoupper($city), $cities);
+    }
+}

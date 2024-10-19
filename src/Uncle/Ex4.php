@@ -19,32 +19,34 @@ const PROVIDER_RATINGS = [
     ['name' => 'boom', 'rating' => 0.5]
 ];
 
-class Ex4 {
+class Ex4
+{
+    private static function rating()
+    {
+        return empty($_GET['rating']) ? null : $_GET['rating'];
+    }
 
-	private static function rating() {
-		return empty($_GET['rating']) ? null : $_GET['rating'];
-	}
+    public static function solution()
+    {
+        $result = [];
 
-	public static function solution() {
-		$result = [];
+        foreach (PROVIDERS as $p) {
+            foreach (PROVIDER_RATINGS as $pr) {
+                if ($p['name'] === $pr['name'] && $pr['rating'] >= self::rating()) {
+                    $result[] = $p;
+                }
+            }
+        }
 
-		foreach (PROVIDERS as $p) {
-			foreach (PROVIDER_RATINGS as $pr) {
-				if ($p['name'] === $pr['name'] && $pr['rating'] >= self::rating()) {
-					$result[] = $p;
-				}
-			}
-		}
+        return $result;
+    }
 
-		return $result;
-	}
+    public static function fpSolution()
+    {
+        $providerRatings = array_filter(PROVIDER_RATINGS, fn ($pr) => $pr['rating'] >= self::rating());
+        $providerNames = array_map(fn ($pr) => $pr['name'], $providerRatings);
+        $providers = array_filter(PROVIDERS, fn ($p) => in_array($p['name'], $providerNames));
 
-	public static function fpSolution() {
-		$providerRatings = array_filter(PROVIDER_RATINGS, fn ($pr) => $pr['rating'] >= self::rating());
-		$providerNames = array_map(fn ($pr) => $pr['name'], $providerRatings);
-		$providers = array_filter(PROVIDERS, fn ($p) => in_array($p['name'], $providerNames));
-
-		return $providers;
-	}
+        return $providers;
+    }
 }
- 

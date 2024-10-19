@@ -13,52 +13,59 @@ const ITEMS = [
     ['id' => 26, 'provider' => 'frob', 'updated_at' => '2024-09-04']
 ];
 
-class Ex3 {
-	private static function provider() {
-		return empty($_GET['provider']) ? null : $_GET['provider'];
-	}
-	
-	private static function date() {
-		return empty($_GET['date']) ? null : $_GET['date'];
-	}
+class Ex3
+{
+    private static function provider()
+    {
+        return empty($_GET['provider']) ? null : $_GET['provider'];
+    }
 
-	private static function isDateGreatThanEqual($date1, $date2) {
-		$date1 = \DateTimeImmutable::createFromFormat('Y-m-d', $date1);
-		$date2 = \DateTimeImmutable::createFromFormat('Y-m-d', $date2);
-		return $date1 >= $date2;
-	}
+    private static function date()
+    {
+        return empty($_GET['date']) ? null : $_GET['date'];
+    }
 
-	private static function isMatches($item, $provider, $date) {
-		if ($provider && $date) {
-			return $item['provider'] === $provider
-				&& self::isDateGreatThanEqual($item['updated_at'], $date);
-		}
-		if ($provider) {
-			return $item['provider'] === $provider;
-		}
-		if ($date) {
-			return self::isDateGreatThanEqual($item['updated_at'], $date);
-		}
-		return false;
-	}
+    private static function isDateGreatThanEqual($date1, $date2)
+    {
+        $date1 = \DateTimeImmutable::createFromFormat('Y-m-d', $date1);
+        $date2 = \DateTimeImmutable::createFromFormat('Y-m-d', $date2);
+        return $date1 >= $date2;
+    }
 
-	public static function solution(array $items = ITEMS) {
-		$provider = self::provider();
-		$date = self::date();
-		$result = [];
+    private static function isMatches($item, $provider, $date)
+    {
+        if ($provider && $date) {
+            return $item['provider'] === $provider
+                && self::isDateGreatThanEqual($item['updated_at'], $date);
+        }
+        if ($provider) {
+            return $item['provider'] === $provider;
+        }
+        if ($date) {
+            return self::isDateGreatThanEqual($item['updated_at'], $date);
+        }
+        return false;
+    }
 
-		foreach ($items as $item) {
-			if (self::isMatches($item, $provider, $date)) {
-				$result[] = $item;
-			}
-		}
-		return $result;
-    }   
+    public static function solution(array $items = ITEMS)
+    {
+        $provider = self::provider();
+        $date = self::date();
+        $result = [];
 
-    public static function fpSolution(array $items = ITEMS) {
-    	$provider = self::provider();
-		$date = self::date();
+        foreach ($items as $item) {
+            if (self::isMatches($item, $provider, $date)) {
+                $result[] = $item;
+            }
+        }
+        return $result;
+    }
 
-		return array_filter($items, fn ($item) => self::isMatches($item, $provider, $date));
+    public static function fpSolution(array $items = ITEMS)
+    {
+        $provider = self::provider();
+        $date = self::date();
+
+        return array_filter($items, fn ($item) => self::isMatches($item, $provider, $date));
     }
 }
