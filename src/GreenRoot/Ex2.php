@@ -18,7 +18,7 @@ class Ex2
         $customers = [];
 
         foreach (Customer::readCustomers() as $customer) {
-            $customers[] = self::addTitleFullname($customer);
+            $customers[] = self::addTitleFullname($customer); // заменить на синтаксис имя_функции(...)
         }
 
         return $customers;
