@@ -68,21 +68,22 @@ class Ex3
         return self::avg($accum['age'], $accum['count']);
     }
 
-    public static function fpSolution() {
+    public static function fpSolution()
+    {
 
         $fn = function ($accum, $c) {
             [$age, $count] = $accum;
-            
+
             if ($c->isPurchased('Book')) {
                 $age += $c->age();
                 $count += 1;
             }
-            
+
             return [$age, $count];
         };
-     
+
         [$age, $count] = array_reduce(Customer::readCustomers(), $fn, [0, 0]);
-        
+
         return self::avg($age, $count);
-    }   
+    }
 }

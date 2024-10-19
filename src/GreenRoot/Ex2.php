@@ -4,7 +4,8 @@ namespace Telema\GreenRoot;
 
 class Ex2
 {
-    public static function addTitleFullname($customer) {
+    public static function addTitleFullname($customer)
+    {
         return $customer->toArray() +
             [
                 'title' => $customer->title(),

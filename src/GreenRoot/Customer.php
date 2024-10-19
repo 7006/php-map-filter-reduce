@@ -2,24 +2,28 @@
 
 namespace Telema\GreenRoot;
 
-class Customer {
+class Customer
+{
+    private $customer;
 
-	private $customer;
-
-	public function  __construct($customer) {
-		$this->customer = $customer;
-	}
-
-	public function toArray() {
-		return $this->customer;
-	}
-
-	public function gtAge($age) {
-    	return $this->customer['age'] > $age;
+    public function __construct($customer)
+    {
+        $this->customer = $customer;
     }
 
-    public function ltAge($age) {
-    	return $this->customer['age'] < $age;
+    public function toArray()
+    {
+        return $this->customer;
+    }
+
+    public function gtAge($age)
+    {
+        return $this->customer['age'] > $age;
+    }
+
+    public function ltAge($age)
+    {
+        return $this->customer['age'] < $age;
     }
 
     public function title()
@@ -44,11 +48,11 @@ class Customer {
 
     public function fullName()
     {
-        return $this->customer['title'] 
-	        . ' ' 
-	        . $this->customer['f_name'] 
-	        . ' ' 
-	        . $this->customer['l_name'];
+        return $this->customer['title']
+            . ' '
+            . $this->customer['f_name']
+            . ' '
+            . $this->customer['l_name'];
     }
 
     public function isPurchased($product)
@@ -56,33 +60,34 @@ class Customer {
         return in_array($product, $this->customer['purchased']);
     }
 
-    public function hasPurchased() {
-    	return count($this->customer['purchased']) > 0;
+    public function hasPurchased()
+    {
+        return count($this->customer['purchased']) > 0;
     }
 
     public function age()
     {
-    	return $this->customer['age'];
+        return $this->customer['age'];
     }
 
     public function married()
     {
-    	return $this->customer['married'];
+        return $this->customer['married'];
     }
 
     public function expense()
     {
-    	return $this->customer['expense'];
+        return $this->customer['expense'];
     }
-    
+
     public static function readCustomers()
     {
-        $customers =json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
+        $customers = json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
         $customerObjects = [];
 
         foreach ($customers as $customer) {
-        	$customerObject = new Customer($customer);
-        	$customerObjects[] = $customerObject;
+            $customerObject = new Customer($customer);
+            $customerObjects[] = $customerObject;
         }
         return $customerObjects;
     }

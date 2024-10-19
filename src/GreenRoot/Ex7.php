@@ -21,7 +21,7 @@ class Ex7
         return array_reduce(
             Customer::readCustomers(),
             fn ($expense, $c) => $c->married()
-                ? $expense + $c->expense() 
+                ? $expense + $c->expense()
                 : $expense,
             0
         );
