@@ -25,6 +25,7 @@ const ITEMS = [
         ]
     ];
 
+// положить класс в отдельньій фаіл в єтой папке
 class Rectangle
 {
     private $width;
@@ -32,6 +33,7 @@ class Rectangle
 
     public static function createFromArray(array $rectangle)
     {
+        // array destruction
         $width = $rectangle['width'];
         $height = $rectangle['height'];
         return new Rectangle($width, $height);
@@ -64,6 +66,7 @@ class Rectangle
 
     public function favorite()
     {
+        // переписать на match (true)
         if ($this->width === 1 && $this->height === 1) {
             return 'yes';
         }
@@ -86,6 +89,7 @@ class Ex6
     {
         $infos = [];
         foreach ($rectangles as $rectangleArray) {
+            // сделать статический метод Rectangle::info и перенести туда тело цикла
             $rectangleObject = Rectangle::createFromArray($rectangleArray);
             $info = [
                 'area' => $rectangleObject->area(),
@@ -111,6 +115,6 @@ class Ex6
             ];
         };
 
-        return array_map($fn, $rectangles);
+        return array_map($fn, $rectangles); // использоват статический метод Rectangle::info с синтаксисом ...
     }
 }
