@@ -17,6 +17,7 @@ class Ex9
         return $html;
     }
 
+    // удалить
     public static function fpSolution(array $fruits = ITEMS)
     {
         $fn = function ($html, $fruit) {
@@ -32,6 +33,7 @@ class Ex9
         return "<ul>$lis</ul>";
     }
 
+    // удалить
     public static function alternativeSyntaxSolution(array $fruits)
     { ?>
 		<ul>
