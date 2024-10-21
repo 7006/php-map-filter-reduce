@@ -22,7 +22,7 @@ class Ex2
         $fn =  function ($sum, $number) {
             if ($number > 0) {
                 return $sum + $number;
-            } else {
+            } else { // блок else можно не писать
                 return $sum;
             }
         };
