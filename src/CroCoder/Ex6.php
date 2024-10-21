@@ -3,8 +3,6 @@
 namespace Telema\CroCoder;
 
 const STRING = 'Every developer likes to mix kubernetes and javascript';
-// output:  'E3y d7r l3s to mix k8s and j8t'
-// Numeronym
 
 class Ex6
 {
@@ -27,6 +25,13 @@ class Ex6
 
     public static function fpSolution(string $string = STRING)
     {
-
+        $words = explode(' ', $string);
+        $newString = array_map(
+            fn ($word) => strlen($word) >= 5 
+            ? $word[0] . (strlen($word) - 2) . $word[strlen($word) -1] 
+            : $word,
+            $words
+        );
+        return implode(' ', $newString);
     }
 }
