@@ -16,32 +16,12 @@ class Ex8
         return $newDates;
     }
 
-    // удалить
     public static function fpSolution(array $dates = ITEMS)
     {
-        return array_map([__CLASS__, 'formatDate3'], $dates);
+        return array_map(self::formatDate(...), $dates);
     }
 
-    public static function fpSolution2(array $dates = ITEMS)
-    {
-        return array_map(self::formatDate3(...), $dates);
-    }
-
-    // удалить
     private static function formatDate(string $date)
-    {
-        [$year, $month, $day] = explode('-', $date, 3);
-        return $month . '/' . $day . '/' . $year;
-    }
-
-    // удалить
-    private static function formatDate2(string $date)
-    {
-        $dateTime = \DateTimeImmutable::createFromFormat('Y-m-d', $date);
-        return $dateTime->format('m/d/Y');
-    }
-
-    private static function formatDate3(string $date)
     {
         return \DateTimeImmutable::createFromFormat('Y-m-d', $date)->format('m/d/Y');
     }

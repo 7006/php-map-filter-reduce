@@ -17,29 +17,9 @@ class Ex9
         return $html;
     }
 
-    // удалить
-    public static function fpSolution(array $fruits = ITEMS)
-    {
-        $fn = function ($html, $fruit) {
-            return $html . "\t" . '<li>' . $fruit . '</li>' . "\n";
-        };
-
-        return array_reduce($fruits, $fn, '<ul>' . "\n") . '</ul>' . "\n";
-    }
-
     public static function fpSolution2(array $fruits = ITEMS)
     {
         $lis = array_reduce($fruits, fn ($html, $f) => "$html<li>$f</li>", '');
         return "<ul>$lis</ul>";
     }
-
-    // удалить
-    public static function alternativeSyntaxSolution(array $fruits)
-    { ?>
-		<ul>
-			<?php foreach ($fruits as $fruit) : ?>
-				<li><?php echo $fruit; ?></li>
-			<?php endforeach; ?>
-		</ul>
-	<?php }
-    }
+}
