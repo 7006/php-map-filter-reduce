@@ -29,7 +29,6 @@ class Ex3
 
     private static function isMatches($item, $provider, $date)
     {
-        // будет ли работать если переписать на match(true)
         if ($provider && $date) {
             return $item['provider'] === $provider
                 && Date::isGte($item['updated_at'], $date);

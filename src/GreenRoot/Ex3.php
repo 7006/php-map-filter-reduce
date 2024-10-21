@@ -2,6 +2,8 @@
 
 namespace Telema\GreenRoot;
 
+use Telema\Math;
+
 class Ex3
 {
     public static function solution()
