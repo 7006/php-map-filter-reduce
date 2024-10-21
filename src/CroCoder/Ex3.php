@@ -2,9 +2,7 @@
 
 namespace Telema\CroCoder;
 
-//const ITEMS = [];
 const ITEMS = [12, 46, 32, 64];
-//const ITEMS = [12, 46, 32, 5, 3, 76, 64];
 
 class Ex3
 {

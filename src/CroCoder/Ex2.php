@@ -17,29 +17,16 @@ class Ex2
         return $sum;
     }
 
-    // удалить
     public static function fpSolution(array $numbers = ITEMS)
     {
-        $positiveNumbers = array_filter($numbers, fn ($number) => $number > 0); // краткое имя $n
-
-        return array_reduce($positiveNumbers, fn ($sum, $n) => $sum + $n, 0);
-    }
-
-    public static function fpSolution2(array $numbers = ITEMS)
-    {
-        // делать return в блоке if
-        // назвать аккумулятор sum
-        $fn =  function ($oldSum, $number) {
+        $fn =  function ($sum, $number) {
             if ($number > 0) {
-                $newSum = $oldSum + $number;
+                return $sum + $number;
             } else {
-                $newSum = $oldSum;
+                return $sum;
             }
-            return $newSum;
         };
-
         $sum = array_reduce($numbers, $fn, 0);
-
         return $sum;
     }
 }

@@ -19,13 +19,4 @@ class Ex1
     {
         return array_map(fn ($item) => $item ** 2, $items);
     }
-
-    // удалить
-    public static function fpSolution7(array $items = ITEMS)
-    {
-        $callback = function ($item) {
-            return $item ** 2;
-        };
-        return array_map($callback, $items);
-    }
 }

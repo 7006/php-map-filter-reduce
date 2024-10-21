@@ -32,20 +32,4 @@ class Ex3
     {
         return array_map(fn ($st) => $st['name'], $students);
     }
-
-    // удалить
-    public static function fpSolution2(array $students = ITEMS, $key = 'age')
-    {
-        $fn = function ($student) use ($key) {
-            return $student[$key];
-        };
-
-        return array_map($fn, $students);
-    }
-
-    // удалить
-    public static function fpSolution3(array $students = ITEMS, $key = 'age')
-    {
-        return array_map(fn ($student) => $student[$key], $students);
-    }
 }

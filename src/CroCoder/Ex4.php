@@ -3,7 +3,6 @@
 namespace Telema\CroCoder;
 
 const ITEMS = 'George Raymond Richard Martin';
-// const ITEMS = '';
 
 class Ex4
 {
@@ -23,7 +22,6 @@ class Ex4
     public static function fpSolution(string $nameString = ITEMS)
     {
         $names = explode(' ', $nameString);
-
         $initials = array_map(fn ($name) => $name[0], $names);
 
         return implode('', $initials);

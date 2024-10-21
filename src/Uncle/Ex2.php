@@ -46,17 +46,4 @@ class Ex2
 
         return array_reduce($items, $fn, $accumInit);
     }
-
-    // удалить
-    public static function fpSolution2(array $items = ITEMS)
-    {
-
-        $success = array_values(array_filter($items, fn ($item) => $item['status'] === 'success'));
-        $error = array_values(array_filter($items, fn ($item) => $item['status'] === 'error'));
-
-        $successId = array_map(fn ($item) => $item['id'], $success);
-        $errorId = array_map(fn ($item) => $item['id'], $error);
-
-        return ['success' => $successId, 'error' => $errorId];
-    }
 }
