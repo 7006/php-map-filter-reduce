@@ -20,6 +20,6 @@ class Ex8
 
     public static function fpSolution(array $dates = ITEMS)
     {
-        return array_map(self::formatDate(...), $dates);
+        return array_map(Date::formatDate(...), $dates);
     }
 }
