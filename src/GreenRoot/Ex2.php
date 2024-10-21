@@ -7,7 +7,7 @@ class Ex2
     public static function addTitleFullname($customer)
     {
         return $customer->toArray() +
-            [   
+            [
                 'title_full_name' => $customer->title() . ' ' . $customer->fullName()
             ];
     }

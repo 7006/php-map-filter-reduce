@@ -9,7 +9,7 @@ class Rectangle
 
     public static function createFromArray(array $rectangle)
     {
-      	['width' => $width, 'height' => $height] = $rectangle;
+        ['width' => $width, 'height' => $height] = $rectangle;
         return new Rectangle($width, $height);
     }
 
@@ -41,10 +41,10 @@ class Rectangle
     public function favorite()
     {
         return match (true) {
-        	$this->width === 1 && $this->height === 1 => 'yes',
-        	$this->width === 3 && $this->height === 3 => 'yes',
-        	$this->width === 10 && $this->height === 2 => 'i dont know',
-        	default => 'no'
+            $this->width === 1 && $this->height === 1 => 'yes',
+            $this->width === 3 && $this->height === 3 => 'yes',
+            $this->width === 10 && $this->height === 2 => 'i dont know',
+            default => 'no'
         };
-	}
+    }
 }

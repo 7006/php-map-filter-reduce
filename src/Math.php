@@ -2,9 +2,9 @@
 
 namespace Telema;
 
-class Math {
-
-	public static function avg($x, $y)
+class Math
+{
+    public static function avg($x, $y)
     {
         try {
             return intdiv($x, $y);

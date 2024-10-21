@@ -27,7 +27,8 @@ const ITEMS = [
 
 class Ex6
 {
-    private static function info($rectangleArray) {
+    private static function info($rectangleArray)
+    {
         $rectangleObject = Rectangle::createFromArray($rectangleArray);
         $info = [
             'area' => $rectangleObject->area(),

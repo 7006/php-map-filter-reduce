@@ -4,7 +4,7 @@ namespace Telema\GreenRoot;
 
 class Customer
 {
-    const PATH = __DIR__ . '/customers.json';
+    public const PATH = __DIR__ . '/customers.json';
 
     private $customer;
 
@@ -50,7 +50,7 @@ class Customer
         return $this->customer['age'] < $age;
     }
 
-     public function age()
+    public function age()
     {
         return $this->customer['age'];
     }
