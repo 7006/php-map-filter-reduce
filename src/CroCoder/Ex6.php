@@ -6,11 +6,6 @@ const STRING = 'Every developer likes to mix kubernetes and javascript';
 
 class Ex6
 {
-
-    private static function numeronym(string $word) {
-        return $word[0] . (strlen($word) - 2) . $word[strlen($word) -1];
-    }
-
     public static function solution(string $string = STRING)
     {
         $newString = [];
@@ -18,7 +13,8 @@ class Ex6
 
         foreach (explode(' ', $string) as $word) {
             if(strlen($word) >= 5) {
-                $newString[] = self::numeronym($word);
+                $numeronym = $word[0] . (strlen($word) - 2) . $word[strlen($word) -1];
+                $newString[] = $numeronym;
             } else {
                 $newString[] = $word;
             }
@@ -32,11 +28,10 @@ class Ex6
         $words = explode(' ', $string);
         $newString = array_map(
             fn ($word) => strlen($word) >= 5 
-            ? self::numeronym($word) 
+            ? $word[0] . (strlen($word) - 2) . $word[strlen($word) -1] 
             : $word,
             $words
         );
-        
         return implode(' ', $newString);
     }
 }
