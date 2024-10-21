@@ -51,6 +51,8 @@ class Ex5
     public static function fpSolution(array $items = ITEMS)
     {   
         usort($items, fn ($i1, $i2) => $i1['age'] <=> $i2['age']);
+
+        // стоит добавить 2 переменние min max для простоти чтения
         return [
             $items[0]['age'],
             $items[count($items) - 1]['age'],
