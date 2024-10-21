@@ -2,17 +2,30 @@
 
 namespace Telema\CroCoder;
 
+const STRING = 'Every developer likes to mix kubernetes and javascript';
+// output:  'E3y d7r l3s to mix k8s and j8t'
+
 class Ex6
 {
-    public static function solution()
+    public static function solution(string $string = STRING)
     {
-        $ar = ['a' => 34, $b => 35];
-        [$a, $b] = $ar;
-        var_dump($a);
-        var_dump($b);
-}
+        $words = explode(' ', $string);
+        $result = [];
+        $newWord = '';
 
-    public static function fpSolution()
+        foreach ($words as $word) {
+            if(strlen($word) >= 5) {
+                $newWord = $word[0] . (strlen($word) - 2) . $word[strlen($word) -1];
+                $result[] = $newWord;
+            } else {
+                $result[] = $word;
+            }
+        }
+        
+        return implode(' ', $result);
+    }
+
+    public static function fpSolution(string $string = STRING)
     {
 
     }
