@@ -52,11 +52,9 @@ class Ex5
     {   
         usort($items, fn ($i1, $i2) => $i1['age'] <=> $i2['age']);
 
-        // стоит добавить 2 переменние min max для простоти чтения
-        return [
-            $items[0]['age'],
-            $items[count($items) - 1]['age'],
-            $items[count($items) - 1]['age'] - $items[0]['age']
-        ];
+        $min = $items[0]['age'];
+        $max = $items[count($items) - 1]['age'];
+
+        return [$min, $max, $max - $min];
     }
 }

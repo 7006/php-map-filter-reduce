@@ -2,6 +2,8 @@
 
 namespace Telema\Svekis;
 
+use Telema\Date;
+
 const ITEMS = ['2023-01-15', '2023-05-20', '2023-09-10'];
 
 class Ex8
@@ -10,7 +12,7 @@ class Ex8
     {
         $newDates = [];
         foreach ($dates as $date) {
-            $newDates[] = self::formatDate($date);
+            $newDates[] = Date::formatDate($date);
         }
 
         return $newDates;
@@ -19,10 +21,5 @@ class Ex8
     public static function fpSolution(array $dates = ITEMS)
     {
         return array_map(self::formatDate(...), $dates);
-    }
-
-    private static function formatDate(string $date)
-    {
-        return \DateTimeImmutable::createFromFormat('Y-m-d', $date)->format('m/d/Y');
     }
 }

@@ -8,35 +8,31 @@ class Ex6
 {
 
     private static function numeronym(string $word) {
-        return $word[0] . (strlen($word) - 2) . $word[strlen($word) -1];
+        $l = strlen($word);
+
+        return $l > 4
+            ? $word[0] . ($l - 2) . $word[$l -1] 
+            : $word;
     }
 
     public static function solution(string $string = STRING)
     {
-        $newString = [];
-        $newWord = '';
+        $numeronyms = [];
+        $words = explode(' ', $string);
 
-        foreach (explode(' ', $string) as $word) {
-            if(strlen($word) >= 5) {
-                $newString[] = self::numeronym($word);
-            } else {
-                $newString[] = $word;
-            }
+        foreach ($words as $word) {
+            $numeronyms[] = self::numeronym($word);
         }
 
-        return implode(' ', $newString);
+        return implode(' ', $numeronyms);
     }
 
     public static function fpSolution(string $string = STRING)
     {
         $words = explode(' ', $string);
-        $newString = array_map(
-            fn ($word) => strlen($word) >= 5 
-            ? self::numeronym($word) 
-            : $word,
-            $words
-        );
         
-        return implode(' ', $newString);
+        $numeronyms = array_map(self::numeronym(...), $words);
+        
+        return implode(' ', $numeronyms);
     }
 }

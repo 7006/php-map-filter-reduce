@@ -19,14 +19,6 @@ class Ex2
 
     public static function fpSolution(array $numbers = ITEMS)
     {
-        $fn =  function ($sum, $number) {
-            if ($number > 0) {
-                return $sum + $number;
-            } else { // блок else можно не писать
-                return $sum;
-            }
-        };
-        $sum = array_reduce($numbers, $fn, 0);
-        return $sum;
+        return array_reduce($numbers, fn ($sum, $n) => $n > 0 ? $sum + $n : $sum, 0);
     }
 }
