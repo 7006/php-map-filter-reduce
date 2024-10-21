@@ -27,7 +27,7 @@ class Ex2
     public static function fpSolution()
     {
         return array_map(
-            fn ($c) => self::addTitleFullname($c), // заменить на синтаксис имя_функции(...)
+            self::addTitleFullname(...),
             Customer::readCustomers()
         );
     }

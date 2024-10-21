@@ -4,17 +4,6 @@ namespace Telema\GreenRoot;
 
 class Ex3
 {
-    // сделать отдельньІй класс Math 
-    // и положить туда єту функцию
-    private static function avg($x, $y)
-    {
-        try {
-            return intdiv($x, $y);
-        } catch (\DivisionByZeroError $e) {
-            return 0;
-        }
-    }
-
     public static function solution()
     {
         $totalAge = 0;
@@ -27,49 +16,7 @@ class Ex3
             }
         }
 
-        return self::avg($totalAge, $count);
-    }
-
-    // удалить
-    public static function fpSolution1()
-    {
-        $customersWhoBoughtBook = array_filter(
-            Customer::readCustomers(),
-            fn ($c) => $c->isPurchased('Book')
-        );
-
-        $count = count($customersWhoBoughtBook);
-
-        $totalAge = array_reduce(
-            $customersWhoBoughtBook,
-            fn ($age, $c) => $age + $c->age(),
-            0
-        );
-
-        return self::avg($totalAge, $count);
-    }
-
-    // удалить
-    public static function fpSolution2()
-    {
-        $fn = function ($accum, $c) {
-            if ($c->isPurchased('Book')) {
-                $accum['age'] += $c->age();
-                $accum['count'] += 1;
-            }
-            return $accum;
-        };
-
-        $accum = array_reduce(
-            Customer::readCustomers(),
-            $fn,
-            [
-                'age' => 0,
-                'count' => 0
-            ]
-        );
-
-        return self::avg($accum['age'], $accum['count']);
+        return Math::avg($totalAge, $count);
     }
 
     public static function fpSolution()
@@ -88,6 +35,6 @@ class Ex3
 
         [$age, $count] = array_reduce(Customer::readCustomers(), $fn, [0, 0]);
 
-        return self::avg($age, $count);
+        return Math::avg($age, $count);
     }
 }
