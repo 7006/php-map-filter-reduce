@@ -2,17 +2,10 @@
 
 namespace Telema\GreenRoot;
 
-// перегруппировать методьІ
-// 1 статические
-// 2 конструктор
-// 3 просто гетерьІ - married, expense
-// 4 работают с age
-// 5 работают с purchased
-// 6 работают с комбинацей полей
 class Customer
 {
     const PATH = __DIR__ . '/customers.json';
-    
+
     private $customer;
 
     public static function readCustomers()
@@ -37,6 +30,16 @@ class Customer
         return $this->customer;
     }
 
+    public function married()
+    {
+        return $this->customer['married'];
+    }
+
+    public function expense()
+    {
+        return $this->customer['expense'];
+    }
+
     public function gtAge($age)
     {
         return $this->customer['age'] > $age;
@@ -45,6 +48,21 @@ class Customer
     public function ltAge($age)
     {
         return $this->customer['age'] < $age;
+    }
+
+     public function age()
+    {
+        return $this->customer['age'];
+    }
+
+    public function isPurchased($product)
+    {
+        return in_array($product, $this->customer['purchased']);
+    }
+
+    public function hasPurchased()
+    {
+        return count($this->customer['purchased']) > 0;
     }
 
     public function title()
@@ -70,30 +88,5 @@ class Customer
     public function fullName()
     {
         return $this->customer['f_name'] . ' ' . $this->customer['l_name'];
-    }
-
-    public function isPurchased($product)
-    {
-        return in_array($product, $this->customer['purchased']);
-    }
-
-    public function hasPurchased()
-    {
-        return count($this->customer['purchased']) > 0;
-    }
-
-    public function age()
-    {
-        return $this->customer['age'];
-    }
-
-    public function married()
-    {
-        return $this->customer['married'];
-    }
-
-    public function expense()
-    {
-        return $this->customer['expense'];
     }
 }
