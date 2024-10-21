@@ -2,7 +2,6 @@
 
 namespace Telema\GreenRoot;
 
-
 // перегруппировать методьІ
 // 1 статические
 // 2 конструктор
@@ -12,7 +11,21 @@ namespace Telema\GreenRoot;
 // 6 работают с комбинацей полей
 class Customer
 {
+    const PATH = __DIR__ . '/customers.json';
+    
     private $customer;
+
+    public static function readCustomers()
+    {
+        $customers = json_decode(file_get_contents(self::PATH), true);
+        return array_map(fn ($customer) => new Customer($customer), $customers);
+    }
+
+    public static function sortByAge($customers)
+    {
+        usort($customers, fn ($c1, $c2) => $c1->age() <=> $c2->age());
+        return $customers;
+    }
 
     public function __construct($customer)
     {
@@ -36,7 +49,6 @@ class Customer
 
     public function title()
     {
-        // заменить на array destruction
         $gender = $this->customer['gender'];
         $married = $this->customer['married'];
 
@@ -57,13 +69,7 @@ class Customer
 
     public function fullName()
     {
-        // заменить на array destruction
-        return $this->customer['title'] // <-- єто баг так как ключа title в оригинальном ассоц массиве нет 
-            . ' '                       // пусть метод fullName возращает сторку с  f_name и l_name
-                                        // а в коде класса Ex доплюсуешь $c->title() + $c->fullName()
-            . $this->customer['f_name']
-            . ' '
-            . $this->customer['l_name'];
+        return $this->customer['f_name'] . ' ' . $this->customer['l_name'];
     }
 
     public function isPurchased($product)
@@ -89,26 +95,5 @@ class Customer
     public function expense()
     {
         return $this->customer['expense'];
-    }
-
-    public static function readCustomers()
-    {
-        // сделать константу класса в которой лежит путь к файлу
-        $customers = json_decode(file_get_contents(__DIR__ . '/customers.json'), true);
-
-        // заменить на array_map
-        $customerObjects = [];
-
-        foreach ($customers as $customer) {
-            $customerObject = new Customer($customer);
-            $customerObjects[] = $customerObject;
-        }
-        return $customerObjects;
-    }
-
-    public static function sortByAge($customers)
-    {
-        usort($customers, fn ($c1, $c2) => $c1->age() <=> $c2->age());
-        return $customers;
     }
 }
