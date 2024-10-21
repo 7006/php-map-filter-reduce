@@ -50,14 +50,11 @@ class Ex5
 
     public static function fpSolution(array $items = ITEMS)
     {   
-        $fn = function ($accum, $item) {
-            [$min, $max] = $accum;
-            $newMin = $item['age'] < $min['age'] ? $item : $min;
-            $newMax = $item['age'] > $max['age'] ? $item : $max;
-            return [$newMin, $newMax];
-        };
-
-        return array_reduce($items, $fn, [$items[0], $items[0]]);
+        usort($items, fn ($i1, $i2) => $i1['age'] <=> $i2['age']);
+        return [
+            $items[0]['age'],
+            $items[count($items) - 1]['age'],
+            $items[count($items) - 1]['age'] - $items[0]['age']
+        ];
     }
-
 }
