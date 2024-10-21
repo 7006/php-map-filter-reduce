@@ -33,22 +33,31 @@ class Ex5
 {
     public static function solution(array $items = ITEMS)
     {
-        $youngest = $items[0]['age'];
-        $oldest = $items[0]['age'];
+        $min = $items[0]['age'];
+        $max = $items[0]['age'];
 
         foreach ($items as $item) {
-            if ($item['age'] < $youngest) {
-                $youngest = $item['age'];
+            if ($item['age'] < $min) {
+                $min = $item['age'];
             }
 
-            if ($item['age'] > $oldest) {
-                $oldest = $item['age'];
+            if ($item['age'] > $max) {
+                $max = $item['age'];
             }
         }
-        return [$youngest, $oldest, $oldest - $youngest];
+        return [$min, $max, $max - $min];
     }
 
     public static function fpSolution(array $items = ITEMS)
-    {
+    {   
+        $fn = function ($accum, $item) {
+            [$min, $max] = $accum;
+            $newMin = $item['age'] < $min['age'] ? $item : $min;
+            $newMax = $item['age'] > $max['age'] ? $item : $max;
+            return [$newMin, $newMax];
+        };
+
+        return array_reduce($items, $fn, [$items[0], $items[0]]);
     }
+
 }

@@ -16,7 +16,7 @@ class Router
             'fp/2' => Ex2::fpSolution(),
             'fp/3' => Ex3::fpSolution(),
             'fp/4' => Ex4::fpSolution(),
-            'fp/5' => Ex4::fpSolution(),
+            'fp/5' => Ex5::fpSolution(),
         };
     }
 }
