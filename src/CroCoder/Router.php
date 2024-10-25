@@ -1,6 +1,6 @@
 <?php
 
-namespace Telema\CroCoder;
+namespace Telema\Crocoder;
 
 class Router
 {
