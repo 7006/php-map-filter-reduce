@@ -12,6 +12,7 @@ $parts = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 
 if (method_exists($class, $method)) {
 	$returnValue = call_user_func([$class, $method]);
+	// $returnValue = $class::$method(...)();
 	printf('<pre>%s</pre>', print_r($returnValue, true));
 } else {
 	printf('Class %s and/or method %s not found', $class, $method);
