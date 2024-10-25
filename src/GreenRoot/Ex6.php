@@ -1,6 +1,6 @@
 <?php
 
-namespace Telema\GreenRoot;
+namespace Telema\Greenroot;
 
 class Ex6
 {
