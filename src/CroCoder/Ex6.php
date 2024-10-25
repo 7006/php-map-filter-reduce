@@ -1,6 +1,6 @@
 <?php
 
-namespace Telema\CroCoder;
+namespace Telema\Crocoder;
 
 const STRING = 'Every developer likes to mix kubernetes and javascript';
 

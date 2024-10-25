@@ -1,6 +1,6 @@
 <?php
 
-namespace Telema\CroCoder;
+namespace Telema\Crocoder;
 
 const ITEMS = 'George Raymond Richard Martin';
 
