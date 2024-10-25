@@ -2,21 +2,17 @@
 
 require_once './vendor/autoload.php';
 
-function go($prefix, $class) {
+$parts = explode('/', trim($_SERVER['PATH_INFO'], '/'));
 
-	$requestUri = $_SERVER['PATH_INFO'];
-	
-	if (str_starts_with($requestUri, $prefix)) {
-		$url = substr($requestUri, strlen($prefix));
-		$result = $class::go($url);
-		
-		echo '<pre>';
-		print_r($result);
-		echo '</pre>';
-	}
+[$class, $method] = match (count($parts)) {
+	2 => [sprintf('Telema\%s\Ex%s', ucfirst($parts[0]), $parts[1]), 'solution'],
+	3 => [sprintf('Telema\%s\Ex%s', ucfirst($parts[0]), $parts[2]), 'fpSolution'],
+	default => ['', '']
+};
+
+if (method_exists($class, $method)) {
+	$returnValue = call_user_func([$class, $method]);
+	printf('<pre>%s</pre>', print_r($returnValue, true));
+} else {
+	printf('Class %s and/or method %s not found', $class, $method);
 }
-
-go('/crocoder/', \Telema\Crocoder\Router::class);
-go('/svekis/', \Telema\Svekis\Router::class);
-go('/uncle/', \Telema\Uncle\Router::class);
-go('/greenroot/', \Telema\Greenroot\Router::class);
