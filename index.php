@@ -2,7 +2,7 @@
 
 require_once './vendor/autoload.php';
 
-$parts = explode('/', trim($_SERVER['PATH_INFO'], '/'));
+$parts = explode('/', trim($_SERVER['PATH_INFO'] ?? '', '/'));
 
 [$class, $method] = match (count($parts)) {
     2 => [sprintf('Telema\%s\Ex%s', ucfirst($parts[0]), $parts[1]), 'solution'],
