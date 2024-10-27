@@ -2,13 +2,13 @@
 
 namespace Telema\Svekis\Fp;
 
-const ITEMS = ['Apple', 'Banana', 'Cherry', 'Ananas'];
+use Telema\Svekis\Ex9 as BaseEx9;
 
-class Ex9
+class Ex9 extends BaseEx9
 {
-    public static function solution(array $fruits = ITEMS)
+    public static function solution()
     {
-        $lis = array_reduce($fruits, fn ($html, $f) => "$html<li>$f</li>", '');
+        $lis = array_reduce(self::ITEMS, fn ($html, $f) => "$html<li>$f</li>", '');
         return "<ul>$lis</ul>";
     }
 }

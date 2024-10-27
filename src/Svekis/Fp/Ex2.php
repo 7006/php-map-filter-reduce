@@ -2,12 +2,12 @@
 
 namespace Telema\Svekis\Fp;
 
-const ITEMS = ['london', 'manchester', 'liverpool', 'tbilisi'];
+use Telema\Svekis\Ex2 as BaseEx2;
 
 class Ex2
-{
-    public static function solution(array $cities = ITEMS)
+{   
+    public static function solution()
     {
-        return array_map(strtoupper(...), $cities);
+        return array_map(strtoupper(...), self::ITEMS);
     }
 }

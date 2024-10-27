@@ -4,12 +4,10 @@ namespace Telema\Svekis\Fp;
 
 use \Telema\Svekis\Ex7 as BaseEx7;
 
-const ITEMS = ['John Doe', 'Alice Smith', 'Bob Johnson', 'Donald Duck III'];
-
 class Ex7 extends BaseEx7
 {
-    public static function solution(array $names = ITEMS)
+    public static function solution()
     {
-        return array_map(self::initials(...), $names);
+        return array_map(self::initials(...), self::ITEMS);
     }   
 }

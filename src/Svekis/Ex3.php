@@ -2,7 +2,9 @@
 
 namespace Telema\Svekis;
 
-const ITEMS = [
+class Ex3
+{   
+    const ITEMS = [
         [
             'name' => 'Alice',
             'age' => 25
@@ -17,12 +19,10 @@ const ITEMS = [
         ]
     ];
 
-class Ex3
-{
-    public static function solution(array $students = ITEMS)
+    public static function solution()
     {
         $names = [];
-        foreach ($students as $student) {
+        foreach (self::ITEMS as $student) {
             $names[] = $student['name'];
         }
         return $names;

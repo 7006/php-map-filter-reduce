@@ -2,25 +2,12 @@
 
 namespace Telema\Svekis\Fp;
 
-const ITEMS = [
-        [
-            'name' => 'Alice',
-            'age' => 25
-        ],
-        [
-            'name' => 'Bob',
-            'age' => 30
-        ],
-        [
-            'name' => 'Charlie',
-            'age' => 22
-        ]
-    ];
+use Telema\Svekis\Ex3 as BaseEx3;
 
-class Ex3
+class Ex3 extends BaseEx3
 {
-    public static function solution(array $students = ITEMS)
+    public static function solution()
     {
-        return array_map(fn ($st) => $st['name'], $students);
+        return array_map(fn ($st) => $st['name'], self::ITEMS);
     }
 }

@@ -3,34 +3,12 @@
 namespace Telema\Svekis\Fp;
 
 use Telema\Rectangle;
+use Telema\Svekis\Ex6 as BaseEx6;
 
-const ITEMS = [
-        [
-            'width' => 15,
-            'height' => 5
-        ],
-        [
-            'width' => 4,
-            'height' => 8
-        ],
-        [
-            'width' => 10,
-            'height' => 2
-        ],
-        [
-            'width' => 2,
-            'height' => 6
-        ],
-        [
-            'width' => 1,
-            'height' => 1
-        ]
-    ];
-
-class Ex6
+class Ex6 extends BaseEx6
 {
-    public static function solution(array $rectangles = ITEMS)
+    public static function solution()
     {
-        return array_map(Rectangle::info(...), $rectangles);
+        return array_map(Rectangle::info(...), self::ITEMS);
     }
 }
