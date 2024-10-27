@@ -2,47 +2,13 @@
 
 namespace Telema\Svekis\Fp;
 
-use \Telema\Svekis\Rectangle;
+use Telema\Rectangle;
+use Telema\Svekis\Ex6 as BaseEx6;
 
-const ITEMS = [
-        [
-            'width' => 15,
-            'height' => 5
-        ],
-        [
-            'width' => 4,
-            'height' => 8
-        ],
-        [
-            'width' => 10,
-            'height' => 2
-        ],
-        [
-            'width' => 2,
-            'height' => 6
-        ],
-        [
-            'width' => 1,
-            'height' => 1
-        ]
-    ];
-
-class Ex6
+class Ex6 extends BaseEx6
 {
-    private static function info($rectangleArray)
+    public static function solution()
     {
-        $rectangleObject = Rectangle::createFromArray($rectangleArray);
-        $info = [
-            'area' => $rectangleObject->area(),
-            'perimeter' => $rectangleObject->perimeter(),
-            'long_or_short' => $rectangleObject->longOrShort(),
-            'favorite' => $rectangleObject->favorite()
-        ];
-        return $info;
-    }
-
-    public static function solution(array $rectangles = ITEMS)
-    {
-        return array_map(self::info(...), $rectangles);
+        return array_map(Rectangle::info(...), self::ITEMS);
     }
 }

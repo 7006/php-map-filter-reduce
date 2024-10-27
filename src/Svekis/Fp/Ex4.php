@@ -2,17 +2,12 @@
 
 namespace Telema\Svekis\Fp;
 
-const ITEMS = [25, 30, 15, 20];
+use Telema\Svekis\Ex4 as BaseEx4;
 
-class Ex4
+class Ex4 extends BaseEx4
 {
-    private static function celsiusToFahrenheit($temp)
+    public static function solution()
     {
-        return $temp * 9 / 5 + 32;
-    }
-
-    public static function solution(array $celsius = ITEMS)
-    {
-        return array_map(self::celsiusToFahrenheit(...), $celsius);
+        return array_map(self::celsiusToFahrenheit(...), self::ITEMS);
     }
 }

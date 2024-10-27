@@ -2,14 +2,14 @@
 
 namespace Telema\Crocoder;
 
-const ITEMS = [1, -4, 12, 0, -3, 29, -150];
-
 class Ex2
-{
-    public static function solution(array $numbers = ITEMS)
+{   
+    const ITEMS = [1, -4, 12, 0, -3, 29, -150];
+    
+    public static function solution()
     {
         $sum = 0;
-        foreach ($numbers as $number) {
+        foreach (self::ITEMS as $number) {
             if ($number > 0) {
                 $sum += $number;
             }

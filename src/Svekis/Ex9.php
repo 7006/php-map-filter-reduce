@@ -2,14 +2,14 @@
 
 namespace Telema\Svekis;
 
-const ITEMS = ['Apple', 'Banana', 'Cherry', 'Ananas'];
-
 class Ex9
-{
-    public static function solution(array $fruits = ITEMS)
+{   
+    const ITEMS = ['Apple', 'Banana', 'Cherry', 'Ananas'];
+
+    public static function solution()
     {
         $html = '<ul>' . "\n";
-        foreach ($fruits as $fruit) {
+        foreach (self::ITEMS as $fruit) {
             $html .= "\t" . '<li>' . $fruit . '</li>' . "\n";
         }
         $html .= '</ul>' . "\n";

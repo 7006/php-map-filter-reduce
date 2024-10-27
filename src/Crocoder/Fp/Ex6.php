@@ -2,22 +2,13 @@
 
 namespace Telema\Crocoder\Fp;
 
-const STRING = 'Every developer likes to mix kubernetes and javascript';
+use Telema\Crocoder\Ex6 as BaseEx6;
 
-class Ex6
+class Ex6 extends BaseEx6
 {
-    private static function numeronym(string $word)
+    public static function solution()
     {
-        $l = strlen($word);
-
-        return $l > 4
-            ? $word[0] . ($l - 2) . $word[$l - 1]
-            : $word;
-    }
-
-    public static function solution(string $string = STRING)
-    {
-        $words = explode(' ', $string);
+        $words = explode(' ', self::STRING);
 
         $numeronyms = array_map(self::numeronym(...), $words);
 

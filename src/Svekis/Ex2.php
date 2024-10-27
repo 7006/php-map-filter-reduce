@@ -2,14 +2,14 @@
 
 namespace Telema\Svekis;
 
-const ITEMS = ['london', 'manchester', 'liverpool', 'tbilisi'];
-
 class Ex2
-{
-    public static function solution(array $cities = ITEMS)
+{   
+    const ITEMS = ['london', 'manchester', 'liverpool', 'tbilisi'];
+
+    public static function solution()
     {
         $result = [];
-        foreach ($cities as $city) {
+        foreach (self::ITEMS as $city) {
             $result[] = strtoupper($city);
         }
 

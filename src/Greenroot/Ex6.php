@@ -2,6 +2,8 @@
 
 namespace Telema\Greenroot;
 
+use Telema\Customer;
+
 class Ex6
 {
     public static function solution()
@@ -15,13 +17,5 @@ class Ex6
         }
 
         return $noPurchase;
-    }
-
-    public static function fpSolution()
-    {
-        return array_filter(
-            Customer::readCustomers(),
-            fn ($c) => $c->hasPurchased()
-        );
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Telema\Greenroot;
 
+use Telema\Customer;
+
 class Ex7
 {
     public static function solution()
@@ -14,16 +16,5 @@ class Ex7
             }
         }
         return $expense;
-    }
-
-    public static function fpSolution()
-    {
-        return array_reduce(
-            Customer::readCustomers(),
-            fn ($expense, $c) => $c->married()
-                ? $expense + $c->expense()
-                : $expense,
-            0
-        );
     }
 }

@@ -2,37 +2,14 @@
 
 namespace Telema\Crocoder\Fp;
 
-const ITEMS = [
-    [
-        'name' => 'Vasiliy',
-        'age' => 34
-    ],
-    [
-        'name' => 'Jhon',
-        'age' => 13
-    ],
-    [
-        'name' => 'Mark',
-        'age' => 56
-    ],
-    [
-        'name' => 'Rachel',
-        'age' => 45
-    ],
-    [
-        'name' => 'Nate',
-        'age' => 67
-    ],
-    [
-        'name' => 'Jennifer',
-        'age' => 65
-    ]
-];
+use Telema\Crocoder\Ex5 as BaseEx5;
 
-class Ex5
+class Ex5 extends BaseEx5
 {
-    public static function solution(array $items = ITEMS)
-    {
+    public static function solution()
+    {   
+        $items = self::ITEMS;
+        
         usort($items, fn ($i1, $i2) => $i1['age'] <=> $i2['age']);
 
         $min = $items[0]['age'];

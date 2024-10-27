@@ -1,11 +1,22 @@
 <?php
 
-namespace Telema\Svekis;
+namespace Telema;
 
 class Rectangle
 {
     private $width;
     private $height;
+
+    public static function info($array)
+    {
+        $rectangle = self::createFromArray($array);
+        return [
+            'area' => $rectangle->area(),
+            'perimeter' => $rectangle->perimeter(),
+            'long_or_short' => $rectangle->longOrShort(),
+            'favorite' => $rectangle->favorite()
+        ];
+    }
 
     public static function createFromArray(array $rectangle)
     {

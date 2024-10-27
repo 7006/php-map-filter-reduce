@@ -2,15 +2,15 @@
 
 namespace Telema\Crocoder;
 
-const ITEMS = [12, 46, 32, 64];
-
 class Ex3
-{
-    public static function solution(array $numbers = ITEMS)
+{   
+    const ITEMS = [12, 46, 32, 64];
+
+    public static function solution()
     {
         return [
-            'mean' => self::mean($numbers),
-            'median' => self::median($numbers)
+            'mean' => self::mean(self::ITEMS),
+            'median' => self::median(self::ITEMS)
         ];
     }
 

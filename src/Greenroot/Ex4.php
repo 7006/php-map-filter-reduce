@@ -2,6 +2,8 @@
 
 namespace Telema\Greenroot;
 
+use Telema\Customer;
+
 class Ex4
 {
     public static function solution()
@@ -12,16 +14,5 @@ class Ex4
             }
         }
         return 'No';
-    }
-
-    public static function fpSolution()
-    {
-        $lt10 = array_reduce(
-            Customer::readCustomers(),
-            fn ($accum, $c) => $accum || $c->ltAge(10),
-            false
-        );
-
-        return $lt10 ? 'Yes' : 'No';
     }
 }

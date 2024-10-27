@@ -2,6 +2,8 @@
 
 namespace Telema\Greenroot;
 
+use Telema\Customer;
+
 class Ex1
 {
     public static function solution()
@@ -15,13 +17,5 @@ class Ex1
         }
 
         return $seniorCitizens;
-    }
-
-    public static function fpSolution()
-    {
-        return array_filter(
-            Customer::readCustomers(),
-            fn ($c) => $c->gtAge(60)
-        );
     }
 }

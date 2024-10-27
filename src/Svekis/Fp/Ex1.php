@@ -2,12 +2,12 @@
 
 namespace Telema\Svekis\Fp;
 
-const ITEMS = [3, 56, 23, 4, 1, 67, 5];
+use Telema\Svekis\Ex1 as BaseEx1;
 
-class Ex1
+class Ex1 extends BaseEx1
 {
-    public static function solution(array $numbers = ITEMS)
+    public static function solution()
     {
-        return array_map(fn ($n) => $n * 2, $numbers);
+        return array_map(fn ($n) => $n * 2, self::ITEMS);
     }
 }
