@@ -17,9 +17,4 @@ class Ex8
 
         return $newDates;
     }
-
-    public static function fpSolution(array $dates = ITEMS)
-    {
-        return array_map(Date::formatDate(...), $dates);
-    }
 }

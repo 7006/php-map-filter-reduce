@@ -1,6 +1,8 @@
 <?php
 
-namespace Telema\Svekis;
+namespace Telema\Svekis\Fp;
+
+use \Telema\Svekis\Rectangle;
 
 const ITEMS = [
         [
@@ -41,11 +43,6 @@ class Ex6
 
     public static function solution(array $rectangles = ITEMS)
     {
-        $infos = [];
-        foreach ($rectangles as $rectangleArray) {
-            $infos[] = self::info($rectangleArray);
-        }
-
-        return $infos;
+        return array_map(self::info(...), $rectangles);
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace Telema\Svekis;
+namespace Telema\Svekis\Fp;
 
 const ITEMS = ['John Doe', 'Alice Smith', 'Bob Johnson', 'Donald Duck III'];
 
 class Ex7
-{   
+{
     private static function initials(string $name)
     {
         [$firstName, $lastName] = explode(' ', $name, 2);
@@ -14,10 +14,6 @@ class Ex7
 
     public static function solution(array $names = ITEMS)
     {
-        $initials = [];
-        foreach ($names as $name) {
-            $initials[] = self::initials($name);
-        }
-        return $initials;
-    }    
+        return array_map(self::initials(...), $names);
+    }   
 }

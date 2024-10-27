@@ -16,10 +16,4 @@ class Ex9
 
         return $html;
     }
-
-    public static function fpSolution2(array $fruits = ITEMS)
-    {
-        $lis = array_reduce($fruits, fn ($html, $f) => "$html<li>$f</li>", '');
-        return "<ul>$lis</ul>";
-    }
 }

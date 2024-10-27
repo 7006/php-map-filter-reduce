@@ -14,9 +14,4 @@ class Ex1
         }
         return $result;
     }
-
-    public static function fpSolution(array $items = ITEMS)
-    {
-        return array_map(fn ($item) => $item ** 2, $items);
-    }
 }

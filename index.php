@@ -6,7 +6,7 @@ $parts = explode('/', trim($_SERVER['PATH_INFO'] ?? '', '/'));
 
 [$class, $method] = match (count($parts)) {
     2 => [sprintf('Telema\%s\Ex%s', ucfirst($parts[0]), $parts[1]), 'solution'],
-    3 => [sprintf('Telema\%s\Ex%s', ucfirst($parts[0]), $parts[2]), 'fpSolution'],
+    3 => [sprintf('Telema\%s\Fp\Ex%s', ucfirst($parts[0]), $parts[2]), 'solution'],
     default => ['', '']
 };
 
