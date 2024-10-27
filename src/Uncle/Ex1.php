@@ -2,7 +2,9 @@
 
 namespace Telema\Uncle;
 
-const ITEMS = [
+class Ex1
+{
+    const ITEMS = [
         ['food' => 'apple'],
         ['food' => 'carrot'],
         ['food' => 'beet'],
@@ -14,28 +16,7 @@ const ITEMS = [
         ['food' => 'nuts'],
     ];
 
-class Ex1
-{
-    public static function solution(array $fruits = ITEMS)
-    {
-        $result = [];
-        foreach ($fruits as $fruit) {
-            $fruit['color'] = Ex1::color($fruit['food']);
-            $result[] = $fruit;
-        }
-        return $result;
-    }
-
-    public static function fpSolution(array $fruits = ITEMS)
-    {
-        $fn = function ($fruit) {
-            $fruit['color'] = Ex1::color($fruit['food']);
-            return $fruit;
-        };
-        return array_map($fn, $fruits);
-    }
-
-    private static function color($food)
+    protected static function color($food)
     {
         $color = match ($food) {
             'apple' => 'yellow',
@@ -48,4 +29,14 @@ class Ex1
         };
         return $color;
     }
+
+    public static function solution(array $fruits = self::ITEMS)
+    {
+        $result = [];
+        foreach ($fruits as $fruit) {
+            $fruit['color'] = Ex1::color($fruit['food']);
+            $result[] = $fruit;
+        }
+        return $result;
+    }   
 }

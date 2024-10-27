@@ -4,30 +4,30 @@ namespace Telema\Uncle;
 
 use Telema\Date;
 
-const ITEMS = [
-    ['id' => 22, 'provider' => 'yolo', 'updated_at' => '2024-09-28'],
-    ['id' => 10, 'provider' => 'frob', 'updated_at' => '2024-10-01'],
-    ['id' => 34, 'provider' => 'yolo', 'updated_at' => '2024-09-28'],
-    ['id' => 43, 'provider' => 'boom', 'updated_at' => '2024-09-03'],
-    ['id' => 26, 'provider' => 'frob', 'updated_at' => '2024-09-02'],
-    ['id' => 34, 'provider' => 'boom', 'updated_at' => '2024-09-20'],
-    ['id' => 43, 'provider' => 'boom', 'updated_at' => '2024-09-03'],
-    ['id' => 26, 'provider' => 'frob', 'updated_at' => '2024-09-04']
-];
-
 class Ex3
-{
-    private static function provider()
+{   
+    const ITEMS = [
+        ['id' => 22, 'provider' => 'yolo', 'updated_at' => '2024-09-28'],
+        ['id' => 10, 'provider' => 'frob', 'updated_at' => '2024-10-01'],
+        ['id' => 34, 'provider' => 'yolo', 'updated_at' => '2024-09-28'],
+        ['id' => 43, 'provider' => 'boom', 'updated_at' => '2024-09-03'],
+        ['id' => 26, 'provider' => 'frob', 'updated_at' => '2024-09-02'],
+        ['id' => 34, 'provider' => 'boom', 'updated_at' => '2024-09-20'],
+        ['id' => 43, 'provider' => 'boom', 'updated_at' => '2024-09-03'],
+        ['id' => 26, 'provider' => 'frob', 'updated_at' => '2024-09-04']
+    ];
+
+    protected static function provider()
     {
         return empty($_GET['provider']) ? null : $_GET['provider'];
     }
 
-    private static function date()
+    protected static function date()
     {
         return empty($_GET['date']) ? null : $_GET['date'];
     }
 
-    private static function isMatches($item, $provider, $date)
+    protected static function isMatches($item, $provider, $date)
     {
         if ($provider && $date) {
             return $item['provider'] === $provider
@@ -42,7 +42,7 @@ class Ex3
         return false;
     }
 
-    public static function solution(array $items = ITEMS)
+    public static function solution(array $items = self::ITEMS)
     {
         $provider = self::provider();
         $date = self::date();
@@ -54,13 +54,5 @@ class Ex3
             }
         }
         return $result;
-    }
-
-    public static function fpSolution(array $items = ITEMS)
-    {
-        $provider = self::provider();
-        $date = self::date();
-
-        return array_filter($items, fn ($item) => self::isMatches($item, $provider, $date));
     }
 }
