@@ -2,7 +2,7 @@
 
 namespace Telema\Svekis\Fp;
 
-use \Telema\Svekis\Rectangle;
+use Telema\Rectangle;
 
 const ITEMS = [
         [
@@ -29,20 +29,8 @@ const ITEMS = [
 
 class Ex6
 {
-    private static function info($rectangleArray)
-    {
-        $rectangleObject = Rectangle::createFromArray($rectangleArray);
-        $info = [
-            'area' => $rectangleObject->area(),
-            'perimeter' => $rectangleObject->perimeter(),
-            'long_or_short' => $rectangleObject->longOrShort(),
-            'favorite' => $rectangleObject->favorite()
-        ];
-        return $info;
-    }
-
     public static function solution(array $rectangles = ITEMS)
     {
-        return array_map(self::info(...), $rectangles);
+        return array_map(Rectangle::info(...), $rectangles);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Telema\Svekis;
 
+use Telema\Rectangle;
+
 const ITEMS = [
         [
             'width' => 15,
@@ -27,23 +29,11 @@ const ITEMS = [
 
 class Ex6
 {
-    private static function info($rectangleArray)
-    {
-        $rectangleObject = Rectangle::createFromArray($rectangleArray);
-        $info = [
-            'area' => $rectangleObject->area(),
-            'perimeter' => $rectangleObject->perimeter(),
-            'long_or_short' => $rectangleObject->longOrShort(),
-            'favorite' => $rectangleObject->favorite()
-        ];
-        return $info;
-    }
-
     public static function solution(array $rectangles = ITEMS)
     {
         $infos = [];
         foreach ($rectangles as $rectangleArray) {
-            $infos[] = self::info($rectangleArray);
+            $infos[] = Rectangle::info($rectangleArray);
         }
 
         return $infos;
