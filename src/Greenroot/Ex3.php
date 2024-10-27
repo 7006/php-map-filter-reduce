@@ -2,6 +2,7 @@
 
 namespace Telema\Greenroot;
 
+use Telema\Customer;
 use Telema\Math;
 
 class Ex3
@@ -19,24 +20,5 @@ class Ex3
         }
 
         return Math::avg($totalAge, $count);
-    }
-
-    public static function fpSolution()
-    {
-
-        $fn = function ($accum, $c) {
-            [$age, $count] = $accum;
-
-            if ($c->isPurchased('Book')) {
-                $age += $c->age();
-                $count += 1;
-            }
-
-            return [$age, $count];
-        };
-
-        [$age, $count] = array_reduce(Customer::readCustomers(), $fn, [0, 0]);
-
-        return Math::avg($age, $count);
     }
 }

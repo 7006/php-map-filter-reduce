@@ -2,6 +2,8 @@
 
 namespace Telema\Greenroot;
 
+use Telema\Customer;
+
 class Ex5
 {
     public static function solution()
@@ -11,13 +13,5 @@ class Ex5
                 return $customer;
             }
         }
-    }
-
-    public static function fpSolution()
-    {
-        $customers = Customer::readCustomers();
-        [$youngest] = Customer::sortByAge($customers);
-
-        return $youngest;
     }
 }

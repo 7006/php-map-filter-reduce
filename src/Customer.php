@@ -1,6 +1,6 @@
 <?php
 
-namespace Telema\Greenroot;
+namespace Telema;
 
 class Customer
 {
@@ -18,6 +18,14 @@ class Customer
     {
         usort($customers, fn ($c1, $c2) => $c1->age() <=> $c2->age());
         return $customers;
+    }
+
+    public static function addTitleFullname($customer)
+    {
+        return $customer->toArray() +
+            [
+                'title_full_name' => $customer->title() . ' ' . $customer->fullName()
+            ];
     }
 
     public function __construct($customer)
