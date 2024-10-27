@@ -1,6 +1,6 @@
 <?php
 
-namespace Telema\Crocoder;
+namespace Telema\Crocoder\Fp;
 
 const STRING = 'Every developer likes to mix kubernetes and javascript';
 
@@ -17,12 +17,9 @@ class Ex6
 
     public static function solution(string $string = STRING)
     {
-        $numeronyms = [];
         $words = explode(' ', $string);
 
-        foreach ($words as $word) {
-            $numeronyms[] = self::numeronym($word);
-        }
+        $numeronyms = array_map(self::numeronym(...), $words);
 
         return implode(' ', $numeronyms);
     }

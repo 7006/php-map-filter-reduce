@@ -16,9 +16,4 @@ class Ex2
         }
         return $sum;
     }
-
-    public static function fpSolution(array $numbers = ITEMS)
-    {
-        return array_reduce($numbers, fn ($sum, $n) => $n > 0 ? $sum + $n : $sum, 0);
-    }
 }

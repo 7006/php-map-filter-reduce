@@ -47,9 +47,4 @@ class Ex3
             return $numbers[($count - 1) / 2];
         }
     }
-
-    public static function fpSolution()
-    {
-
-    }
 }

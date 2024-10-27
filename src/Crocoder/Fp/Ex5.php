@@ -1,6 +1,6 @@
 <?php
 
-namespace Telema\Crocoder;
+namespace Telema\Crocoder\Fp;
 
 const ITEMS = [
     [
@@ -33,18 +33,11 @@ class Ex5
 {
     public static function solution(array $items = ITEMS)
     {
+        usort($items, fn ($i1, $i2) => $i1['age'] <=> $i2['age']);
+
         $min = $items[0]['age'];
-        $max = $items[0]['age'];
+        $max = $items[count($items) - 1]['age'];
 
-        foreach ($items as $item) {
-            if ($item['age'] < $min) {
-                $min = $item['age'];
-            }
-
-            if ($item['age'] > $max) {
-                $max = $item['age'];
-            }
-        }
         return [$min, $max, $max - $min];
     }
 }
