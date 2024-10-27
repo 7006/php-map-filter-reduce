@@ -2,10 +2,10 @@
 
 namespace Telema\Crocoder;
 
-const STRING = 'Every developer likes to mix kubernetes and javascript';
-
 class Ex6
-{
+{   
+    const STRING = 'Every developer likes to mix kubernetes and javascript';
+
     protected static function numeronym(string $word)
     {
         $l = strlen($word);
@@ -15,10 +15,10 @@ class Ex6
             : $word;
     }
 
-    public static function solution(string $string = STRING)
+    public static function solution()
     {
         $numeronyms = [];
-        $words = explode(' ', $string);
+        $words = explode(' ', self::STRING);
 
         foreach ($words as $word) {
             $numeronyms[] = self::numeronym($word);

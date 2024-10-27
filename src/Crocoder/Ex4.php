@@ -2,13 +2,13 @@
 
 namespace Telema\Crocoder;
 
-const ITEMS = 'George Raymond Richard Martin';
-
 class Ex4
-{
-    public static function solution(string $nameString = ITEMS)
+{   
+    const ITEMS = 'George Raymond Richard Martin';
+
+    public static function solution()
     {
-        $names = explode(' ', $nameString);
+        $names = explode(' ', self::ITEMS);
 
         $initials = [];
         foreach ($names as $name) {
