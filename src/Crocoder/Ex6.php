@@ -6,7 +6,7 @@ const STRING = 'Every developer likes to mix kubernetes and javascript';
 
 class Ex6
 {
-    private static function numeronym(string $word)
+    protected static function numeronym(string $word)
     {
         $l = strlen($word);
 
