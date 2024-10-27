@@ -1,6 +1,6 @@
 <?php
 
-namespace Telema\Svekis;
+namespace Telema\Svekis\Fp;
 
 const ITEMS = [
         [
@@ -21,10 +21,6 @@ class Ex3
 {
     public static function solution(array $students = ITEMS)
     {
-        $names = [];
-        foreach ($students as $student) {
-            $names[] = $student['name'];
-        }
-        return $names;
+        return array_map(fn ($st) => $st['name'], $students);
     }
 }

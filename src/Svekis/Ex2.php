@@ -15,9 +15,4 @@ class Ex2
 
         return $result;
     }
-
-    public static function fpSolution(array $cities = ITEMS)
-    {
-        return array_map(strtoupper(...), $cities);
-    }
 }

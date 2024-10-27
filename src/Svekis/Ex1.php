@@ -14,9 +14,4 @@ class Ex1
         }
         return $doubledNumbers;
     }
-
-    public static function fpSolution(array $numbers = ITEMS)
-    {
-        return array_map(fn ($n) => $n * 2, $numbers);
-    }
 }
