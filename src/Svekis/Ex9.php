@@ -3,8 +3,8 @@
 namespace Telema\Svekis;
 
 class Ex9
-{   
-    const ITEMS = ['Apple', 'Banana', 'Cherry', 'Ananas'];
+{
+    public const ITEMS = ['Apple', 'Banana', 'Cherry', 'Ananas'];
 
     public static function solution()
     {

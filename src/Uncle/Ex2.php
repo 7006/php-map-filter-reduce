@@ -4,7 +4,7 @@ namespace Telema\Uncle;
 
 class Ex2
 {
-    const ITEMS = [
+    public const ITEMS = [
         ['status' => 'success', 'id' => 99],
         ['status' => 'success', 'id' => 53],
         ['status' => 'error',   'id' => 17],

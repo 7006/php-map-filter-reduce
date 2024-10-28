@@ -3,8 +3,8 @@
 namespace Telema\Uncle;
 
 class Ex4
-{   
-    const PROVIDERS = [
+{
+    public const PROVIDERS = [
         ['id' => 22, 'name' => 'yolo'],
         ['id' => 10, 'name' => 'frob'],
         ['id' => 34, 'name' => 'yolo'],
@@ -15,7 +15,7 @@ class Ex4
         ['id' => 26, 'name' => 'frob']
     ];
 
-    const PROVIDER_RATINGS = [
+    public const PROVIDER_RATINGS = [
         ['name' => 'yolo', 'rating' => 0.7],
         ['name' => 'frob', 'rating' => 0.2],
         ['name' => 'boom', 'rating' => 0.5]

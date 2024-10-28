@@ -3,8 +3,8 @@
 namespace Telema\Crocoder;
 
 class Ex3
-{   
-    const ITEMS = [12, 46, 32, 64];
+{
+    public const ITEMS = [12, 46, 32, 64];
 
     public static function solution()
     {

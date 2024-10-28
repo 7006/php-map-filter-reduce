@@ -3,8 +3,8 @@
 namespace Telema\Svekis;
 
 class Ex2
-{   
-    const ITEMS = ['london', 'manchester', 'liverpool', 'tbilisi'];
+{
+    public const ITEMS = ['london', 'manchester', 'liverpool', 'tbilisi'];
 
     public static function solution()
     {

@@ -3,8 +3,8 @@
 namespace Telema\Svekis;
 
 class Ex3
-{   
-    const ITEMS = [
+{
+    public const ITEMS = [
         [
             'name' => 'Alice',
             'age' => 25

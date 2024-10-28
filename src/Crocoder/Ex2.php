@@ -3,9 +3,9 @@
 namespace Telema\Crocoder;
 
 class Ex2
-{   
-    const ITEMS = [1, -4, 12, 0, -3, 29, -150];
-    
+{
+    public const ITEMS = [1, -4, 12, 0, -3, 29, -150];
+
     public static function solution()
     {
         $sum = 0;

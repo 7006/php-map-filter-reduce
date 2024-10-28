@@ -4,7 +4,7 @@ namespace Telema\Uncle;
 
 class Ex1
 {
-    const ITEMS = [
+    public const ITEMS = [
         ['food' => 'apple'],
         ['food' => 'carrot'],
         ['food' => 'beet'],
@@ -38,5 +38,5 @@ class Ex1
             $result[] = $fruit;
         }
         return $result;
-    }   
+    }
 }

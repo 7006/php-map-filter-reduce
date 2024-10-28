@@ -4,7 +4,7 @@ namespace Telema\Crocoder;
 
 class Ex5
 {
-    const ITEMS = [
+    public const ITEMS = [
         [
             'name' => 'Vasiliy',
             'age' => 34
@@ -32,8 +32,8 @@ class Ex5
     ];
 
     public static function solution()
-    {   
-        $items = self:: ITEMS;
+    {
+        $items = self::ITEMS;
         $min = $items[0]['age'];
         $max = $items[0]['age'];
 

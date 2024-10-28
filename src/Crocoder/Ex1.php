@@ -3,9 +3,9 @@
 namespace Telema\Crocoder;
 
 class Ex1
-{   
-    const ITEMS = [1, 2, 3, 4, 5];
-    
+{
+    public const ITEMS = [1, 2, 3, 4, 5];
+
     public static function solution()
     {
         $result = [];

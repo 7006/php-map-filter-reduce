@@ -3,8 +3,8 @@
 namespace Telema\Svekis;
 
 class Ex1
-{  
-    const ITEMS = [3, 56, 23, 4, 1, 67, 5];
+{
+    public const ITEMS = [3, 56, 23, 4, 1, 67, 5];
 
     public static function solution()
     {

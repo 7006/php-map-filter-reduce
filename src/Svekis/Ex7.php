@@ -3,8 +3,8 @@
 namespace Telema\Svekis;
 
 class Ex7
-{    
-    const ITEMS = ['John Doe', 'Alice Smith', 'Bob Johnson', 'Donald Duck III'];
+{
+    public const ITEMS = ['John Doe', 'Alice Smith', 'Bob Johnson', 'Donald Duck III'];
 
     protected static function initials(string $name)
     {
@@ -19,5 +19,5 @@ class Ex7
             $initials[] = self::initials($name);
         }
         return $initials;
-    }    
+    }
 }

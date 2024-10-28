@@ -3,8 +3,8 @@
 namespace Telema\Svekis;
 
 class Ex4
-{   
-    const ITEMS = [25, 30, 15, 20];
+{
+    public const ITEMS = [25, 30, 15, 20];
 
     protected static function celsiusToFahrenheit($temp)
     {

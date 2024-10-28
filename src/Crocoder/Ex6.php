@@ -3,8 +3,8 @@
 namespace Telema\Crocoder;
 
 class Ex6
-{   
-    const STRING = 'Every developer likes to mix kubernetes and javascript';
+{
+    public const STRING = 'Every developer likes to mix kubernetes and javascript';
 
     protected static function numeronym(string $word)
     {

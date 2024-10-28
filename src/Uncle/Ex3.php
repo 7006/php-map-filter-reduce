@@ -5,8 +5,8 @@ namespace Telema\Uncle;
 use Telema\Date;
 
 class Ex3
-{   
-    const ITEMS = [
+{
+    public const ITEMS = [
         ['id' => 22, 'provider' => 'yolo', 'updated_at' => '2024-09-28'],
         ['id' => 10, 'provider' => 'frob', 'updated_at' => '2024-10-01'],
         ['id' => 34, 'provider' => 'yolo', 'updated_at' => '2024-09-28'],

@@ -2,12 +2,12 @@
 
 namespace Telema\Svekis\Fp;
 
-use \Telema\Svekis\Ex7 as BaseEx7;
+use Telema\Svekis\Ex7 as BaseEx7;
 
 class Ex7 extends BaseEx7
 {
     public static function solution()
     {
         return array_map(self::initials(...), self::ITEMS);
-    }   
+    }
 }

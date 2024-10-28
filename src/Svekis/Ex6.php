@@ -5,8 +5,8 @@ namespace Telema\Svekis;
 use Telema\Rectangle;
 
 class Ex6
-{   
-    const ITEMS = [
+{
+    public const ITEMS = [
         [
             'width' => 15,
             'height' => 5
