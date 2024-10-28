@@ -26,7 +26,7 @@ class Ex4
         return empty($_GET['rating']) ? null : $_GET['rating'];
     }
 
-    public static function solution()
+    public function __invoke()
     {
         $result = [];
 

@@ -6,7 +6,7 @@ class Ex3
 {
     public const ITEMS = [12, 46, 32, 64];
 
-    public static function solution()
+    public function __invoke()
     {
         return [
             'mean' => self::mean(self::ITEMS),

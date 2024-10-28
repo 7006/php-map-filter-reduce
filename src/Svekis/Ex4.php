@@ -11,7 +11,7 @@ class Ex4
         return $temp * 9 / 5 + 32;
     }
 
-    public static function solution()
+    public function __invoke()
     {
         $fahrenheits = [];
         foreach (self::ITEMS as $temp) {

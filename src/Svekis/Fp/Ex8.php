@@ -7,7 +7,7 @@ use Telema\Svekis\Ex8 as BaseEx8;
 
 class Ex8 extends BaseEx8
 {
-    public static function solution()
+    public function __invoke()
     {
         return array_map(Date::formatDate(...), self::ITEMS);
     }

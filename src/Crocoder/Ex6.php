@@ -15,7 +15,7 @@ class Ex6
             : $word;
     }
 
-    public static function solution()
+    public function __invoke()
     {
         $numeronyms = [];
         $words = explode(' ', self::STRING);

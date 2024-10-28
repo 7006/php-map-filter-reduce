@@ -12,7 +12,7 @@ class Ex7
         return $firstName[0] . $lastName[0];
     }
 
-    public static function solution()
+    public function __invoke()
     {
         $initials = [];
         foreach (self::ITEMS as $name) {

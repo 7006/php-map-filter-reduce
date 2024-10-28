@@ -29,7 +29,7 @@ class Ex6
         ]
     ];
 
-    public static function solution()
+    public function __invoke()
     {
         $infos = [];
         foreach (self::ITEMS as $rectangleArray) {

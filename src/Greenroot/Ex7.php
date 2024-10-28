@@ -6,7 +6,7 @@ use Telema\Customer;
 
 class Ex7
 {
-    public static function solution()
+    public function __invoke()
     {
         $expense = 0;
 

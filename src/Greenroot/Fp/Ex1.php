@@ -6,7 +6,7 @@ use Telema\Customer;
 
 class Ex1
 {
-    public static function solution()
+    public function __invoke()
     {
         return array_filter(
             Customer::readCustomers(),

@@ -6,7 +6,7 @@ class Ex1
 {
     public const ITEMS = [3, 56, 23, 4, 1, 67, 5];
 
-    public static function solution()
+    public function __invoke()
     {
         $doubledNumbers = [];
         foreach (self::ITEMS as $number) {

@@ -31,7 +31,7 @@ class Ex5
         ]
     ];
 
-    public static function solution()
+    public function __invoke()
     {
         $items = self::ITEMS;
         $min = $items[0]['age'];

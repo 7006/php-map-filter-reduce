@@ -6,7 +6,7 @@ use Telema\Svekis\Ex2 as BaseEx2;
 
 class Ex2
 {
-    public static function solution()
+    public function __invoke()
     {
         return array_map(strtoupper(...), self::ITEMS);
     }

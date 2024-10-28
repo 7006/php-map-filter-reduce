@@ -7,7 +7,7 @@ use Telema\Math;
 
 class Ex3
 {
-    public static function solution()
+    public function __invoke()
     {
         $totalAge = 0;
         $count = 0;

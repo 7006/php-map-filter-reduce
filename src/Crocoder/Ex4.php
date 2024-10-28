@@ -6,7 +6,7 @@ class Ex4
 {
     public const ITEMS = 'George Raymond Richard Martin';
 
-    public static function solution()
+    public function __invoke()
     {
         $names = explode(' ', self::ITEMS);
 

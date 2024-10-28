@@ -6,7 +6,7 @@ use Telema\Crocoder\Ex5 as BaseEx5;
 
 class Ex5 extends BaseEx5
 {
-    public static function solution()
+    public function __invoke()
     {
         $items = self::ITEMS;
 

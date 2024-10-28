@@ -6,7 +6,7 @@ use Telema\Customer;
 
 class Ex4
 {
-    public static function solution()
+    public function __invoke()
     {
         foreach (Customer::readCustomers() as $customer) {
             if ($customer->ltAge(10)) {

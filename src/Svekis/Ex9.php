@@ -6,7 +6,7 @@ class Ex9
 {
     public const ITEMS = ['Apple', 'Banana', 'Cherry', 'Ananas'];
 
-    public static function solution()
+    public function __invoke()
     {
         $html = '<ul>' . "\n";
         foreach (self::ITEMS as $fruit) {

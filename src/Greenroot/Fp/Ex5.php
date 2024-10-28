@@ -6,7 +6,7 @@ use Telema\Customer;
 
 class Ex5
 {
-    public static function solution()
+    public function __invoke()
     {
         $customers = Customer::readCustomers();
         [$youngest] = Customer::sortByAge($customers);

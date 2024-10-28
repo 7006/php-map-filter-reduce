@@ -19,7 +19,7 @@ class Ex3
         ]
     ];
 
-    public static function solution()
+    public function __invoke()
     {
         $names = [];
         foreach (self::ITEMS as $student) {

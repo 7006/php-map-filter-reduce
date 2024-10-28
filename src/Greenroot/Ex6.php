@@ -6,7 +6,7 @@ use Telema\Customer;
 
 class Ex6
 {
-    public static function solution()
+    public function __invoke()
     {
         $noPurchase = [];
 

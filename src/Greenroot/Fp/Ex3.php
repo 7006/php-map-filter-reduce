@@ -7,7 +7,7 @@ use Telema\Math;
 
 class Ex3
 {
-    public static function solution()
+    public function __invoke()
     {
 
         $fn = function ($accum, $c) {
