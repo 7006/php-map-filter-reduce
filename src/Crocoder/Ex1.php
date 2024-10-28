@@ -6,7 +6,7 @@ class Ex1
 {
     public const ITEMS = [1, 2, 3, 4, 5];
 
-    public static function solution()
+    public function __invoke()
     {
         $result = [];
         foreach (self::ITEMS as $item) {
