@@ -10,7 +10,7 @@ class Ex8
 		['d', 'a', 'g'],
 	];
 
-	static function fn($result, $item) {
+	public function fn($result, $item) {
 		if (!array_key_exists($item, $result)) {
 			$result[$item] = 1;
 		} else {
@@ -22,8 +22,9 @@ class Ex8
 	public function __invoke() {
 		$result = [];
 
+
 		foreach (array_merge(...self::ITEMS) as $item) {
-			$result = self::fn($result, $item);
+			$result = $this->fn($result, $item);
 		}
 
 		return $result;
