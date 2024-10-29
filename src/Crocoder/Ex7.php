@@ -9,7 +9,7 @@ class Ex7
 	public function __invoke() {
 		$factorial = 1;
 
-		foreach (range(1, self::NUMBER, 1) as $number) {
+		foreach (range(1, self::NUMBER) as $number) {
 			$factorial *= $number;
 		}
 		return $factorial;
