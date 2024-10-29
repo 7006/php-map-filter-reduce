@@ -10,7 +10,7 @@ class Ex8
 		['d', 'a', 'g'],
 	];
 
-	public function fn($result, $item) {
+	protected function frequency($result, $item) {
 		if (!array_key_exists($item, $result)) {
 			$result[$item] = 1;
 		} else {
@@ -22,9 +22,8 @@ class Ex8
 	public function __invoke() {
 		$result = [];
 
-
 		foreach (array_merge(...self::ITEMS) as $item) {
-			$result = $this->fn($result, $item);
+			$result = $this->frequency($result, $item);
 		}
 
 		return $result;
