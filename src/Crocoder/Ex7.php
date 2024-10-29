@@ -4,7 +4,7 @@ namespace Telema\Crocoder;
 
 class Ex7
 {
-	public const NUMBER = 7;
+	public const NUMBER = 6;
 
 	public function __invoke() {
 		$factorial = 1;
@@ -14,15 +14,4 @@ class Ex7
 		}
 		return $factorial;
 	}
-
-	// public function __invoke() {
-	// 	$factorial = 1;
-	// 	$number = 1;
-
-	// 	while ($number <= self::NUMBER) {
-	// 		$factorial *= $number;
-	// 		$number++;
-	// 	}
-	// 	return $factorial;
-	// }
 }
