@@ -14,4 +14,15 @@ class Ex7
 		}
 		return $factorial;
 	}
+
+	// public function __invoke() {
+	// 	$factorial = 1;
+	// 	$number = 1;
+
+	// 	while ($number <= self::NUMBER) {
+	// 		$factorial *= $number;
+	// 		$number++;
+	// 	}
+	// 	return $factorial;
+	// }
 }
