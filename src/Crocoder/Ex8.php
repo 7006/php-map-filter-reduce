@@ -10,20 +10,20 @@ class Ex8
 		['d', 'a', 'g'],
 	];
 
+	static function fn($result, $item) {
+		if (!array_key_exists($item, $result)) {
+			$result[$item] = 1;
+		} else {
+			$result[$item] += 1;
+		}
+		return $result;
+	}
+
 	public function __invoke() {
-		
 		$result = [];
 
-		echo '<pre>';
-		print_r(self::ITEMS);
-		echo '</pre>';		
-		
 		foreach (array_merge(...self::ITEMS) as $item) {
-			if (!array_key_exists($item, $result)) {
-				$result[$item] = 1;
-			} else {
-			$result[$item] += 1;
-			}
+			$result = self::fn($result, $item);
 		}
 
 		return $result;
