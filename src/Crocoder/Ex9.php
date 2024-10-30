@@ -25,7 +25,7 @@ class Ex9
 		],
 	];
 
-	public const AVARAGE_SCORE = 90;
+	public const AVERAGE_SCORE = 90;
 
 	public function __invoke() {
 		$result = [];
@@ -36,7 +36,7 @@ class Ex9
 			$count = count($item['scores']);
 			$avg = Math::avg($sum, $count);
 			
-			if ($avg > self::AVARAGE_SCORE) {
+			if ($avg > self::AVEAGE_SCORE) {
 				$result[] = [
 					'name' => $item['name'],
 					'average' => $avg
