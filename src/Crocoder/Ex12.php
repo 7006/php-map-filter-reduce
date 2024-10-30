@@ -4,7 +4,7 @@ namespace Telema\Crocoder;
 
 class Ex12
 {
-    public const ITEMS = [
+    public $items = [
         ['a', 'b', 'c'],
         [
             ['c', 'd'],
@@ -36,13 +36,15 @@ class Ex12
     {
         $freq = [];
 
-        $fn = function ($item, $index) { // <-- вот тут нужно передать $freq внутрь колбека погугли как єто делается
-
-            // внутри колбека вести подсчет частотьІ
-            var_dump($item, $index);
+        $fn = function ($item, $index) use (& $freq) { 
+            if (isset($freq[$item])) {
+                $freq[$item] += 1;
+            } else {
+                $freq[$item] = 1;
+            }
         };
 
-        array_walk_recursive(self::ITEMS, $fn);
+        array_walk_recursive($this->items, $fn);
 
         return $freq;
     }
