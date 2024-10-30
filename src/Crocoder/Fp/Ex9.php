@@ -9,17 +9,16 @@ class Ex9 extends BaseEx9
 {	
 	public function __invoke() {
 
-		$items = array_filter(
-			self::ITEMS,
-			fn($item) => $this->avgScore($item) > self::AVERAGE_SCORE
-		);
+		$fn = function ($result, $item) {
+			if ($this->avgScore($item) > self::AVERAGE_SCORE) {
+				$result[] = [
+					'name' => $item['name'],
+					'average' => $this->avgScore($item)
+				];
+				return $result;
+			}
+		};
 
-		return array_map(
-			fn ($item) => [
-				'name' => $item['name'],
-				'average' => array_sum($item['scores'])	
-			],
-		 	array_values($items)
-		);
+		return array_reduce(self::ITEMS, $fn, []);
 	}
 }
