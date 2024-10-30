@@ -2,7 +2,7 @@
 
 namespace Telema\Crocoder;
 
-class Ex81
+class Ex12
 {
     public const ITEMS = [
         ['a', 'b', 'c'],
@@ -32,19 +32,18 @@ class Ex81
         ['d', 'a', 'g']
     ];
 
-    private $result = [];
-
-    public function __invoke($item, $_)
+    public function __invoke()
     {
-        if (isset($this->result[$item])) {
-            $this->result[$item] += 1;
-        } else {
-            $this->result[$item] = 1;
-        }
-        return $this->result;
+        $freq = [];
+
+        $fn = function ($item, $index) { // <-- вот тут нужно передать $freq внутрь колбека погугли как єто делается
+
+            // внутри колбека вести подсчет частотьІ
+            var_dump($item, $index);
+        };
+
+        array_walk_recursive(self::ITEMS, $fn);
+
+        return $freq;
     }
 }
-
-$items = Ex81::ITEMS;
-$frequency = new Ex81();
-array_walk_recursive($items, $frequency($item, $_));
