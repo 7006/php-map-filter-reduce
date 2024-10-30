@@ -9,6 +9,10 @@ class Ex9 extends BaseEx9
 {	
 	public function __invoke() {
 
+		$sum = array_sum($item['scores']);
+		$count = count($item['scores']);
+		$avg = Math::avg($sum, $count);
+
 		$items = array_filter(
 			self::ITEMS,
 			fn($item) => Math::avg(array_sum($item['scores']), count($item['scores'])) > self::AVERAGE_SCORE
