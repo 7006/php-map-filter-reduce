@@ -29,12 +29,21 @@ class Ex81 {
         		'f'
         	],
         ],
-        ['d', 'a', 'g'],
+        ['d', 'a', 'g']
     ];
+  
+	private $result = [];
 
-    public function __invoke() {
-    	return self::ITEMS;
-    }
-
-    // array_walk_recursive(input, funcname);
+	public function __invoke($item, $_) {
+    	if (isset($this->result[$item])) {
+            $this->result[$item] += 1;
+        } else {
+            $this->result[$item] = 1;
+        }
+        return $this->result;    	
+ }
 }
+
+$items = Ex81::ITEMS;
+$frequency = new Ex81();
+array_walk_recursive($items, $frequency($item, $_));
