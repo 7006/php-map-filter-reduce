@@ -11,7 +11,7 @@ class Ex9 extends BaseEx9
 
 		$items = array_filter(
 			self::ITEMS,
-			fn($item) => self::avgScore($item) > self::AVERAGE_SCORE
+			fn($item) => $this->avgScore($item) > self::AVERAGE_SCORE
 		);
 
 		return array_map(
