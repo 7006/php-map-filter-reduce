@@ -11,12 +11,12 @@ class Ex9 extends BaseEx9
 
 		$fn = function ($item) {
 			$item['scores'] = array_sum($item['scores']);
-			return $item;
+			return array_combine(['name', 'avarage'], $item);
 		};
 		
 		return array_filter(
 			array_map($fn, self::ITEMS),
-			fn($item) => Math::avg($item['scores'], 3) > 90
+			fn($item) => Math::avg($item['avarage'], 3) > 90
 		);
 	}
 }
