@@ -30,11 +30,13 @@ class Ex9
 
 		foreach (self::ITEMS as $item) {
 			$avg = Math::avg(array_sum($item['scores']), 3);
+			
 			if ($avg > 90) {
 				$item['scores'] = $avg;
-				$result[] = $item;	
+				$result[] = array_combine(['name', 'avarage'], $item);	
 			} 
 		}
+		
 		return $result;
 	}
 }
