@@ -27,7 +27,7 @@ class Ex9
 
 	public const AVERAGE_SCORE = 90;
 
-	protected static function avgScore($item) {
+	protected function avgScore($item) {
 		$sum = array_sum($item['scores']);
 		$count = count($item['scores']);
 		return Math::avg($sum, $count);
@@ -37,7 +37,7 @@ class Ex9
 		$result = [];
 			
 		foreach (self::ITEMS as $item) {
-			$avg = self::avgScore($item);
+			$avg = $this->avgScore($item);
 
 			if ($avg > self::AVERAGE_SCORE) {
 				$result[] = [
