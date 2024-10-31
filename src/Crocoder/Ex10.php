@@ -51,14 +51,37 @@ class Ex10
 
 	public const PRICE_LEVEL = 50;
 
+	// public function __invoke() {
+	// 	$result = [];		
+	// 	$categories = [];
+		
+	// 	foreach (self::PRODUCTS as $product) {
+	// 		$categories[$product['category']]['sum'] += $product['price'];
+	// 		$categories[$product['category']]['count']++;
+	// 	}
+
+	// 	foreach ($categories as $category=>$avgParams) {
+	// 		$result['category'] = $category;
+	// 		$result['average'] = Math::avg($avgParams['sum'], $avgParams['count']);
+			
+	// 		if ($result['average'] > self::PRICE_LEVEL) {
+	// 			$highPricedCategories[] = $result;	
+	// 		}
+	// 	}
+	// 	return $highPricedCategories;
+	// }
+
 	public function __invoke() {
 		$result = [];		
 		$categories = [];
 		
 		foreach (self::PRODUCTS as $product) {
-			$categories[$product['category']]['sum'] += $product['price'];
-			$categories[$product['category']]['count']++;
+			$categories[$product['category']][] = $product;
 		}
+
+		echo '<pre>';
+		print_r($categories);
+		echo '</pre>';
 
 		foreach ($categories as $category=>$avgParams) {
 			$result['category'] = $category;
