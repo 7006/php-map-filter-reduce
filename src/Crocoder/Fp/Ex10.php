@@ -25,6 +25,8 @@ class Ex10 extends BaseEx10
 					'category' => $category[0]['category'],
 					'average' => $avgPrice
 				];
+			} else {
+				return [];
 			}
 		};
 
