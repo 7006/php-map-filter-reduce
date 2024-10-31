@@ -64,23 +64,29 @@ class Ex10
 
 	public function __invoke() {
 		$result = [];		
-		$groups = [];
+		$categories = [];
 		
 		foreach (self::ITEMS as $item) {
-			if (array_key_exists($item['category'], $groups)) {
-				$groups[$item['category']]['sum'] += $item['price'];
-				$groups[$item['category']]['count']++;
+			if (array_key_exists($item['category'], $categories)) {
+				$categories[$item['category']]['sum'] += $item['price'];
+				$categories[$item['category']]['count']++;
 			} else {
-				// echo '<pre>';
-				// print_r($groups);
-				// echo '</pre>';
-				$groups[$item['category']]['sum'] += $item['price'];
-				$groups[$item['category']]['count']++;
+				$categories[$item['category']]['sum'] += $item['price'];
+				$categories[$item['category']]['count']++;
 			}
 		}
 
-		// Math::avg($result['sum'], $result['count']);
-		
-		return $groups;
+		// echo '<pre>';
+		// print_r($categories);
+		// echo '</pre>';
+
+		foreach ($categories as $category=>$avgParams) {
+			$result['category'] = $category;
+			$result['average'] = Math::avg($avgParams['sum'], $avgParams['count']);
+			if ($result['average'] > 50) {
+				$results[] = $result;	
+			}
+		}
+		return $results;
 	}
 }
