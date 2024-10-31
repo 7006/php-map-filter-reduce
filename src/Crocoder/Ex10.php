@@ -46,4 +46,50 @@ class Ex10
 			'category' => 'Electronics'
 		]
 	];
+
+	// Output
+	//
+	// [
+	// 	[
+	// 		'category' => 'Clothes',
+	// 		'average' => 55
+	// 	],
+	// 	[
+	// 		'category' => 'Electronics',
+	// 		'average' => 55
+	// 	],
+	// ]
+
+	public function counter($result, $item) {
+		$result['sum'] += $item['price'];
+		$result['counter']++;
+		return  $result;
+	}
+
+	public function __invoke() {
+		
+		$results = [
+			[
+				'category' => '',
+				'sum' => 0,
+				'counter' => 0
+			],
+		];
+
+		foreach ($results as $result) {
+			foreach (self::ITEMS as $item) {
+			if ($result['category'] === $item['category']) {
+				$result = $this->counter($result, $item);
+			} else {
+				$result['category'] = $item['category'];
+				$result = $this->counter($result, $item);
+			}
+
+			echo '<pre>';
+			print_r($result);
+			echo '</pre>';
+			}
+		}
+	}
+
 }
