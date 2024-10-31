@@ -6,7 +6,7 @@ use Telema\Math;
 
 class Ex10
 {
-	public const ITEMS = [
+	public const PRODUCTS = [
 		[
 			'name' => 'Product 1',
 			'price' => 20,
@@ -49,44 +49,25 @@ class Ex10
 		]
 	];
 
-	// Output
-	//
-	// [
-	// 	[
-	// 		'category' => 'Clothes',
-	// 		'average' => 55
-	// 	],
-	// 	[
-	// 		'category' => 'Electronics',
-	// 		'average' => 55
-	// 	],
-	// ]
+	public const PRICE_LEVEL = 50;
 
 	public function __invoke() {
 		$result = [];		
 		$categories = [];
 		
-		foreach (self::ITEMS as $item) {
-			if (array_key_exists($item['category'], $categories)) {
-				$categories[$item['category']]['sum'] += $item['price'];
-				$categories[$item['category']]['count']++;
-			} else {
-				$categories[$item['category']]['sum'] += $item['price'];
-				$categories[$item['category']]['count']++;
-			}
+		foreach (self::PRODUCTS as $product) {
+			$categories[$product['category']]['sum'] += $product['price'];
+			$categories[$product['category']]['count']++;
 		}
-
-		// echo '<pre>';
-		// print_r($categories);
-		// echo '</pre>';
 
 		foreach ($categories as $category=>$avgParams) {
 			$result['category'] = $category;
 			$result['average'] = Math::avg($avgParams['sum'], $avgParams['count']);
-			if ($result['average'] > 50) {
-				$results[] = $result;	
+			
+			if ($result['average'] > self::PRICE_LEVEL) {
+				$highPricedCategories[] = $result;	
 			}
 		}
-		return $results;
+		return $highPricedCategories;
 	}
 }
