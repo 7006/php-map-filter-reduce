@@ -9,11 +9,25 @@ class Ex10 extends BaseEx10
 {
 	public function __invoke() {
 			
-		$fn = function ($categories, $product) {
+		$fn_reduce = function ($categories, $product) {
 			$categories[$product['category']][] = $product;
 			return $categories;
 		};
 
-		return array_reduce(self::PRODUCTS, $fn, []);
+		$categories = array_reduce(self::PRODUCTS, $fn_reduce, []);
+		
+		$fn_map = function ($category) {
+
+			$avgPrice = $this->averagePrice($category);
+
+			if ($avgPrice > self::HIGH_PRICE) {
+				return [
+					'category' => $category[0]['category'],
+					'average' => $avgPrice
+				];
+			}
+		};
+
+		return array_map($fn_map, $categories);
 	}
 }
