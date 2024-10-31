@@ -49,7 +49,7 @@ class Ex10
 		]
 	];
 
-	public const PRICE_LEVEL = 50;
+	public const AVERAGE_LEVEL = 50;
 
 	// public function __invoke() {
 	// 	$result = [];		
@@ -74,20 +74,19 @@ class Ex10
 	public function __invoke() {
 		$result = [];		
 		$categories = [];
-		
+				
 		foreach (self::PRODUCTS as $product) {
 			$categories[$product['category']][] = $product;
 		}
 
-		echo '<pre>';
-		print_r($categories);
-		echo '</pre>';
+		foreach ($categories as $categoryName => $products) {
+			$sum = array_sum(array_column($products, 'price'));
+			$count = count($products);
+						
+			$result['category'] = $categoryName;
+			$result['average'] = Math::avg($sum, $count);
 
-		foreach ($categories as $category=>$avgParams) {
-			$result['category'] = $category;
-			$result['average'] = Math::avg($avgParams['sum'], $avgParams['count']);
-			
-			if ($result['average'] > self::PRICE_LEVEL) {
+			if ($result['average'] > self::AVERAGE_LEVEL) {
 				$highPricedCategories[] = $result;	
 			}
 		}
