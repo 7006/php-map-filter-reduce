@@ -51,7 +51,7 @@ class Ex10
 
 	public const HIGH_PRICE = 50;
 
-	protected function average($products) {
+	protected function averagePrice($products) {
 		$sum = array_sum(array_column($products, 'price'));
 		$count = count($products);
 		return Math::avg($sum, $count);
@@ -66,7 +66,7 @@ class Ex10
 		}
 
 		foreach ($categories as $categoryName => $products) {
-			$avgPrice = $this->average($products);
+			$avgPrice = $this->averagePrice($products);
 
 			if ($avgPrice > self::HIGH_PRICE) {
 				$highPricedCategories[] = [
