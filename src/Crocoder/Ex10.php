@@ -64,20 +64,21 @@ class Ex10
 
 	public function __invoke() {
 		$results = [];
-		$result = [];
-		$sum = 0;
-		$count = 0;
-
+		$result = [
+			'category' => '',
+			'sum' => 0,
+			'count' => 0
+		];
+		
 		foreach (self::ITEMS as $item) {
 			if ($item['category'] === 'Clothes') {
 				$result['category'] = 'Clothes';
-				$sum += $item['price'];
-				$count++;
+				$result['sum'] += $item['price'];
+				$result['count']++;
 			} 
 		}
 
-		$avg = Math::avg($sum, $count);
-		$result['average'] = $avg;
+		$result['average'] = Math::avg($result['sum'], $result['count']);
 		$results[] = $result;
 		return $results;
 	}
