@@ -49,7 +49,7 @@ class Ex10
 		]
 	];
 
-	public const AVERAGE_LEVEL = 50;
+	public const HIGH_PRICE = 50;
 
 	// public function __invoke() {
 	// 	$result = [];		
@@ -71,23 +71,28 @@ class Ex10
 	// 	return $highPricedCategories;
 	// }
 
+	protected function average($products) {
+		$sum = array_sum(array_column($products, 'price'));
+		$count = count($products);
+		return Math::avg($sum, $count);
+	}
+
 	public function __invoke() {
-		$result = [];		
 		$categories = [];
+		$highPricedCategories = [];
 				
 		foreach (self::PRODUCTS as $product) {
 			$categories[$product['category']][] = $product;
 		}
 
 		foreach ($categories as $categoryName => $products) {
-			$sum = array_sum(array_column($products, 'price'));
-			$count = count($products);
-						
-			$result['category'] = $categoryName;
-			$result['average'] = Math::avg($sum, $count);
+			$avgPrice = $this->average($products);
 
-			if ($result['average'] > self::AVERAGE_LEVEL) {
-				$highPricedCategories[] = $result;	
+			if ($avgPrice > self::HIGH_PRICE) {
+				$highPricedCategories[] = [
+					'category' => $categoryName,
+					'average' => $avgPrice
+				];
 			}
 		}
 		return $highPricedCategories;
