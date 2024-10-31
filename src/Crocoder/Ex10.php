@@ -63,23 +63,24 @@ class Ex10
 	// ]
 
 	public function __invoke() {
-		$results = [];
-		$result = [
-			'category' => '',
-			'sum' => 0,
-			'count' => 0
-		];
+		$result = [];		
+		$groups = [];
 		
 		foreach (self::ITEMS as $item) {
-			if ($item['category'] === 'Clothes') {
-				$result['category'] = 'Clothes';
-				$result['sum'] += $item['price'];
-				$result['count']++;
-			} 
+			if (array_key_exists($item['category'], $groups)) {
+				$groups[$item['category']]['sum'] += $item['price'];
+				$groups[$item['category']]['count']++;
+			} else {
+				// echo '<pre>';
+				// print_r($groups);
+				// echo '</pre>';
+				$groups[$item['category']]['sum'] += $item['price'];
+				$groups[$item['category']]['count']++;
+			}
 		}
 
-		$result['average'] = Math::avg($result['sum'], $result['count']);
-		$results[] = $result;
-		return $results;
+		// Math::avg($result['sum'], $result['count']);
+		
+		return $groups;
 	}
 }
