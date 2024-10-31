@@ -6,18 +6,18 @@ use Telema\Math;
 use Telema\Crocoder\Ex10 as BaseEx10;
 
 class Ex10 extends BaseEx10
-{
-	public function __invoke() {
-			
-		$fn_reduce = function ($categories, $product) {
+{	
+	private function groupByCatgeory() {
+		$fn = function ($categories, $product) {
 			$categories[$product['category']][] = $product;
 			return $categories;
 		};
 
-		$categories = array_reduce(self::PRODUCTS, $fn_reduce, []);
-		
-		$fn_map = function ($category) {
+		return array_reduce(self::PRODUCTS, $fn, []);
+	}
 
+	private function filterHighPricedCategories($categories) {
+		$fn = function ($category) {
 			$avgPrice = $this->averagePrice($category);
 
 			if ($avgPrice > self::HIGH_PRICE) {
@@ -30,6 +30,11 @@ class Ex10 extends BaseEx10
 			}
 		};
 
-		return array_map($fn_map, $categories);
+		return array_map($fn, $categories);
+	}
+
+	public function __invoke() {
+		$categories	= $this->groupByCatgeory();
+		return $this->filterHighPricedCategories($categories);
 	}
 }
