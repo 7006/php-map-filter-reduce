@@ -19,15 +19,13 @@ class Ex10 extends BaseEx10
 	private function filterHighPricedCategories($categories) {
 		$fn = function ($accum, $category) {
 			$avgPrice = $this->averagePrice($category);
-
+			
 			if ($avgPrice > self::HIGH_PRICE) {
-				$accum = [
+				$accum[] = [
 					'category' => $category[0]['category'],
 					'average' => $avgPrice
 				];
-			} else {
-				$accum = [];
-			}
+			} 
 
 			return $accum;
 		};
