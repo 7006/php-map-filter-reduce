@@ -2,6 +2,8 @@
 
 namespace Telema\Crocoder;
 
+use Telema\Math;
+
 class Ex11
 {
 	public const EMPLOYEES = [
@@ -44,14 +46,33 @@ class Ex11
 
 	public const HIGH_SALARY = 65000;
 
+	protected function averageSalary($department)
+	{
+		$sum = array_sum(array_column($department, 'salary'));
+		$count = count($department);
+		return Math::avg($sum, $count);
+	}
+
 	public function __invoke()
 	{
 		$departmens = [];
+		$highSalaryDepartmens = [];
 
 		foreach (self::EMPLOYEES as $employee) {
 			$departmens[$employee['department']][] = $employee;
 		}
 
-		return $departmens;
+		foreach ($departmens as $departmentName => $department) {
+			$avgSalary = $this->averageSalary($department);
+
+			if ($avgSalary > self::HIGH_SALARY) {
+				$highSalaryDepartmens[] = [
+					'department' => $departmentName,
+					'average' => $this->averageSalary($department)
+				];
+			}
+		}
+
+		return $highSalaryDepartmens;
 	}
 }
