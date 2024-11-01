@@ -20,7 +20,8 @@ class Counter
 {
     public $freq = [];
 
-    public function __invoke($item, $index) {
+    public function __invoke($item, $index)
+    {
         if (isset($this->freq[$item])) {
             $this->freq[$item] += 1;
         } else {

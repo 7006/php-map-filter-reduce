@@ -36,7 +36,7 @@ class Ex12
     {
         $freq = [];
 
-        $fn = function ($item, $index) use (& $freq) { 
+        $fn = function ($item, $index) use (& $freq) {
             if (isset($freq[$item])) {
                 $freq[$item] += 1;
             } else {
