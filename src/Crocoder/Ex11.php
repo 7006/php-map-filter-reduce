@@ -46,6 +46,12 @@ class Ex11
 
 	public function __invoke()
 	{
-		return self::EMPLOYEES;
+		$departmens = [];
+
+		foreach (self::EMPLOYEES as $employee) {
+			$departmens[$employee['department']][] = $employee;
+		}
+
+		return $departmens;
 	}
 }
