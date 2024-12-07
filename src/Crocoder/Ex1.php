@@ -4,14 +4,19 @@ namespace Telema\Crocoder;
 
 class Ex1
 {
-    public const ITEMS = [1, 2, 3, 4, 5];
+    use CsvReader;
+
+    private const FILE_PATH = __DIR__ . '/../../data/crocoder/ex01.csv';
 
     public function __invoke()
     {
         $result = [];
-        foreach (self::ITEMS as $item) {
-            $result[] = $item ** 2;
+        $items = $this->readCsv(self::FILE_PATH);
+
+        foreach ($items as $item) {
+            $result[] = $item['number'] ** 2;
         }
+
         return $result;
     }
 }
