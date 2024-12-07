@@ -9,18 +9,18 @@ trait CsvReader
         $handle = fopen($path, 'rt');
         $headers = fgetcsv($handle, 100, ',');
 
-        $data = [];
+        $items = [];
 
         while (!feof($handle)) {
             $line = fgetcsv($handle, 100, ',');
 
             foreach ($headers as $key => $header) {
-                $temp[$header] = $line[$key];
+                $item[$header] = $line[$key];
             }
 
-            $data[] = $temp;
+            $items[] = $item;
         }
 
-        return $data;
+        return $items;
     }
 }
