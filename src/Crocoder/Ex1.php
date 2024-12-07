@@ -2,25 +2,21 @@
 
 namespace Telema\Crocoder;
 
-trait Reader
-{
-    public static function getItems()
-    {
-        return [1, 2, 3, 4, 5];
-    }
-}
-
 class Ex1
 {
-    use Reader;
+    use CsvReader;
+
+    private const FILE_PATH = __DIR__ . '/../../data/crocoder/ex01.csv';
 
     public function __invoke()
     {
         $result = [];
-        $items = self::getItems();
+        $items = $this->readCsv(self::FILE_PATH);
+
         foreach ($items as $item) {
-            $result[] = $item ** 2;
+            $result[] = $item['number'] ** 2;
         }
+
         return $result;
     }
 }
