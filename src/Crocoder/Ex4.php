@@ -10,13 +10,7 @@ class Ex4
 
     public function __invoke()
     {
-        $names = $this->readCsv(self::FILE_PATH, fn ($item) => $item['name']);
-
-        $initials = [];
-        foreach ($names as $name) {
-            $initial = $name[0];
-            $initials[] = $initial;
-        }
+        $initials = $this->readCsv(self::FILE_PATH, fn ($item) => $item['name'][0]);
 
         return implode('', $initials);
     }

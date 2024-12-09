@@ -10,14 +10,14 @@ class Ex2
 
     public function __invoke()
     {
-        $numbers = $this->readCsv(self::FILE_PATH, fn ($item) => $item['number']);
-
         $sum = 0;
-        foreach ($numbers as $number) {
-            if ($number > 0) {
-                $sum += $number;
+
+        $this->readCsv(self::FILE_PATH, function ($item) use (&$sum) {
+            if ($item['number'] > 0) {
+                $sum += $item['number'];
             }
-        }
+        });
+
         return $sum;
     }
 }
