@@ -4,7 +4,9 @@ namespace Telema\Crocoder;
 
 class Ex6
 {
-    public const STRING = 'Every developer likes to mix kubernetes and javascript';
+    use CsvReader;
+
+    public const FILE_PATH = __DIR__ . '/../../data/crocoder/ex06.csv';
 
     protected static function numeronym(string $word)
     {
@@ -18,7 +20,7 @@ class Ex6
     public function __invoke()
     {
         $numeronyms = [];
-        $words = explode(' ', self::STRING);
+        $words = $this->readCsv(self::FILE_PATH, fn ($item) => $item['word']);
 
         foreach ($words as $word) {
             $numeronyms[] = self::numeronym($word);
