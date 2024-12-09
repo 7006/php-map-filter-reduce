@@ -10,6 +10,7 @@ class Ex5
 
     public function __invoke()
     {
+        // переписать тем же методом что и Ex2
         $items = $this->readCsv(self::FILE_PATH, fn ($item) => $item);
 
         $min = $items[0]['age'];
