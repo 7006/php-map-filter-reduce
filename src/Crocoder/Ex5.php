@@ -4,36 +4,14 @@ namespace Telema\Crocoder;
 
 class Ex5
 {
-    public const ITEMS = [
-        [
-            'name' => 'Vasiliy',
-            'age' => 34
-        ],
-        [
-            'name' => 'Jhon',
-            'age' => 13
-        ],
-        [
-            'name' => 'Mark',
-            'age' => 56
-        ],
-        [
-            'name' => 'Rachel',
-            'age' => 45
-        ],
-        [
-            'name' => 'Nate',
-            'age' => 67
-        ],
-        [
-            'name' => 'Jennifer',
-            'age' => 65
-        ]
-    ];
+    use CsvReader;
+
+    public const FILE_PATH = __DIR__ . '/../../data/crocoder/ex05.csv';
 
     public function __invoke()
     {
-        $items = self::ITEMS;
+        $items = $this->readCsv(self::FILE_PATH, fn ($item) => $item);
+
         $min = $items[0]['age'];
         $max = $items[0]['age'];
 
