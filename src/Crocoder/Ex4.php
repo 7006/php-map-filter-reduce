@@ -4,11 +4,13 @@ namespace Telema\Crocoder;
 
 class Ex4
 {
-    public const ITEMS = 'George Raymond Richard Martin';
+    use CsvReader;
+
+    public const FILE_PATH = __DIR__ . '/../../data/crocoder/ex04.csv';
 
     public function __invoke()
     {
-        $names = explode(' ', self::ITEMS);
+        $names = $this->readCsv(self::FILE_PATH, fn ($item) => $item['name']);
 
         $initials = [];
         foreach ($names as $name) {
