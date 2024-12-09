@@ -10,13 +10,7 @@ class Ex7
 
     public function __invoke()
     {
-        $numbers = $this->readCsv(self::FILE_PATH, fn ($item) => $item['number']);
-
-        $factorials = [];
-        foreach ($numbers as $currentNumber) {
-            $factorials[] = $this->factorial($currentNumber);
-        }
-        return $factorials;
+        return $this->readCsv(self::FILE_PATH, fn ($item) => $this->factorial($item['x']));
     }
 
     public function factorial($currentNumber)
