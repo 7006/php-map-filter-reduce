@@ -17,6 +17,7 @@ class Ex7
     {
         $factorial = 1;
 
+        // переписать foreach + range на каноничньій цикл for
         foreach (range(1, $currentNumber) as $number) {
             $factorial *= $number;
         }
