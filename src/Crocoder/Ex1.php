@@ -10,13 +10,13 @@ class Ex1
 
     public function __invoke()
     {
-        $result = [];
-        $items = $this->readCsv(self::FILE_PATH);
+        $numbers = $this->readCsv(self::FILE_PATH, fn ($item) => $item['number']);
 
-        foreach ($items as $item) {
-            $result[] = $item['number'] ** 2;
+        $powNumbers = [];
+        foreach ($numbers as $number) {
+            $powNumbers[] = $number ** 2;
         }
 
-        return $result;
+        return $powNumbers;
     }
 }
