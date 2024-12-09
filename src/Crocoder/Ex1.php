@@ -16,12 +16,13 @@ class Ex1
 
     public function getPowParam()
     {
-        if (!empty($_GET['pow'])) {
-            $pow = intval($_GET['pow']) > 0 ? intval($_GET['pow']) : 1;
-        } else {
-            $pow = 1;
+        if (empty($_GET['pow'])) {
+            return 1;
+        }
+        if (intval($_GET['pow']) === 0) {
+            return 1;
         }
 
-        return $pow;
+        return intval($_GET['pow']);
     }
 }
