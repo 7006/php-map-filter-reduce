@@ -8,7 +8,7 @@ class Ex6
 
     public const FILE_PATH = __DIR__ . '/../../data/crocoder/ex06.csv';
 
-    protected static function numeronym(string $word)
+    protected function numeronym(string $word)
     {
         $l = strlen($word);
 
@@ -19,12 +19,7 @@ class Ex6
 
     public function __invoke()
     {
-        $numeronyms = [];
-        $words = $this->readCsv(self::FILE_PATH, fn ($item) => $item['word']);
-
-        foreach ($words as $word) {
-            $numeronyms[] = self::numeronym($word);
-        }
+        $numeronyms = $this->readCsv(self::FILE_PATH, fn ($item) => $this->numeronym($item['word']));
 
         return implode(' ', $numeronyms);
     }
