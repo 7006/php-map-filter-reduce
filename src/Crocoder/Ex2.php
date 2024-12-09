@@ -3,13 +3,17 @@
 namespace Telema\Crocoder;
 
 class Ex2
-{
-    public const ITEMS = [1, -4, 12, 0, -3, 29, -150];
+{   
+    use CsvReader;
+
+    public const FILE_PATH = __DIR__ . '/../../data/crocoder/ex02.csv';
 
     public function __invoke()
-    {
+    {   
+        $numbers = $this->readCsv(self::FILE_PATH, fn ($item) => $item['number']);
+
         $sum = 0;
-        foreach (self::ITEMS as $number) {
+        foreach ($numbers as $number) {
             if ($number > 0) {
                 $sum += $number;
             }
