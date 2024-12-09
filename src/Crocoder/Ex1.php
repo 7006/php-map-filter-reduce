@@ -10,13 +10,18 @@ class Ex1
 
     public function __invoke()
     {
-        $numbers = $this->readCsv(self::FILE_PATH, fn ($item) => $item['number']);
+        $pow = $this->getPowParam();
+        return $this->readCsv(self::FILE_PATH, fn ($item) => $item['number'] ** $pow);
+    }
 
-        $powNumbers = [];
-        foreach ($numbers as $number) {
-            $powNumbers[] = $number ** 2;
+    public function getPowParam()
+    {
+        if (!empty($_GET['pow'])) {
+            $pow = intval($_GET['pow']) > 0 ? intval($_GET['pow']) : 1;
+        } else {
+            $pow = 1;
         }
 
-        return $powNumbers;
+        return $pow;
     }
 }
