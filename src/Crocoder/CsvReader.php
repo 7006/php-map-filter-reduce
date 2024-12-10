@@ -14,6 +14,10 @@ trait CsvReader
         while (!feof($handle)) {
             $line = fgetcsv($handle, 100, ',');
 
+            // надо посмотреть
+            // есть ли в стандартной библиотеке функция
+            // которая делает то же самое
+            // что и єтот foreach
             foreach ($headers as $key => $header) {
                 $item[$header] = $line[$key];
             }
