@@ -11,20 +11,20 @@ class Ex5
     public const FILE_PATH = __DIR__ . '/../../data/crocoder/ex05.csv';
 
     public function __invoke()
-    {   
+    {
         $min = $max = 0;
         $i = true;
 
         $this->readCsv(self::FILE_PATH, function ($item) use (&$i, &$min, &$max) {
             if ($i) {
                 $min = $max = $item['age'];
-                $i = false;   
+                $i = false;
             }
-            
+
             if ($item['age'] < $min) {
                 $min = $item['age'];
             }
-            
+
             if ($item['age'] > $max) {
                 $max = $item['age'];
             }
