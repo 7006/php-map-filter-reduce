@@ -21,13 +21,8 @@ class Ex5
                 $i = false;
             }
 
-            if ($item['age'] < $min) {
-                $min = $item['age'];
-            }
-
-            if ($item['age'] > $max) {
-                $max = $item['age'];
-            }
+            $min = min($min, $item['age']);
+            $max = max($max, $item['age']);
         });
 
         return [$min, $max, $max - $min];
