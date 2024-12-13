@@ -12,18 +12,10 @@ class Ex5
 
     public function __invoke()
     {
-        $min = $max = 0;
-        $i = true;
+        $items = $this->readCsv(self::FILE_PATH, fn ($item) => $item['age']);
 
-        $this->readCsv(self::FILE_PATH, function ($item) use (&$i, &$min, &$max) {
-            if ($i) {
-                $min = $max = $item['age'];
-                $i = false;
-            }
-
-            $min = min($min, $item['age']);
-            $max = max($max, $item['age']);
-        });
+        $min = min($items);
+        $max = max($items);
 
         return [$min, $max, $max - $min];
     }
