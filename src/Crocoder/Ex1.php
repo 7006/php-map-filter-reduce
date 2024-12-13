@@ -2,6 +2,8 @@
 
 namespace Telema\Crocoder;
 
+use Telema\traits\CsvReader;
+
 class Ex1
 {
     use CsvReader;
