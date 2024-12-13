@@ -1,9 +1,7 @@
 <?php
 
-namespace Telema\Crocoder;
+namespace Telema\traits;
 
-// нужно сделать папку /src/traits
-// и положить туда єтот файл
 trait CsvReader
 {
     public function readCsv(string $path, $fn)
