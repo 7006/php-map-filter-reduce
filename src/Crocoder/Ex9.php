@@ -22,20 +22,14 @@ class Ex9
     public function __invoke()
     {
         $result = [];
-        $temp = [];
-        $res = [];
+        $items = [];
 
-        $items = $this->readCsv(self::FILE_PATH, function ($item) use (&$temp, &$res) {
-            $temp['name'] = $item['name'];
-            $temp['scores'] = [$item['read_score'], $item['listen_score'], $item['talk_score']];
-            $res[] = $temp;
+        $this->readCsv(self::FILE_PATH, function ($item) use (&$items) {
+            $item['scores'] = [$item['read_score'], $item['listen_score'], $item['talk_score']];
+            $items[] = $item;
         });
 
-        echo "<pre>";
-        print_r($res);
-        echo "</pre>";
-
-        foreach ($res as $item) {
+        foreach ($items as $item) {
             $avg = $this->avgScore($item);
 
             if ($avg > self::AVERAGE_SCORE) {
