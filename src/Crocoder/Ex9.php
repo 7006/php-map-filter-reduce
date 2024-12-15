@@ -22,14 +22,9 @@ class Ex9
     public function __invoke()
     {
         $result = [];
-        $items = [];
-
-        $this->readCsv(self::FILE_PATH, function ($item) use (&$items) {
+        
+        $this->readCsv(self::FILE_PATH, function ($item) use (&$result) {
             $item['scores'] = [$item['read_score'], $item['listen_score'], $item['talk_score']];
-            $items[] = $item;
-        });
-
-        foreach ($items as $item) {
             $avg = $this->avgScore($item);
 
             if ($avg > self::AVERAGE_SCORE) {
@@ -38,7 +33,7 @@ class Ex9
                     'average' => $avg
                 ];
             }
-        }
+        });
 
         return $result;
     }
