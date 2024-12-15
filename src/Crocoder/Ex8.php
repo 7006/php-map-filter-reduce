@@ -2,13 +2,13 @@
 
 namespace Telema\Crocoder;
 
+use Telema\traits\CsvReader;
+
 class Ex8
 {
-    public const ITEMS = [
-        ['a', 'b', 'c'],
-        ['c', 'd', 'f'],
-        ['d', 'a', 'g'],
-    ];
+    use CsvReader;
+
+    public const FILE_PATH = __DIR__ . '/../../data/crocoder/ex08.csv';
 
     protected function frequency($result, $item)
     {
@@ -24,10 +24,12 @@ class Ex8
     {
         $result = [];
 
-        foreach (array_merge(...self::ITEMS) as $item) {
+        $items = $this->readCsv(self::FILE_PATH, fn ($item) => $item['char']);
+
+        foreach ($items as $item) {
             $result = $this->frequency($result, $item);
         }
-
+        
         return $result;
     }
 }
