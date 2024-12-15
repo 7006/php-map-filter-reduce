@@ -24,11 +24,9 @@ class Ex8
     {
         $result = [];
 
-        $items = $this->readCsv(self::FILE_PATH, fn ($item) => $item['char']);
-
-        foreach ($items as $item) {
-            $result = $this->frequency($result, $item);
-        }
+        $items = $this->readCsv(self::FILE_PATH, function ($item) use (&$result) {
+            $result = $this->frequency($result, $item['char']);
+        });
         
         return $result;
     }
