@@ -3,28 +3,13 @@
 namespace Telema\Crocoder;
 
 use Telema\Math;
+use Telema\traits\CsvReader;
 
 class Ex9
 {
-    public const ITEMS = [
-        [
-            'name' => 'Alice',
-            'scores' => [90, 85, 92]
-        ],
-        [
-            'name' => 'Bob',
-            'scores' => [75, 80, 85]
-        ],
-        [
-            'name' => 'Charlie',
-            'scores' => [90, 95, 85]
-        ],
-        [
-            'name' => 'Jack',
-            'scores' => [100, 100, 100]
-        ],
-    ];
+    use CsvReader;
 
+    public const FILE_PATH = __DIR__ . '/../../data/crocoder/ex09.csv';
     public const AVERAGE_SCORE = 90;
 
     protected function avgScore($item)
@@ -37,8 +22,9 @@ class Ex9
     public function __invoke()
     {
         $result = [];
-
-        foreach (self::ITEMS as $item) {
+        
+        $this->readCsv(self::FILE_PATH, function ($item) use (&$result) {
+            $item['scores'] = [$item['read_score'], $item['listen_score'], $item['talk_score']];
             $avg = $this->avgScore($item);
 
             if ($avg > self::AVERAGE_SCORE) {
@@ -47,7 +33,7 @@ class Ex9
                     'average' => $avg
                 ];
             }
-        }
+        });
 
         return $result;
     }
