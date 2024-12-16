@@ -24,11 +24,9 @@ class Ex10
         $categories = [];
         $highPricedCategories = [];
 
-        $products = $this->readCsv(self::FILE_PATH, fn ($item) => $item);
-
-        foreach ($products as $product) {
-            $categories[$product['category']][] = $product;
-        }
+        $this->readCsv(self::FILE_PATH, function ($item) use (&$categories) {
+            $categories[$item['category']][] = $item;
+        });
 
         foreach ($categories as $categoryName => $products) {
             $avgPrice = $this->averagePrice($products);
