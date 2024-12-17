@@ -8,7 +8,7 @@ class Ex5 extends BaseEx5
 {
     public function __invoke()
     {
-        $items = self::ITEMS;
+        $items = $this->readCsv(self::FILE_PATH, fn ($item) => $item);
 
         usort($items, fn ($i1, $i2) => $i1['age'] <=> $i2['age']);
 
