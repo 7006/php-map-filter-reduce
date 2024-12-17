@@ -7,14 +7,14 @@ use Telema\Crocoder\Ex10 as BaseEx10;
 
 class Ex10 extends BaseEx10
 {
-    private function groupByCategory()
+    private function groupByCategory($items)
     {
         $fn = function ($categories, $product) {
             $categories[$product['category']][] = $product;
             return $categories;
         };
 
-        return array_reduce(self::PRODUCTS, $fn, []);
+        return array_reduce($items, $fn, []);
     }
 
     private function filterHighPricedCategories($categories)
@@ -36,8 +36,9 @@ class Ex10 extends BaseEx10
     }
 
     public function __invoke()
-    {
-        $categories	= $this->groupByCategory();
+    {   
+        $items = $this->readCsv(self::FILE_PATH, fn ($item) => $item);
+        $categories	= $this->groupByCategory($items);
         return $this->filterHighPricedCategories($categories);
     }
 }
