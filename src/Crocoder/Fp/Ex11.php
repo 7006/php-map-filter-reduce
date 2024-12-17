@@ -7,14 +7,14 @@ use Telema\Crocoder\Ex11 as BaseEx11;
 
 class Ex11 extends BaseEx11
 {
-    private function groupByCategory()
+    private function groupByCategory($items)
     {
         $fn = function ($departmens, $employee) {
             $departmens[$employee['department']][] = $employee;
             return $departmens;
         };
 
-        return array_reduce(self::EMPLOYEES, $fn, []);
+        return array_reduce($items, $fn, []);
     }
 
     private function filterHighSalaryDepartmens($departmens)
@@ -35,8 +35,9 @@ class Ex11 extends BaseEx11
     }
 
     public function __invoke()
-    {
-        $departmens = $this->groupByCategory();
+    {   
+        $items = $this->readCsv(self::FILE_PATH, fn ($item) => $item);
+        $departmens = $this->groupByCategory($items);
         return $this->filterHighSalaryDepartmens($departmens);
     }
 }
