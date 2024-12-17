@@ -8,7 +8,7 @@ class Ex6 extends BaseEx6
 {
     public function __invoke()
     {
-        $words = explode(' ', self::STRING);
+        $words = $this->readCsv(self::FILE_PATH, fn ($item) => $item['word']);
 
         $numeronyms = array_map(self::numeronym(...), $words);
 
