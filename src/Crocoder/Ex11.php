@@ -3,47 +3,13 @@
 namespace Telema\Crocoder;
 
 use Telema\Math;
+use Telema\traits\CsvReader;
 
 class Ex11
 {
-    public const EMPLOYEES = [
-        [
-            'name' => 'Jhon',
-            'salary' => 50000,
-            'department' => 'IT'
-        ],
-        [
-            'name' => 'Jane',
-            'salary' => 60000,
-            'department' => 'HR'
-        ],
-        [
-            'name' => 'Bob',
-            'salary' => 55000,
-            'department' => 'IT'
-        ],
-        [
-            'name' => 'Sophie',
-            'salary' => 75000,
-            'department' => 'HR'
-        ],
-        [
-            'name' => 'Mike',
-            'salary' => 65000,
-            'department' => 'IT'
-        ],
-        [
-            'name' => 'Emily',
-            'salary' => 80000,
-            'department' => 'HR'
-        ],
-        [
-            'name' => 'David',
-            'salary' => 70000,
-            'department' => 'IT'
-        ]
-    ];
+    use CsvReader;
 
+    public const FILE_PATH = __DIR__ . '/../../data/crocoder/ex11.csv';
     public const HIGH_SALARY = 65000;
 
     protected function averageSalary($department)
@@ -58,7 +24,13 @@ class Ex11
         $departmens = [];
         $highSalaryDepartmens = [];
 
-        foreach (self::EMPLOYEES as $employee) {
+        $employees = $this->readCsv(self::FILE_PATH, fn ($item) => $item);
+
+        echo "<pre>";
+        print_r($employees);
+        echo "</pre>";
+
+        foreach ($employees as $employee) {
             $departmens[$employee['department']][] = $employee;
         }
 
