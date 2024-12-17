@@ -8,7 +8,7 @@ class Ex1
 {
     use CsvReader;
 
-    private const FILE_PATH = __DIR__ . '/../../data/crocoder/ex01.csv';
+    protected const FILE_PATH = __DIR__ . '/../../data/crocoder/ex01.csv';
 
     public function __invoke()
     {
