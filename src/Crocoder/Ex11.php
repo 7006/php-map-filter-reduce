@@ -24,15 +24,9 @@ class Ex11
         $departmens = [];
         $highSalaryDepartmens = [];
 
-        $employees = $this->readCsv(self::FILE_PATH, fn ($item) => $item);
-
-        echo "<pre>";
-        print_r($employees);
-        echo "</pre>";
-
-        foreach ($employees as $employee) {
-            $departmens[$employee['department']][] = $employee;
-        }
+        $this->readCsv(self::FILE_PATH, function ($item) use (&$departmens) {
+            $departmens[$item['department']][] = $item;
+        });
 
         foreach ($departmens as $departmentName => $department) {
             $avgSalary = $this->averageSalary($department);
