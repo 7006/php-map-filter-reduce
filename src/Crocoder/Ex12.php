@@ -2,39 +2,18 @@
 
 namespace Telema\Crocoder;
 
+use Telema\traits\JsonReader;
+
 class Ex12
 {
-    public $items = [
-        ['a', 'b', 'c'],
-        [
-            ['c', 'd'],
-            'd',
-            'f'
-        ],
-        [
-            ['d', 'g'],
-            'f',
-            ['c', 'a'],
-        ],
-        [
-            'c',
-            'd',
-            [
-                'c',
-                [
-                    ['d', 'g'],
-                    'a',
-                    'f'
-                ],
-                'f'
-            ],
-        ],
-        ['d', 'a', 'g']
-    ];
+    use JsonReader;
+
+    public const FILE_PATH = __DIR__ . '/../../data/crocoder/ex12.json';
 
     public function __invoke()
     {
         $freq = [];
+        $items = $this->readJson(self::FILE_PATH);
 
         $fn = function ($item, $index) use (& $freq) {
             if (isset($freq[$item])) {
@@ -44,7 +23,7 @@ class Ex12
             }
         };
 
-        array_walk_recursive($this->items, $fn);
+        array_walk_recursive($items, $fn);
 
         return $freq;
     }
