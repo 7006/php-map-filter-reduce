@@ -22,7 +22,7 @@ class Ex9
     public function __invoke()
     {
         $result = [];
-        
+
         $this->readCsv(self::FILE_PATH, function ($item) use (&$result) {
             $item['scores'] = [$item['read_score'], $item['listen_score'], $item['talk_score']];
             $avg = $this->avgScore($item);
