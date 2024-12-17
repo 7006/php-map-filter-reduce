@@ -27,7 +27,7 @@ class Ex8
         $items = $this->readCsv(self::FILE_PATH, function ($item) use (&$result) {
             $result = $this->frequency($result, $item['char']);
         });
-        
+
         return $result;
     }
 }
