@@ -7,10 +7,12 @@ use Telema\Crocoder\Ex12 as BaseEx12;
 class Ex12 extends BaseEx12
 {
     public function __invoke()
-    {
+    {   
+        $items = $this->readJson(self::FILE_PATH);
+
         $counter = new Counter();
 
-        array_walk_recursive($this->items, $counter);
+        array_walk_recursive($items, $counter);
 
         return $counter->freq;
     }

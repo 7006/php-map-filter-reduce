@@ -9,8 +9,10 @@ class Ex9 extends BaseEx9
 {
     public function __invoke()
     {
+        $items = $this->readCsv(self::FILE_PATH, fn ($item) => $item);
 
         $fn = function ($result, $item) {
+            $item['scores'] = [$item['read_score'], $item['listen_score'], $item['talk_score']];
 
             if ($this->avgScore($item) > self::AVERAGE_SCORE) {
                 $result[] = [
@@ -21,6 +23,6 @@ class Ex9 extends BaseEx9
             return $result;
         };
 
-        return array_reduce(self::ITEMS, $fn, []);
+        return array_reduce($items, $fn, []);
     }
 }
