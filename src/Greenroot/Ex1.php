@@ -3,19 +3,11 @@
 namespace Telema\Greenroot;
 
 use Telema\Customer;
-use Telema\traits\JsonReader;
+use Telema\Greenroot\Traits\Customers;
 
 class Ex1
 {
-    use JsonReader;
-
-    public const FILE_PATH = __DIR__ . '/../../data/greenroot/customers.json';
-
-    public function readCustomers()
-    {
-        $customers = $this->readJson(self::FILE_PATH);
-        return array_map(fn ($customer) => new Customer($customer), $customers);
-    }
+    use Customers;
 
     public function __invoke()
     {
