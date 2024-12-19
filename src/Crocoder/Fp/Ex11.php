@@ -35,7 +35,7 @@ class Ex11 extends BaseEx11
     }
 
     public function __invoke()
-    {   
+    {
         $items = $this->readCsv(self::FILE_PATH, fn ($item) => $item);
         $departmens = $this->groupByCategory($items);
         return $this->filterHighSalaryDepartmens($departmens);

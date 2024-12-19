@@ -4,15 +4,7 @@ namespace Telema;
 
 class Customer
 {
-    public const PATH = __DIR__ . '/customers.json';
-
     private $customer;
-
-    public static function readCustomers()
-    {
-        $customers = json_decode(file_get_contents(self::PATH), true);
-        return array_map(fn ($customer) => new Customer($customer), $customers);
-    }
 
     public static function sortByAge($customers)
     {

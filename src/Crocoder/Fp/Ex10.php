@@ -36,7 +36,7 @@ class Ex10 extends BaseEx10
     }
 
     public function __invoke()
-    {   
+    {
         $items = $this->readCsv(self::FILE_PATH, fn ($item) => $item);
         $categories	= $this->groupByCategory($items);
         return $this->filterHighPricedCategories($categories);
