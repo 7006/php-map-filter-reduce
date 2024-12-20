@@ -6,7 +6,7 @@ use Telema\Customer;
 use Telema\Greenroot\Traits\Customers;
 
 class Ex5
-{   
+{
     use Customers;
 
     public function __invoke()

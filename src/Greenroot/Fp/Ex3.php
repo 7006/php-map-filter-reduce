@@ -12,7 +12,7 @@ class Ex3
 
     public function __invoke()
     {
-        
+
         $fn = function ($accum, $c) {
             [$age, $count] = $accum;
 
