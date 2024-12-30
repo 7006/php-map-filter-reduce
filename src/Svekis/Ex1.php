@@ -2,16 +2,16 @@
 
 namespace Telema\Svekis;
 
+use Telema\traits\CsvReader;
+
 class Ex1
 {
-    public const ITEMS = [3, 56, 23, 4, 1, 67, 5];
+    use CsvReader;
+
+    public const FILE_PATH = __DIR__ . '/../../data/svekis/ex01.csv';
 
     public function __invoke()
     {
-        $doubledNumbers = [];
-        foreach (self::ITEMS as $number) {
-            $doubledNumbers[] = $number * 2;
-        }
-        return $doubledNumbers;
+        return $this->readCsv(self::FILE_PATH, fn ($item) => $item['number'] * 2);
     }
 }

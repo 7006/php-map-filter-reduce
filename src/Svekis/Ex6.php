@@ -3,39 +3,16 @@
 namespace Telema\Svekis;
 
 use Telema\Rectangle;
+use Telema\traits\CsvReader;
 
 class Ex6
 {
-    public const ITEMS = [
-        [
-            'width' => 15,
-            'height' => 5
-        ],
-        [
-            'width' => 4,
-            'height' => 8
-        ],
-        [
-            'width' => 10,
-            'height' => 2
-        ],
-        [
-            'width' => 2,
-            'height' => 6
-        ],
-        [
-            'width' => 1,
-            'height' => 1
-        ]
-    ];
+    use CsvReader;
+
+    public const FILE_PATH = __DIR__ . '/../../data/svekis/ex06.csv';
 
     public function __invoke()
     {
-        $infos = [];
-        foreach (self::ITEMS as $rectangleArray) {
-            $infos[] = Rectangle::info($rectangleArray);
-        }
-
-        return $infos;
+        return $this->readCsv(self::FILE_PATH, fn ($item) => Rectangle::info($item));
     }
 }

@@ -2,29 +2,16 @@
 
 namespace Telema\Svekis;
 
+use Telema\traits\CsvReader;
+
 class Ex3
 {
-    public const ITEMS = [
-        [
-            'name' => 'Alice',
-            'age' => 25
-        ],
-        [
-            'name' => 'Bob',
-            'age' => 30
-        ],
-        [
-            'name' => 'Charlie',
-            'age' => 22
-        ]
-    ];
+    use CsvReader;
+
+    public const FILE_PATH = __DIR__ . '/../../data/svekis/ex03.csv';
 
     public function __invoke()
     {
-        $names = [];
-        foreach (self::ITEMS as $student) {
-            $names[] = $student['name'];
-        }
-        return $names;
+        return $this->readCsv(self::FILE_PATH, fn ($item) => $item['name']);
     }
 }

@@ -2,17 +2,16 @@
 
 namespace Telema\Svekis;
 
+use Telema\traits\CsvReader;
+
 class Ex2
 {
-    public const ITEMS = ['london', 'manchester', 'liverpool', 'tbilisi'];
+    use CsvReader;
+
+    public const FILE_PATH = __DIR__ . '/../../data/svekis/ex02.csv';
 
     public function __invoke()
     {
-        $result = [];
-        foreach (self::ITEMS as $city) {
-            $result[] = strtoupper($city);
-        }
-
-        return $result;
+        return $this->readCsv(self::FILE_PATH, fn ($item) => strtoupper($item['city']));
     }
 }
