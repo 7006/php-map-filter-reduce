@@ -1,10 +1,13 @@
 <?php
 
 namespace Telema\Svekis;
+use Telema\traits\CsvReader;
 
 class Ex7
 {
-    public const ITEMS = ['John Doe', 'Alice Smith', 'Bob Johnson', 'Donald Duck III'];
+    use CsvReader;
+
+    public const FILE_PATH = __DIR__ . '/../../data/svekis/ex07.csv';
 
     protected static function initials(string $name)
     {
@@ -15,9 +18,10 @@ class Ex7
     public function __invoke()
     {
         $initials = [];
-        foreach (self::ITEMS as $name) {
-            $initials[] = self::initials($name);
-        }
+        $this->readCsv(self::FILE_PATH, function ($item) use (&$initials) {
+            $initials[] = self::initials($item['name']);
+        });
+
         return $initials;
     }
 }
