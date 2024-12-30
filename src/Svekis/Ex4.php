@@ -2,9 +2,15 @@
 
 namespace Telema\Svekis;
 
+use Telema\traits\CsvReader;
+
 class Ex4
 {
+    use CsvReader;
+
     public const ITEMS = [25, 30, 15, 20];
+
+    public const FILE_PATH = __DIR__ . '/../../data/svekis/ex04.csv';
 
     protected static function celsiusToFahrenheit($temp)
     {
@@ -13,10 +19,11 @@ class Ex4
 
     public function __invoke()
     {
-        $fahrenheits = [];
-        foreach (self::ITEMS as $temp) {
-            $fahrenheits[] = self::celsiusToFahrenheit($temp);
-        }
+        $fahrenheits = [];  
+        $this->readCsv(self::FILE_PATH, function ($item) use (&$fahrenheits) {
+            $fahrenheitss[] = self::celsiusToFahrenheit($item['temp']);
+        });
+
         return $fahrenheits;
     }
 }
