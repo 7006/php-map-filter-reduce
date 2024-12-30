@@ -2,18 +2,21 @@
 
 namespace Telema\Svekis;
 
+use Telema\traits\CsvReader;
 use Telema\Date;
 
 class Ex8
-{
-    public const ITEMS = ['2023-01-15', '2023-05-20', '2023-09-10'];
+{   
+    use CsvReader;
+
+    public const FILE_PATH = __DIR__ . '/../../data/svekis/ex08.csv';
 
     public function __invoke()
     {
         $newDates = [];
-        foreach (self::ITEMS as $date) {
-            $newDates[] = Date::formatDate($date);
-        }
+        $this->readCsv(self::FILE_PATH, function ($item) use (&$newDates) {
+            $newDates[] = Date::formatDate($item['date']);
+        });
 
         return $newDates;
     }
