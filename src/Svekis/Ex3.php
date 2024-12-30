@@ -11,12 +11,7 @@ class Ex3
     public const FILE_PATH = __DIR__ . '/../../data/svekis/ex03.csv';
 
     public function __invoke()
-    {   
-        $names = [];
-        $this->readCsv(self::FILE_PATH, function ($item) use (&$names) {
-            $names[] = $item['name'];
-        });
-
-        return $names;
+    {
+        return $this->readCsv(self::FILE_PATH, fn ($item) => $item['name']);
     }
 }

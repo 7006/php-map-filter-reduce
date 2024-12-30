@@ -1,6 +1,7 @@
 <?php
 
 namespace Telema\Svekis;
+
 use Telema\traits\CsvReader;
 
 class Ex7
@@ -17,11 +18,6 @@ class Ex7
 
     public function __invoke()
     {
-        $initials = [];
-        $this->readCsv(self::FILE_PATH, function ($item) use (&$initials) {
-            $initials[] = self::initials($item['name']);
-        });
-
-        return $initials;
+        return $this->readCsv(self::FILE_PATH, fn ($item) => self::initials($item['name']));
     }
 }

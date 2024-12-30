@@ -17,11 +17,6 @@ class Ex4
 
     public function __invoke()
     {
-        $fahrenheits = [];  
-        $this->readCsv(self::FILE_PATH, function ($item) use (&$fahrenheits) {
-            $fahrenheits[] = self::celsiusToFahrenheit($item['temp']);
-        });
-
-        return $fahrenheits;
+        return $this->readCsv(self::FILE_PATH, fn ($item) => self::celsiusToFahrenheit($item['temp']));
     }
 }
