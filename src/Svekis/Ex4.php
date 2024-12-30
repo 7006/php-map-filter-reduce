@@ -19,7 +19,7 @@ class Ex4
     {
         $fahrenheits = [];  
         $this->readCsv(self::FILE_PATH, function ($item) use (&$fahrenheits) {
-            $fahrenheitss[] = self::celsiusToFahrenheit($item['temp']);
+            $fahrenheits[] = self::celsiusToFahrenheit($item['temp']);
         });
 
         return $fahrenheits;
