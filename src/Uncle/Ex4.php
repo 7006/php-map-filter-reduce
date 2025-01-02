@@ -1,25 +1,14 @@
 <?php
 
 namespace Telema\Uncle;
+use Telema\traits\CsvReader;
 
 class Ex4
 {
-    public const PROVIDERS = [
-        ['id' => 22, 'name' => 'yolo'],
-        ['id' => 10, 'name' => 'frob'],
-        ['id' => 34, 'name' => 'yolo'],
-        ['id' => 43, 'name' => 'boom'],
-        ['id' => 26, 'name' => 'frob'],
-        ['id' => 34, 'name' => 'boom'],
-        ['id' => 43, 'name' => 'boom'],
-        ['id' => 26, 'name' => 'frob']
-    ];
+    use CsvReader;
 
-    public const PROVIDER_RATINGS = [
-        ['name' => 'yolo', 'rating' => 0.7],
-        ['name' => 'frob', 'rating' => 0.2],
-        ['name' => 'boom', 'rating' => 0.5]
-    ];
+    public const FILE_PATH_PROVIDERS = __DIR__ . '/../../data/uncle/ex04.csv';
+    public const FILE_PATH_PROVIDER_RATINGS = __DIR__ . '/../../data/uncle/ex041.csv'; 
 
     protected static function rating()
     {
@@ -30,8 +19,11 @@ class Ex4
     {
         $result = [];
 
-        foreach (self::PROVIDERS as $p) {
-            foreach (self::PROVIDER_RATINGS as $pr) {
+        $pp = $this->readCsv(self::FILE_PATH_PROVIDERS, fn ($item) => $item);
+        $ppp = $this->readCsv(self::FILE_PATH_PROVIDER_RATINGS, fn ($item) => $item);
+        
+        foreach ($pp as $p) {
+            foreach ($ppp as $pr) {
                 if ($p['name'] === $pr['name'] && $pr['rating'] >= self::rating()) {
                     $result[] = $p;
                 }
