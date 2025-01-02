@@ -3,9 +3,14 @@
 namespace Telema\Uncle;
 
 use Telema\Date;
+use Telema\traits\CsvReader;
 
 class Ex3
 {
+    use CsvReader;
+
+    public const FILE_PATH = __DIR__ . '/../../data/uncle/ex03.csv';
+
     public const ITEMS = [
         ['id' => 22, 'provider' => 'yolo', 'updated_at' => '2024-09-28'],
         ['id' => 10, 'provider' => 'frob', 'updated_at' => '2024-10-01'],
@@ -42,17 +47,18 @@ class Ex3
         return false;
     }
 
-    public static function solution(array $items = self::ITEMS)
+    public function __invoke()
     {
         $provider = self::provider();
         $date = self::date();
         $result = [];
 
-        foreach ($items as $item) {
+        $this->readCsv(self::FILE_PATH, function ($item) use ($provider, $date, &$result) {
             if (self::isMatches($item, $provider, $date)) {
                 $result[] = $item;
             }
-        }
+        });
+
         return $result;
     }
 }
