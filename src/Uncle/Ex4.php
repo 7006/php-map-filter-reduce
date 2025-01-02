@@ -29,7 +29,7 @@ class Ex4
                 }
             }
         }
-
+        
         return $result;
     }
 }
