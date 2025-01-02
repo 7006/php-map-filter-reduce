@@ -2,31 +2,27 @@
 
 namespace Telema\Uncle;
 
+use Telema\traits\CsvReader;
+
 class Ex2
 {
-    public const ITEMS = [
-        ['status' => 'success', 'id' => 99],
-        ['status' => 'success', 'id' => 53],
-        ['status' => 'error',   'id' => 17],
-        ['status' => 'success', 'id' => 43],
-        ['status' => 'error',   'id' => 47],
-        ['status' => 'error',   'id' => 55],
-        ['status' => 'error',   'id' => 98],
-        ['status' => 'success', 'id' => 3]
-    ];
+    use CsvReader;
 
-    public static function solution(array $items = self::ITEMS)
+    public const FILE_PATH = __DIR__ . '/../../data/uncle/ex02.csv';
+
+    public function __invoke()
     {
         $accum = ['success' => [], 'error' => []];
 
-        foreach ($items as $item) {
+        $this->readCsv(self::FILE_PATH, function ($item) use (&$accum) {
             if ($item['status'] === 'success') {
                 $accum['success'][] = $item['id'];
             }
             if ($item['status'] === 'error') {
                 $accum['error'][] = $item['id'];
             }
-        }
+        });
+
         return $accum;
     }
 }
