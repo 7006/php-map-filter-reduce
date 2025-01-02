@@ -2,19 +2,13 @@
 
 namespace Telema\Uncle;
 
+use Telema\traits\CsvReader;
+
 class Ex1
-{
-    public const ITEMS = [
-        ['food' => 'apple'],
-        ['food' => 'carrot'],
-        ['food' => 'beet'],
-        ['food' => 'lemon'],
-        ['food' => 'pear'],
-        ['food' => 'potato'],
-        ['food' => 'apple'],
-        ['food' => 'lemon'],
-        ['food' => 'nuts'],
-    ];
+{   
+    use CsvReader;
+
+    public const FILE_PATH = __DIR__ . '/../../data/uncle/ex01.csv';
 
     protected static function color($food)
     {
@@ -30,13 +24,11 @@ class Ex1
         return $color;
     }
 
-    public static function solution(array $fruits = self::ITEMS)
-    {
-        $result = [];
-        foreach ($fruits as $fruit) {
-            $fruit['color'] = Ex1::color($fruit['food']);
-            $result[] = $fruit;
-        }
-        return $result;
+    public function __invoke()
+    {   
+        return $this->readCsv(self::FILE_PATH, function ($item) {
+            $item['color'] = self::color($item['food']);
+            return $item;
+        });
     }
 }
