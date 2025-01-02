@@ -5,7 +5,7 @@ namespace Telema\Uncle;
 use Telema\traits\CsvReader;
 
 class Ex1
-{   
+{
     use CsvReader;
 
     public const FILE_PATH = __DIR__ . '/../../data/uncle/ex01.csv';
@@ -25,7 +25,7 @@ class Ex1
     }
 
     public function __invoke()
-    {   
+    {
         return $this->readCsv(self::FILE_PATH, function ($item) {
             $item['color'] = self::color($item['food']);
             return $item;
